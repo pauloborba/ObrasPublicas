@@ -1,15 +1,17 @@
+#CONTROLLER
 Scenario: Adicionar político não existente
-Given que eu estou logado no sistema como Administrador e o sistema não tem um
+Given que eu estou logado no sistema como "admin" e o sistema não tem um
 político com nome “Eduardo” e CPF "01234567890”
 When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
 Then o sistema irá cadastrar o político
 
 Scenario: Adicionar político existente
-Given que eu estou logado no sistema como Administrador e o sistema tem um
+Given que eu estou logado no sistema como "admin" e o sistema tem um
 político com nome “Eduardo” e CPF "01234567890”
 When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
 Then o sistema não irá cadastrar o político
 
+#GUI
 Scenario: Novo político
 Given: que eu estou no menu “Políticos”
 And: não existe nenhum político com o nome “Anderson” com o CPF
