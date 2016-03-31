@@ -29,3 +29,9 @@ sistema
 When: “Guilherme” tenta visualizar o político  “Anderson”  com o CPF
 “102.102.152-15”
 Then: “Guilherme” conseguirá visualizar as informações
+
+Scenario: Editar informações de um politico 
+    Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
+    When ao  tentar atualizar os dados do político “Eduardo” com cpf “01234567890”
+	Then: eu recebo a mensagem de confirmação
+	And: Consigo ver as informações do político cadastrado

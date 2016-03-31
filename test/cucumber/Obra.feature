@@ -12,6 +12,18 @@ When eu tentar atualizar os dados da obra com o nome “Praça do Arsenal”
 	Then o sistema irá atualizar a obra
 	And exibir uma mensagem de confirmação
 
+ Scenario: Remover obra não existente 
+  Given que eu estou logado no sistema como Administrador e o sistema não tem uma 
+    obra chamada “Praça do arsenal”
+  When eu tentar remover a obra com o nome “Praça do arsenal”
+  Then o sistema não irá remover
+
+Scenario: Remover obra existente 
+  Given que eu estou logado no sistema como Administrador e o sistema tem uma 
+    obra chamada “Praça do arsenal”
+  When eu tentar remover a obra com o nome “Praça do arsenal”
+  Then o sistema irá remover a obra
+
 #GUI
 Scenario: Nova página de obra
 Given eu estou no menu de “obras”
@@ -27,3 +39,9 @@ Given eu esteja visualizando uma obra com o nome “Praça do Arsenal”
 When  eu selecionar a opção “compartilhar no facebook “
 And  preencher os campos do facebook
 Then eu recebo uma mensagem de confirmação
+
+Scenario: compartilhar obra no twitter
+Given eu esteja visualizando uma “obra” 
+When  eu selecionar a opção “compartilhar no twitter“
+And  preencher os campos do twitter
+Then eu recebo uma mensagem de confirmação 
