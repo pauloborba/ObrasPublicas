@@ -51,10 +51,9 @@ Scenario: Receber atualizações da obra por email
 	And passo a receber o relatório de alterações da obra no email  “teste@obralimpa.com”
 
 Scenario Visualizar obra
-	Given que o visitante “Eduardo” está no menu de obras e quer visualizar os detalhes da obra de localização 200, 300
-	When “Eduardo” clica na opção “Visualizar obras”
-	And seleciona a obra de localização 200, 300 no mapa
-	Then o sistema exibe os detalhes da obra de localização 200, 300
+	Given que o visitante “Eduardo” está na lista de obras e quer visualizar os detalhes da obra "Praça do arsenal"
+	When “Eduardo” clica na obra "Praça do arsenal"
+	Then o sistema exibe os detalhes da obra "Praça do arsenal"
 
 Scenario: Nova página de obra
 	Given eu estou no menu de “obras”
