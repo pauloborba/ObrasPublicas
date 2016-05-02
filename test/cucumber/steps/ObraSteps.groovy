@@ -5,10 +5,10 @@ import static cucumber.api.groovy.EN.*
 
 //CONTROLLER
 //Scenario: Adicionar obra não existente
-//Given que eu estou logado no sistema como "Administrador" e o sistema não tem uma 
-//	obra chamada “Praça do arsenal”
-//When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
-//Then o sistema irá cadastrar a obra de nome "Praça do arsenal"
+//	Given que eu estou logado no sistema como "Administrador" e o sistema não tem uma 
+//		obra chamada “Praça do arsenal”
+//	When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
+//	Then o sistema irá cadastrar a obra de nome "Praça do arsenal"
 
 
 /**
@@ -33,10 +33,10 @@ Then(~'^o sistema irá cadastrar a obra de nome "([^"]*)"$'){
 
 
 //Scenario: Adicionar obra existente
-//Given que eu estou logado no sistema como "Administrador" e o 
-//sistema tem uma obra chamada “Praça do arsenal”
-//When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
-//Then o sistema não irá cadastrar a obra de nome "Praça do arsenal"
+//	Given que eu estou logado no sistema como "Administrador" e o 
+//		sistema tem uma obra chamada “Praça do arsenal”
+//	When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
+//	Then o sistema não irá cadastrar a obra de nome "Praça do arsenal"
 
 /**
 * @author = ehmr
@@ -61,11 +61,11 @@ Then(~'^o sistema não irá cadastrar a obra de nome "([^"]*)"$'){
 
 //GUI
 //Scenario: Receber atualizações da obra por email
-//Given  eu estou visualizando uma a obra “Praça do arsenal”
-//When eu seleciono a opção “Receber atualização por email”
-//And preencho os campos de email com o email “teste@obralimpa.com”
-//Then eu vejo uma mensagem de confirmação
-//And passo a receber o relatório de alterações da obra no email  “teste@obralimpa.com”
+//	Given  eu estou visualizando uma a obra “Praça do arsenal”
+//	When eu seleciono a opção “Receber atualização por email”
+//	And preencho os campos de email com o email “teste@obralimpa.com”
+//	Then eu vejo uma mensagem de confirmação
+//	And passo a receber o relatório de alterações da obra no email  “teste@obralimpa.com”
 
 /**
 * @author = ehmr
@@ -90,10 +90,9 @@ Then(~'^eu vejo uma mensagem de confirmação And passo a receber o relatório d
 }
 
 //Scenario Visualizar obra
-//Given que o visitante “Eduardo” está no menu de obras e quer visualizar os detalhes da obra de localização 200, 300
-//When “Guilherme” clica na opção “Visualizar obras”
-//And seleciona a obra de localização 200, 300 no mapa
-//Then o sistema exibe os detalhes da obra de localização 200, 300
+//	Given que o visitante “Eduardo” está na lista de obras e quer visualizar os detalhes da obra "Praça do arsenal"
+//	When “Eduardo” clica na obra "Praça do arsenal"
+//	Then o sistema exibe os detalhes da obra "Praça do arsenal"
 
 
 /**
@@ -105,15 +104,15 @@ Given(~'^Given que o visitante "([^"]*)" está no menu de obras e quer visualiza
     at ObraPage
 }
 
-When(~'^"([^"]*)" clica na opção "([^"]*)" And seleciona a obra de localização "([^"]*)" no mapa$') { 
-	String nome, option, coordinate ->
+When(~'^"([^"]*)" clica na obra "([^"]*)"$') { 
+	String nome, filename ->
     at ObraPage
-    page.select(option)
-    page.clickOnCoordinate(coordinate)
+    page.checkObraAtList(filename)
+    page.selectObra(filename)
 }
 
-Then(~'^o sistema exibe os detalhes da obra de localização "([^"]*)"$'){
-	String coordinate ->
+Then(~'^o sistema exibe os detalhes da obra "([^"]*)"$'){
+	String filename ->
 	at ObraShowPage
-	assert page.verifyCoordinates(coordinate) == true
+	assert page.verifyName(filename) == true
 }
