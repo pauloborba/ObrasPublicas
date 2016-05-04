@@ -5,14 +5,12 @@ Feature Obra:
 
 #CONTROLLER
 Scenario: Adicionar obra não existente
-	Given que eu estou logado no sistema como "Administrador" e o sistema não tem uma 
-		obra chamada “Praça do arsenal”
+	Given que o sistema não tem uma obra chamada “Praça do arsenal”
 	When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
 	Then o sistema irá cadastrar a obra de nome "Praça do arsenal"
 
 Scenario: Adicionar obra existente
-	Given que eu estou logado no sistema como "Administrador" e o 
-		sistema tem uma obra chamada “Praça do arsenal”
+	Given que o sistema tem uma obra chamada “Praça do arsenal”
 	When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
 	Then o sistema não irá cadastrar a obra de nome "Praça do arsenal"
 
@@ -44,15 +42,15 @@ Scenario: Remover obra existente
 
 #GUI
 Scenario: Receber atualizações da obra por email
-	Given  eu estou visualizando uma a obra “Praça do arsenal”
+	Given  eu estou visualizando a obra “Praça do arsenal”
 	When eu seleciono a opção “Receber atualização por email”
-	And preencho os campos de email com o email “teste@obralimpa.com”
+	And preencho o campo de email com o email “teste@obralimpa.com”
 	Then eu vejo uma mensagem de confirmação
 	And passo a receber o relatório de alterações da obra no email  “teste@obralimpa.com”
 
 Scenario Visualizar obra
-	Given que o visitante “Eduardo” está na lista de obras e quer visualizar os detalhes da obra "Praça do arsenal"
-	When “Eduardo” clica na obra "Praça do arsenal"
+	Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "Praça do arsenal"
+	When o usuário seleciona a obra "Praça do arsenal"
 	Then o sistema exibe os detalhes da obra "Praça do arsenal"
 
 Scenario: Nova página de obra
