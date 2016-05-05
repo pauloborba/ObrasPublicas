@@ -11,6 +11,13 @@ político com nome “Eduardo” e CPF "01234567890”
 When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
 Then o sistema não irá cadastrar o político
 
+Scenario: Atualizar político
+Given que exista um politico com nome “Eduardo” e CPF "01234567890”
+When eu tentar atualizar os dados do político  com nome “Eduardo” e CPF "01234567890”
+Then o sistema irá atualizar o político
+
+
+
 #GUI
 Scenario: Novo político
 Given: que eu estou no menu “Políticos”
