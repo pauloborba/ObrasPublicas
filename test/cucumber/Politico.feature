@@ -17,6 +17,12 @@ When eu tentar atualizar os dados do político  com nome “Eduardo” e CPF "01
 Then o sistema irá atualizar o político
 
 
+Scenario: Remover político existente 
+Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
+When eu tentar remover o político com o nome “Eduardo” e CPF “01234567890”
+Then o sistema ira mostrar a mensagem politico "Eduardo" de CPF “01234567890” removido com sucesso
+
+
 
 #GUI
 Scenario: Novo político
