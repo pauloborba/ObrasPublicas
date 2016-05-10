@@ -1,5 +1,4 @@
 import steps.TestDataAndOperations
-
 import static cucumber.api.groovy.EN.*
 
 
@@ -8,9 +7,6 @@ import static cucumber.api.groovy.EN.*
 //	Given que o sistema não tem uma obra chamada “Praça do arsenal”
 //	When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
 //	Then o sistema irá cadastrar a obra de nome "Praça do arsenal"
-
-
-
 /**
 * @author = ehmr
 */
@@ -36,7 +32,6 @@ Then(~'^o sistema irá cadastrar a obra de nome "([^"]*)"$'){
 //	Given que o sistema tem uma obra chamada “Praça do arsenal”
 //	When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
 //	Then o sistema não irá cadastrar a obra de nome "Praça do arsenal"
-
 /**
 * @author = ehmr
 */
@@ -65,7 +60,6 @@ Then(~'^o sistema não irá cadastrar a obra de nome "([^"]*)"$'){
 //	And preencho o campo de email com o email “teste@obralimpa.com”
 //	Then eu vejo uma mensagem de confirmação
 //	And passo a receber o relatório de alterações da obra no email  “teste@obralimpa.com”
-
 /**
 * @author = ehmr
 */
@@ -95,8 +89,6 @@ Then(~'^eu vejo uma mensagem de confirmação And passo a receber o relatório d
 //	Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "Praça do arsenal"
 //	When o usuário seleciona a obra "Praça do arsenal"
 //	Then o sistema exibe os detalhes da obra "Praça do arsenal"
-
-
 /**
 * @author = ehmr
 */

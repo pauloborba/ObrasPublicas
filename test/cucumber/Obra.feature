@@ -39,41 +39,7 @@ Scenario: Remover obra existente
     Then o sistema ir� remover a obra
 
 
- Scenario: Remover obra não existente 
-  Given que eu estou logado no sistema como Administrador e o sistema não tem uma 
-    obra chamada “Praça do arsenal”
-  When eu tentar remover a obra com o nome “Praça do arsenal”
-  Then o sistema não irá remover
-
-Scenario: Remover obra existente 
-  Given que eu estou logado no sistema como Administrador e o sistema tem uma 
-    obra chamada “Praça do arsenal”
-  When eu tentar remover a obra com o nome “Praça do arsenal”
-  Then o sistema irá remover a obra
-
 #GUI
-<<<<<<< HEAD
-Scenario: Nova página de obra
-Given eu estou no menu de “obras”
-And não existe uma obra com nome “Praça do Arsenal” na lista de obras
-When eu seleciono a opção “Cadastrar”
-And eu tento cadastrar a obra com o nome “Praça do Arsenal”
-And seleciono a opção “Salvar”
-Then eu recebo uma mensagem de confirmação
-And vejo o nome “Praça do arsenal”
-
-Scenario: compartilhar obra no facebook
-Given eu esteja visualizando uma obra com o nome “Praça do Arsenal”
-When  eu selecionar a opção “compartilhar no facebook “
-And  preencher os campos do facebook
-Then eu recebo uma mensagem de confirmação
-
-Scenario: compartilhar obra no twitter
-Given eu esteja visualizando uma “obra” 
-When  eu selecionar a opção “compartilhar no twitter“
-And  preencher os campos do twitter
-Then eu recebo uma mensagem de confirmação 
-=======
 Scenario: Receber atualiza��es da obra por email
   Given  eu estou visualizando a obra �Pra�a do arsenal�
   When eu seleciono a op��o �Receber atualiza��o por email�
@@ -100,4 +66,3 @@ Scenario: compartilhar obra na rede social
   When  eu seleciono a op��o Compartilhar na Rede Social com o email "teste@teste.com" e senha "senha"
   Then eu vejo uma mensagem de confirma��o
   And passo visualizar na minha rede social a postagem com o nome "Pra�a do Arsenal"
->>>>>>> 490963de3699a4b0dc7ea52f0ef3764b4efeb5c6
