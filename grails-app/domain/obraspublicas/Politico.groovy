@@ -4,7 +4,7 @@ import util.Partido
 
 class Politico extends Pessoa {
     Partido partido
-    URI foto
+    String foto
     String descricao
     double qualidade
 
@@ -12,5 +12,7 @@ class Politico extends Pessoa {
 
     static constraints = {
         obras blank: true
+        foto blank: true
+        obras null: true
     }
 }

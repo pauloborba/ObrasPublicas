@@ -12,5 +12,10 @@ class Pessoa {
     static constraints = {
         cpf blank: false
         nome blank: false
+        telefones null: true
+    }
+
+    String toString(){
+        return this.nome
     }
 }
