@@ -34,7 +34,7 @@
 					
 						<g:sortableColumn property="empresaResponsavel" title="${message(code: 'obra.empresaResponsavel.label', default: 'Empresa Responsavel')}" />
 					
-						<th><g:message code="obra.endereco.label" default="Endereco" /></th>
+						<g:sortableColumn property="imagem" title="${message(code: 'obra.imagem.label', default: 'Imagem')}" />
 					
 					</tr>
 				</thead>
@@ -52,7 +52,7 @@
 					
 						<td>${fieldValue(bean: obraInstance, field: "empresaResponsavel")}</td>
 					
-						<td>${fieldValue(bean: obraInstance, field: "endereco")}</td>
+						<td>${fieldValue(bean: obraInstance, field: "imagem")}</td>
 					
 					</tr>
 				</g:each>

@@ -1,5 +1,6 @@
-import steps.TestDataAndOperations
 import static cucumber.api.groovy.EN.*
+import obraspublicas.*
+import steps.TestDataAndOperations
 
 
 //CONTROLLER
@@ -12,7 +13,7 @@ import static cucumber.api.groovy.EN.*
 */
 Given(~'^que o sistema não tem uma obra chamada "([^"]*)"$'){
 	String nomeObra -> 
-	Obra obra = Obra.findByName(nomeObra)
+	Obra obra = Obra.findByNome(nomeObra)
 	assert obra == null
 }
 
@@ -23,7 +24,7 @@ When (~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 
 Then(~'^o sistema irá cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
-	Obra obra = Obra.findByName(nomeObra)
+	Obra obra = Obra.findByNome(nomeObra)
 	assert TestDataAndOperations.compatibleTo(obra, nomeObra)
 }
 
@@ -37,7 +38,7 @@ Then(~'^o sistema irá cadastrar a obra de nome "([^"]*)"$'){
 */
 Given(~'^que o sistema tem uma obra chamada "([^"]*)"$'){
 	String nomeObra -> 
-	Obra obra = Obra.findByName(nomeObra)
+	Obra obra = Obra.findByNome(nomeObra)
 	assert obra != null
 }
 
@@ -48,7 +49,7 @@ When (~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 
 Then(~'^o sistema não irá cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
-	obras = Obra.findAllByName(nomeObra)
+	obras = Obra.findAllByNome(nomeObra)
     assert obras.size() == 1
 }
 
@@ -63,7 +64,7 @@ Then(~'^o sistema não irá cadastrar a obra de nome "([^"]*)"$'){
 /**
 * @author = ehmr
 */
-Given(~'^eu estou visualizando a obra "([^"]*)"$') { 
+Given(~'^eu estou visualizando a obra "([^"]*)"$') {
 	String nomeObra ->
 	to ObraPage
 	at ObraPage
@@ -92,13 +93,13 @@ Then(~'^eu vejo uma mensagem de confirmação And passo a receber o relatório d
 /**
 * @author = ehmr
 */
-Given(~'^Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "([^"]*)"$') { 
+Given(~'^Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "([^"]*)"$') {
 	String filename ->
     to ObraPage
     at ObraPage
 }
 
-When(~'^o usuário seleciona a obra "([^"]*)"$') { 
+When(~'^o usuário seleciona a obra "([^"]*)"$') {
 	String nomeObra ->
     at ObraPage
     page.checkObraAtList(nomeObra)

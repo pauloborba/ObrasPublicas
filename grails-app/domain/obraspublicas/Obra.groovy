@@ -5,18 +5,16 @@ import util.Endereco
 class Obra {
     String nome
     String descricao
-    Endereco endereco
-    String imagen
+    String imagem
     double precoPlanejado
     double precoFinal
     Date dataPlanejada
     Date dataTermino
     double latitude
     double longitude
-    Politico politicoResponsavel
     String empresaResponsavel
 
-    static hasOne = [politico : Politico]
+    static hasOne = [politicoResponsavel : Politico]
 
     static constraints = {
         precoPlanejado blank: false

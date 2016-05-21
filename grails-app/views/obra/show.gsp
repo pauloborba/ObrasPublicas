@@ -68,20 +68,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${obraInstance?.endereco}">
+				<g:if test="${obraInstance?.imagem}">
 				<li class="fieldcontain">
-					<span id="endereco-label" class="property-label"><g:message code="obra.endereco.label" default="Endereco" /></span>
+					<span id="imagem-label" class="property-label"><g:message code="obra.imagem.label" default="Imagem" /></span>
 					
-						<span class="property-value" aria-labelledby="endereco-label"><g:link controller="endereco" action="show" id="${obraInstance?.endereco?.id}">${obraInstance?.endereco?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${obraInstance?.imagen}">
-				<li class="fieldcontain">
-					<span id="imagen-label" class="property-label"><g:message code="obra.imagen.label" default="Imagen" /></span>
-					
-						<span class="property-value" aria-labelledby="imagen-label"><g:fieldValue bean="${obraInstance}" field="imagen"/></span>
+						<span class="property-value" aria-labelledby="imagem-label"><g:fieldValue bean="${obraInstance}" field="imagem"/></span>
 					
 				</li>
 				</g:if>
@@ -109,15 +100,6 @@
 					<span id="nome-label" class="property-label"><g:message code="obra.nome.label" default="Nome" /></span>
 					
 						<span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${obraInstance}" field="nome"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${obraInstance?.politico}">
-				<li class="fieldcontain">
-					<span id="politico-label" class="property-label"><g:message code="obra.politico.label" default="Politico" /></span>
-					
-						<span class="property-value" aria-labelledby="politico-label"><g:link controller="politico" action="show" id="${obraInstance?.politico?.id}">${obraInstance?.politico?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

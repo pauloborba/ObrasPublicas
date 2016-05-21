@@ -5,8 +5,13 @@ class Endereco {
         String rua
         String bairro
         String cidade
-        UnidadeFederativa estado
+        String estado
 
     static constraints = {
     }
+
+    String getEnderecoFormatado(){
+        return this.rua + " - " + this.numero + " - " + this.bairro + " - " + this.cidade + " - " + this.estado
+    }
+
 }

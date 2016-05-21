@@ -47,21 +47,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: obraInstance, field: 'endereco', 'error')} required">
-	<label for="endereco">
-		<g:message code="obra.endereco.label" default="Endereco" />
+<div class="fieldcontain ${hasErrors(bean: obraInstance, field: 'imagem', 'error')} required">
+	<label for="imagem">
+		<g:message code="obra.imagem.label" default="Imagem" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="endereco" name="endereco.id" from="${util.Endereco.list()}" optionKey="id" required="" value="${obraInstance?.endereco?.id}" class="many-to-one"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: obraInstance, field: 'imagen', 'error')} required">
-	<label for="imagen">
-		<g:message code="obra.imagen.label" default="Imagen" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="imagen" required="" value="${obraInstance?.imagen}"/>
+	<g:textField name="imagem" required="" value="${obraInstance?.imagem}"/>
 
 </div>
 
@@ -89,15 +80,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="nome" required="" value="${obraInstance?.nome}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: obraInstance, field: 'politico', 'error')} required">
-	<label for="politico">
-		<g:message code="obra.politico.label" default="Politico" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="politico" name="politico.id" from="${obraspublicas.Politico.list()}" optionKey="id" required="" value="${obraInstance?.politico?.id}" class="many-to-one"/>
 
 </div>
 

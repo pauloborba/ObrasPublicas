@@ -25,7 +25,7 @@
 		<g:message code="endereco.estado.label" default="Estado" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="estado" from="${util.UnidadeFederativa?.values()}" keys="${util.UnidadeFederativa.values()*.name()}" required="" value="${enderecoInstance?.estado?.name()}" />
+	<g:textField name="estado" required="" value="${enderecoInstance?.estado}"/>
 
 </div>
 

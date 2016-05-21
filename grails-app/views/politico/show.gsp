@@ -46,7 +46,7 @@
 					<span id="telefones-label" class="property-label"><g:message code="politico.telefones.label" default="Telefones" /></span>
 					
 						<g:each in="${politicoInstance.telefones}" var="t">
-						<span class="property-value" aria-labelledby="telefones-label"><g:link controller="telefone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="telefones-label"><g:link controller="telefone" action="show" id="${t.id}">${t?.getFormatedFone()}</g:link></span>
 						</g:each>
 					
 				</li>
