@@ -2,6 +2,15 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'CEP', 'error')} required">
+	<label for="CEP">
+		<g:message code="endereco.CEP.label" default="CEP" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="CEP" required="" value="${enderecoInstance?.CEP}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'bairro', 'error')} required">
 	<label for="bairro">
 		<g:message code="endereco.bairro.label" default="Bairro" />

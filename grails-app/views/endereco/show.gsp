@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list endereco">
 			
+				<g:if test="${enderecoInstance?.CEP}">
+				<li class="fieldcontain">
+					<span id="CEP-label" class="property-label"><g:message code="endereco.CEP.label" default="CEP" /></span>
+					
+						<span class="property-value" aria-labelledby="CEP-label"><g:fieldValue bean="${enderecoInstance}" field="CEP"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${enderecoInstance?.bairro}">
 				<li class="fieldcontain">
 					<span id="bairro-label" class="property-label"><g:message code="endereco.bairro.label" default="Bairro" /></span>

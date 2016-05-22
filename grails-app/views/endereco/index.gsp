@@ -24,6 +24,8 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="CEP" title="${message(code: 'endereco.CEP.label', default: 'CEP')}" />
+					
 						<g:sortableColumn property="bairro" title="${message(code: 'endereco.bairro.label', default: 'Bairro')}" />
 					
 						<g:sortableColumn property="cidade" title="${message(code: 'endereco.cidade.label', default: 'Cidade')}" />
@@ -40,7 +42,9 @@
 				<g:each in="${enderecoInstanceList}" status="i" var="enderecoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${enderecoInstance.id}">${fieldValue(bean: enderecoInstance, field: "bairro")}</g:link></td>
+						<td><g:link action="show" id="${enderecoInstance.id}">${fieldValue(bean: enderecoInstance, field: "CEP")}</g:link></td>
+					
+						<td>${fieldValue(bean: enderecoInstance, field: "bairro")}</td>
 					
 						<td>${fieldValue(bean: enderecoInstance, field: "cidade")}</td>
 					

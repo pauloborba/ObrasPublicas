@@ -40,6 +40,22 @@ class TestDataAndOperations {
              email    : "robsobra@obra.com"]
     ]
 
+    static enderecos = [
+            [numero: 323,
+             rua: "Avenida camarao",
+             bairro: "Cordeiro",
+             cidade: "Recife",
+             estado: "Pernambuco",
+             CEP: "50721-360"],
+
+            [numero: 319,
+             rua: "Avenida Domingos Ferreira",
+             bairro: "Boa Viagem",
+             cidade: "Recife",
+             estado: "Pernambuco",
+             CEP: "12345-67"]
+    ]
+
     static public def findObraByNome(String obraNome) {
         obras.find { obra ->
             obra.nome == obraNome
@@ -49,6 +65,12 @@ class TestDataAndOperations {
     static public def findPoliticoByCPF(String politicoCPF) {
         politicos.find { politico ->
             politico.cpf == politicoCPF
+        }
+    }
+
+    static public def findEnderecoByCEPAndNumero(String CEP, int numero){
+        enderecos.find { endereco ->
+            endereco.CEP == CEP && endereco.numero == numero
         }
     }
 
@@ -63,6 +85,14 @@ class TestDataAndOperations {
     static public void createPolitico(String politicoCPF) {
         def cont = new PoliticoController()
         cont.params << TestDataAndOperations.findPoliticoByCPF(politicoCPF) << [cpf: politicoCPF]
+        cont.create()
+        cont.save()
+        cont.response.reset()
+    }
+
+    static public void createEndereco(String CEP, int numero) {
+        def cont = new EnderecoController()
+        cont.params << TestDataAndOperations.findEnderecoByceoAndNumero(CEP, numero)
         cont.create()
         cont.save()
         cont.response.reset()
@@ -91,6 +121,20 @@ class TestDataAndOperations {
             compatible = true
             testPolitico.each { key, data ->
                 compatible = compatible && (politico."$key" == data)
+            }
+        }
+        return compatible
+    }
+
+    static public boolean enderecoCompatibleTo(endereco, CEP, numero) {
+        def testEndereco = findEnderecoByCEPAndNumero(CEP, numero)
+        def compatible = false
+        if (testEndereco == null && endereco == null) {
+            compatible = true
+        } else if (testEndereco != null && endereco != null) {
+            compatible = true
+            testEndereco.each { key, data ->
+                compatible = compatible && (endereco."$key" == data)
             }
         }
         return compatible

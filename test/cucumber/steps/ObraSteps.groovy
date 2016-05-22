@@ -2,7 +2,6 @@ import static cucumber.api.groovy.EN.*
 import obraspublicas.*
 import steps.TestDataAndOperations
 
-
 //CONTROLLER
 //Scenario: Adicionar obra não existente
 //	Given que o sistema não tem uma obra chamada “Praça do arsenal”
@@ -11,18 +10,18 @@ import steps.TestDataAndOperations
 /**
 * @author = ehmr
 */
-Given(~'^que o sistema não tem uma obra chamada "([^"]*)"$'){
+Given(~'^que o sistema nao tem uma obra chamada "([^"]*)"$'){
 	String nomeObra -> 
 	Obra obra = Obra.findByNome(nomeObra)
 	assert obra == null
 }
 
-When (~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
+When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 	String nomeObra ->                        //tem que verificar
 	TestDataAndOperations.createObra(nomeObra)//tem que verificar
 }
 
-Then(~'^o sistema irá cadastrar a obra de nome "([^"]*)"$'){
+Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
 	Obra obra = Obra.findByNome(nomeObra)
 	assert TestDataAndOperations.compatibleTo(obra, nomeObra)
@@ -42,12 +41,12 @@ Given(~'^que o sistema tem uma obra chamada "([^"]*)"$'){
 	assert obra != null
 }
 
-When (~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
+When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 	String nomeObra ->                        
 	TestDataAndOperations.createObra(nomeObra)
 }
 
-Then(~'^o sistema não irá cadastrar a obra de nome "([^"]*)"$'){
+Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
 	obras = Obra.findAllByNome(nomeObra)
     assert obras.size() == 1
@@ -121,7 +120,7 @@ Given(~'^que existe uma obra no sistema chamada"([^"]*)"$'){
 	assert obra == null
 }
 
-When (~'^eu tento atualizar os dados da obra com o nome"([^"]*)"$'){
+When(~'^eu tento atualizar os dados da obra com o nome"([^"]*)"$'){
 	String nomeObra ->                        //tem que verificar
 	TestDataAndOperations.atualizaObra(nomeObra)//tem que verificar
 }

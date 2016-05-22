@@ -6,6 +6,7 @@ class Endereco {
         String bairro
         String cidade
         String estado
+        String CEP
 
     static constraints = {
     }
