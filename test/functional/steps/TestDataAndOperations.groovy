@@ -76,7 +76,7 @@ class TestDataAndOperations {
 
     static public void createObra(String obraNome) {
         def cont = new ObraController()
-        cont.params << TestDataAndOperations.findObraByNome(obraNome) << [nome: obraNome]
+        cont.params << TestDataAndOperations.findObraByNome(obraNome)
         cont.create()
         cont.save()
         cont.response.reset()
@@ -84,7 +84,7 @@ class TestDataAndOperations {
 
     static public void createPolitico(String politicoCPF) {
         def cont = new PoliticoController()
-        cont.params << TestDataAndOperations.findPoliticoByCPF(politicoCPF) << [cpf: politicoCPF]
+        cont.params << TestDataAndOperations.findPoliticoByCPF(politicoCPF)
         cont.create()
         cont.save()
         cont.response.reset()

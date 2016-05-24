@@ -41,11 +41,6 @@ Given(~'^que o sistema tem uma obra chamada "([^"]*)"$'){
 	assert obra != null
 }
 
-When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
-	String nomeObra ->                        
-	TestDataAndOperations.createObra(nomeObra)
-}
-
 Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
 	obras = Obra.findAllByNome(nomeObra)
@@ -65,8 +60,8 @@ Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 */
 Given(~'^eu estou visualizando a obra "([^"]*)"$') {
 	String nomeObra ->
-	to ObraListPage
-	at ObraListPage
+	to ObraPage
+	at ObraPage
     page.checkObraAtList(nomeObra)
     page.selectObra(nomeObra)
     at ObraShowPage
@@ -94,13 +89,13 @@ Then(~'^eu vejo uma mensagem de confirmação And passo a receber o relatório d
 */
 Given(~'^Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "([^"]*)"$') {
 	String filename ->
-    to ObraListPage
-    at ObraListPage
+    to ObraPage
+    at ObraPage
 }
 
 When(~'^o usuário seleciona a obra "([^"]*)"$') {
 	String nomeObra ->
-    at ObraListPage
+    at ObraPage
     page.checkObraAtList(nomeObra)
     page.selectObra(nomeObra)
 }
@@ -115,7 +110,7 @@ Then(~'^o sistema exibe os detalhes da obra "([^"]*)"$'){
 //============================tpa
 
 Given(~'^que existe uma obra no sistema chamada"([^"]*)"$'){
-	String nomeObra -> 
+	String nomeObra ->
 	Obra obra = Obra.findByName(nomeObra)
 	assert obra == null
 }
@@ -131,18 +126,7 @@ Then(~'^o sistema atualiza a obra"([^"]*)"$'){
 	assert TestDataAndOperations.compatibleTo(obra, nomeObra)
 }
 
-
-
-Given(~'^eu estou visualizando a obra "([^"]*)"$') { 
-	String nomeObra ->
-	to ObraListPage
-	at ObraListPage
-    page.checkObraAtList(nomeObra)
-    page.selectObra(nomeObra)
-    at ObraShowPage
-}
-
-When(~'^eu seleciono a opção Compartilhar na Rede Social com o email "([^"]*)" e senha "([^"]*)"$') { 
+When(~'^eu seleciono a opção Compartilhar na Rede Social com o email "([^"]*)" e senha "([^"]*)"$') {
 	String email, senha ->
     at ObraShowPage
     page.selectShareSNS(email, senha)

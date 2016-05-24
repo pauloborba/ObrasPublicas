@@ -1,59 +1,55 @@
-Feature: obra
+Feature: Obra
   As a usuario do sistema
   I want to adicionar, remover, modificar e visualizar obras no sistema
-  so that eu posso gerar paginas web para exibir informacoes sobre a obra
+  So That eu posso gerar paginas web para exibir informacoes sobre a obra
 
-
-Scenario: adicionar obra nao existente
+#CONTROLLER
+Scenario: Adicionar obra nao existente
   Given que o sistema nao tem uma obra chamada "Praca do arsenal"
   When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
   Then o sistema ira cadastrar a obra de nome "Praca do arsenal"
 
-Scenario: adicionar obra existente
+Scenario: Adicionar obra existente
   Given que o sistema tem uma obra chamada "Praca do arsenal"
   When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
   Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
 
-Scenario: visualizar obra
-  Given que um visitante esta logado no sistema
+Scenario: Visualizar obra
+  Given que um visitante esta logado no sistema como "guilherme"
   And  o sistema tem uma obra com o nome "Praca do arsenal"
   When ele tentar visualizar a obra com o nome "Praca do arsenal"
   Then o sistema mostrara as informacoes relacionadas a obra
 
-Scenario: atualizar obra
+Scenario: Atualizar obra
   Given que existe uma obra no sistema chamada "Praca do Arsenal"
-  When eu tentar atualizar os dados da obra com o nome "Praca do Arsenal"
+  When eu tentar atualizar os dados da obra com o nome "Praça do Arsenal"
   Then o sistema atualiza a obra
 
-Scenario: remover obra nao existente
-  Given que o sistema nao tem uma obra chamada "Praca do arsenal"
-  When eu tentar remover a obra com o nome "Praca do arsenal"
-  Then o sistema nao ira remover
+Scenario: Remover obra nao existente
+  Given que eu estou logado no sistema como Administrador e o sistema nao tem uma obra chamada "Praca do arsenal"
+    When eu tentar remover a obra com o nome "Praca do arsenal"
+    Then o sistema nao ira remover
 
-Scenario: remover obra existente
-  Given que o sistema tem uma obra chamada "Praca do arsenal"
-  When eu tentar remover a obra com o nome "Praca do arsenal"
-  Then o sistema ira remover a obra
-
-
+Scenario: Remover obra existente 
+    Given que eu estou logado no sistema como Administrador e o sistema tem uma obra chamada "Praca do arsenal"
+    When eu tentar remover a obra com o nome "Praca do arsenal"
+    Then o sistema ira remover a obra
 
 
-
-
-
-Scenario: receber atualizacoes da obra por email
+#GUI
+Scenario: Receber atualizacoes da obra por email
   Given  eu estou visualizando a obra "Praca do arsenal"
   When eu seleciono a opcao "Receber atualizacao por email"
   And preencho o campo de email com o email "teste@obralimpa.com"
   Then eu vejo uma mensagem de confirmacao
   And passo a receber o relatorio de alteracoes da obra no email "teste@obralimpa.com"
 
-Scenario: visualizar obra
+Scenario: Visualizar obra
   Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"
   When o usuario seleciona a obra "Praca do arsenal"
   Then o sistema exibe os detalhes da obra "Praca do arsenal"
 
-Scenario: nova pagina de obra
+Scenario: Nova pagina de obra
   Given eu estou no menu de "obras"
   And nao existe uma obra com nome "Praca do Arsenal" na lista de obras
   When eu seleciono a opcao "Cadastrar"
