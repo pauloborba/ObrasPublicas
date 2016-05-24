@@ -65,8 +65,8 @@ Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 */
 Given(~'^eu estou visualizando a obra "([^"]*)"$') {
 	String nomeObra ->
-	to ObraPage
-	at ObraPage
+	to ObraListPage
+	at ObraListPage
     page.checkObraAtList(nomeObra)
     page.selectObra(nomeObra)
     at ObraShowPage
@@ -94,13 +94,13 @@ Then(~'^eu vejo uma mensagem de confirmação And passo a receber o relatório d
 */
 Given(~'^Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "([^"]*)"$') {
 	String filename ->
-    to ObraPage
-    at ObraPage
+    to ObraListPage
+    at ObraListPage
 }
 
 When(~'^o usuário seleciona a obra "([^"]*)"$') {
 	String nomeObra ->
-    at ObraPage
+    at ObraListPage
     page.checkObraAtList(nomeObra)
     page.selectObra(nomeObra)
 }
@@ -135,8 +135,8 @@ Then(~'^o sistema atualiza a obra"([^"]*)"$'){
 
 Given(~'^eu estou visualizando a obra "([^"]*)"$') { 
 	String nomeObra ->
-	to ObraPage
-	at ObraPage
+	to ObraListPage
+	at ObraListPage
     page.checkObraAtList(nomeObra)
     page.selectObra(nomeObra)
     at ObraShowPage
