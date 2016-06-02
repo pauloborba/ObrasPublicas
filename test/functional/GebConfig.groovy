@@ -9,17 +9,18 @@ driver = {
 }
 
 environments {
-    // run as “grails -Dgeb.env=chrome test-app”
-    // See: http://code.google.com/p/selenium/wiki/ChromeDriver
     chrome {
-        driver = { File file = new File("chromedrivers/chromedrivermac"); //configurar com o enderço correto do chromedriver.
-            System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-            new ChromeDriver(); }
-    }
+        driver = {
+            def osPath = System.getProperty("os.name").toLowerCase().split(" ").first()
 
-    // run as “grails -Dgeb.env=firefox test-app”
-    // See: http://code.google.com/p/selenium/wiki/FirefoxDriver
-    firefox {
-        driver = { new FirefoxDriver() }
+            def chromeDriver = new File("chromedrivers", osPath).listFiles(new FilenameFilter() {
+                @Override
+                boolean accept(File dir, String name) { name.startsWith("chromedriver") }
+            }).first()
+
+            System.setProperty("webdriver.chrome.driver", chromeDriver.getAbsolutePath())
+
+            new ChromeDriver()
+        }
     }
 }

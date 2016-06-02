@@ -24,7 +24,9 @@ class PoliticoController {
     }
 
     @Transactional
-    def save(Politico politicoInstance) {
+    def save() {
+        Politico politicoInstance = new Politico(params)
+
         if (politicoInstance == null) {
             notFound()
             return

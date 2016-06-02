@@ -24,7 +24,9 @@ class EnderecoController {
     }
 
     @Transactional
-    def save(Endereco enderecoInstance) {
+    def save() {
+        Endereco enderecoInstance = new Endereco(params)
+
         if (enderecoInstance == null) {
             notFound()
             return

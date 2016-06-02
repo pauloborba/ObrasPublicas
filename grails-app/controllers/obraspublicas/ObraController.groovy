@@ -24,7 +24,8 @@ class ObraController {
     }
 
     @Transactional
-    def save(Obra obraInstance) {
+    def save() {
+        Obra obraInstance = new Obra(params)
         if (obraInstance == null) {
             notFound()
             return

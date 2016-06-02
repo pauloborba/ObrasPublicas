@@ -1,7 +1,7 @@
 package steps
 
 import obraspublicas.*
-
+import sun.security.util.PendingException
 import util.EnderecoController
 
 class TestDataAndOperations {
@@ -69,13 +69,13 @@ class TestDataAndOperations {
     ]
 
     static public def findObraByNome(String obraNome) {
-        obras.find { obra ->
+        return obras.find { obra ->
             obra.nome == obraNome
         }
     }
 
     static public def findPoliticoByCPF(String politicoCPF) {
-        politicos.find { politico ->
+        return politicos.find { politico ->
             politico.cpf == politicoCPF
         }
     }
@@ -87,8 +87,11 @@ class TestDataAndOperations {
     }
 
     static public void createObra(String obraNome) {
+        Politico politicoResponsa = TestDataAndOperations.createPolitico("01234567891")
+
         def cont = new ObraController()
-        cont.params << TestDataAndOperations.findObraByNome(obraNome) << [politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")]
+        cont.params << TestDataAndOperations.findObraByNome(obraNome) << [politicoResponsavel: Politico.findByCpf("01234567891")]
+        cont.request.setContent(new byte[1000])
         cont.create()
         cont.save()
         cont.response.reset()
@@ -96,10 +99,12 @@ class TestDataAndOperations {
 
     static public void createPolitico(String politicoCPF) {
         def cont = new PoliticoController()
-        cont.params << TestDataAndOperations.findPoliticoByCPF(politicoCPF) << [obras: TestDataAndOperations.findObraByNome("Praca do Arsenal")]
+        cont.params << TestDataAndOperations.findPoliticoByCPF(politicoCPF)
+        cont.request.setContent(new byte[1000])
         cont.create()
         cont.save()
         cont.response.reset()
+
     }
 
     static public void createEndereco(String CEP, int numero) {

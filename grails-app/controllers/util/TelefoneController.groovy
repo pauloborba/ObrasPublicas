@@ -24,7 +24,9 @@ class TelefoneController {
     }
 
     @Transactional
-    def save(Telefone telefoneInstance) {
+    def save() {
+        Telefone telefoneInstance = new Telefone(params)
+
         if (telefoneInstance == null) {
             notFound()
             return

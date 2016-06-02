@@ -22,7 +22,7 @@ Scenario: Visualizar obra
 
 Scenario: Atualizar obra
   Given que existe uma obra no sistema chamada "Praca do Arsenal"
-  When eu tentar atualizar os dados da obra com o nome "Praça do Arsenal"
+  When eu tentar atualizar os dados da obra com o nome "Praca do Arsenal"
   Then o sistema atualiza a obra
 
 Scenario: Remover obra nao existente
@@ -44,7 +44,7 @@ Scenario: Receber atualizacoes da obra por email
   Then eu vejo uma mensagem de confirmacao
   And passo a receber o relatorio de alteracoes da obra no email "teste@obralimpa.com"
 
-Scenario: Visualizar obra
+Scenario: Visualizar obra GUI
   Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"
   When o usuario seleciona a obra "Praca do arsenal"
   Then o sistema exibe os detalhes da obra "Praca do arsenal"
