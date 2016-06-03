@@ -71,18 +71,24 @@ Given(~'^eu estou visualizando a obra "([^"]*)"$') {
 //    at ObraShowPage
 }
 
-When(~'^eu seleciono a opção "([^"]*)" And preencho o campo de email com o email "([^"]*)"$') { 
-	String option, email ->
+When(~'^eu seleciono a opcao "([^"]*)"$') {
+	String option ->
 //    at ObraShowPage
 //    page.select(option)
 //    page.fillEmailData(email)
 //    page.select("Cadastrar")
 }
 
-Then(~'^eu vejo uma mensagem de confirmação And passo a receber o relatório de alterações da obra no email "([^"]*)"$'){
+And(~'^preencho o campo de email com o email "([^"]*)"$'){
 	String email ->
-    throw new PendingException()
+}
+
+
+Then(~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)" e email "([^"]*)"$'){
+	String nomeObra, email ->
+    //throw new PendingException()
 	//assert page.verifyPageContainsText(email) == true
+	assert false
 }
 
 //Scenario Visualizar obra GUI
@@ -109,7 +115,7 @@ When(~'^o usuario seleciona a obra "([^"]*)"$') {
 Then(~'^o sistema exibe os detalhes da obra "([^"]*)"$'){
 	String nomeObra ->
 	at ObraShowPage
-	assert ObraShowPage.verifyName(nomeObra) == true
+	assert page.verifyName(nomeObra) == true
 }
 
 
@@ -142,4 +148,108 @@ When(~'^eu seleciono a opção Compartilhar na Rede Social com o email "([^"]*)"
 Then(~'^eu vejo uma mensagem de confirmação And passo visualizar na minha rede social a postagem com o nome"([^"]*)"$'){
 	String nomeObra ->
 	assert true
+}
+
+
+//============other
+/**
+ * @author = ehmr
+ */
+//Scenario: Visualizar obra
+//	Given que o sistema tem uma obra cadastrada com o nome "Praca do arsenal"
+//	When eu tentar visualizar a obra com o nome "Praca do arsenal"
+//	Then o sistema mostrara as informacoes relacionadas a obra com o nome "Praca do arsenal"
+When (~'^eu tentar visualizar a obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+}
+Then (~'^o sistema mostrara as informacoes relacionadas a obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+	assert false
+}
+
+
+/**
+ * @author = ehmr
+ */
+//Scenario: Atualizar obra
+//	Given que existe uma obra no sistema chamada "Praca do arsenal"
+//	When eu tentar atualizar os dados da obra com o nome "Praca do arsenal"
+//	Then o sistema atualiza a obra com o nome "Praca do arsenal"
+When (~'^eu tentar atualizar os dados da obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+}
+Then (~'^o sistema atualiza a obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+	assert false
+}
+
+/**
+ * @author = ehmr
+ **/
+//Scenario: Remover obra nao existente
+//	Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+//	When eu tentar remover a obra com o nome "Praca do arsenal"
+//	Then o sistema nao ira remover a obra com o nome "Praca do arsenal"
+When (~'^eu tentar remover a obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+}
+Then (~'^o sistema nao ira remover a obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+	assert false
+}
+
+/**
+ * @author = ehmr
+ **/
+//Scenario: Remover obra existente
+//	Given que o sistema tem uma obra chamada "Praca do arsenal"
+//	When eu tentar remover a obra com o nome "Praca do arsenal"
+//	Then o sistema ira remover a obra com nome "Praca do arsenal"
+Then (~'^o sistema ira remover a obra com nome "([^"]*)"$'){
+	String nomeObra ->
+	assert false
+}
+
+//other gui
+
+/**
+ * @author = ehmr
+ **/
+//Scenario: Nova pagina de obra
+//	Given eu estou no menu de "obras"
+//	And nao existe uma obra com nome "Praca do Arsenal" na lista de obras
+//	When eu seleciono a opcao "Cadastrar"
+//	And eu tento cadastrar a obra com o nome "Praca do Arsenal"
+//	And seleciono a opcao "Salvar"
+//	Then eu recebo uma mensagem de confirmacao
+//	And vejo o nome "Praca do arsenal"
+Given (~'^eu estou no menu de obras e nao existe uma obra com nome "([^"]*)" na lista de obras$'){
+	String nomeObra ->
+}
+And (~'^eu tento cadastrar a obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+}
+And (~'^seleciono a opcao "([^"]*)"$'){
+	String option ->
+}
+Then (~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)"$'){
+	String nomeObra ->
+	assert false
+}
+
+/**
+ * @author = ehmr
+ **/
+//Scenario: compartilhar obra na rede social
+//	Given eu estou visualizando a obra "Praca do Arsenal"
+//	When  eu seleciono a opcao "Compartilhar na Rede Social"
+//  And preencho os campos com o email "teste@teste.com" e senha "senha"
+//	Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"
+//	And passo visualizar na minha rede social a postagem com o nome "Praca do Arsenal"
+And (~'^preencho os campos com o email "([^"]*)" e senha "([^"]*)"$'){
+	String email, senha ->
+}
+And (~'^passo visualizar na minha rede social a postagem com o nome "([^"]*)"$'){
+	String nomeObra ->
+	assert false
 }

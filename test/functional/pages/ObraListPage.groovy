@@ -24,7 +24,7 @@ class ObraListPage extends Page{
 
 
         boolean find = false
-        obraRows.each {obraRow -> find = (obraRow[0] == testObra.nome && obraRow[1] == testObra.descricao)}
+        obraRows.each {obraRow -> find = (find || (obraRow[0].text() == testObra.nome && obraRow[1].text() == testObra.descricao))}
 
         assert (find == true)
     }
