@@ -118,39 +118,6 @@ Then(~'^o sistema exibe os detalhes da obra "([^"]*)"$'){
 	assert page.verifyName(nomeObra) == true
 }
 
-
-//============================tpa
-
-Given(~'^que existe uma obra no sistema chamada"([^"]*)"$'){
-	String nomeObra ->
-	Obra obra = Obra.findByName(nomeObra)
-	assert obra == null
-}
-
-When(~'^eu tento atualizar os dados da obra com o nome"([^"]*)"$'){
-	String nomeObra ->                        //tem que verificar
-	TestDataAndOperations.atualizaObra(nomeObra)//tem que verificar
-}
-
-Then(~'^o sistema atualiza a obra"([^"]*)"$'){
-	String nomeObra ->
-	Obra obra = Obra.findByName(nomeObra)
-	assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
-}
-
-When(~'^eu seleciono a opção Compartilhar na Rede Social com o email "([^"]*)" e senha "([^"]*)"$') {
-	String email, senha ->
-    at ObraShowPage
-    page.selectShareSNS(email, senha)
-    at ObraShowPage
-}
-
-Then(~'^eu vejo uma mensagem de confirmação And passo visualizar na minha rede social a postagem com o nome"([^"]*)"$'){
-	String nomeObra ->
-	assert true
-}
-
-
 //============other
 /**
  * @author = ehmr
@@ -167,20 +134,21 @@ Then (~'^o sistema mostrara as informacoes relacionadas a obra com o nome "([^"]
 	assert false
 }
 
-
 /**
- * @author = ehmr
+ * @author = tpa
  */
 //Scenario: Atualizar obra
 //	Given que existe uma obra no sistema chamada "Praca do arsenal"
 //	When eu tentar atualizar os dados da obra com o nome "Praca do arsenal"
 //	Then o sistema atualiza a obra com o nome "Praca do arsenal"
 When (~'^eu tentar atualizar os dados da obra com o nome "([^"]*)"$'){
-	String nomeObra ->
+	String nomeObra ->                        //tem que verificar
+	TestDataAndOperations.atualizaObra(nomeObra)//tem que verificar
 }
 Then (~'^o sistema atualiza a obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-	assert false
+	Obra obra = Obra.findByName(nomeObra)
+	assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
 }
 
 /**
@@ -238,7 +206,7 @@ Then (~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)"$'){
 }
 
 /**
- * @author = ehmr
+ * @author = tpa
  **/
 //Scenario: compartilhar obra na rede social
 //	Given eu estou visualizando a obra "Praca do Arsenal"
