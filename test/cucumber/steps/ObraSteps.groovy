@@ -1,5 +1,6 @@
 import cucumber.api.PendingException
 import pages.ObraListPage
+import pages.ObraShowPage
 
 import static cucumber.api.groovy.EN.*
 import obraspublicas.*
@@ -15,20 +16,20 @@ import steps.TestDataAndOperations
 */
 Given(~'^que o sistema nao tem uma obra chamada "([^"]*)"$'){
 	String nomeObra -> 
-	Obra obra = Obra.findByNome(nomeObra)
-	assert obra == null
-	//assert true
+		Obra obra = Obra.findByNome(nomeObra)
+		assert obra == null
+		//assert true
 }
 
 When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-    TestDataAndOperations.createObra(nomeObra)
+    	TestDataAndOperations.createObra(nomeObra)
 }
 
 Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
-	Obra obra = Obra.findByNome(nomeObra)
-	assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
+		Obra obra = Obra.findByNome(nomeObra)
+		assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
 }
 
 
@@ -41,15 +42,42 @@ Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
 */
 Given(~'^que o sistema tem uma obra chamada "([^"]*)"$'){
 	String nomeObra ->
-	TestDataAndOperations.createObra(nomeObra)
-	Obra obra = Obra.findByNome(nomeObra)
-	assert obra != null
+		TestDataAndOperations.createObra(nomeObra)
+		Obra obra = Obra.findByNome(nomeObra)
+		assert obra != null
 }
 
 Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
-	obras = Obra.findAllByNome(nomeObra)
-    assert obras.size() == 1
+		obras = Obra.findAllByNome(nomeObra)
+    	assert obras.size() == 1
+}
+
+//Scenario Visualizar obra GUI
+//	Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "Praça do arsenal"
+//	When o usuário seleciona a obra "Praça do arsenal"
+//	Then o sistema exibe os detalhes da obra "Praça do arsenal"
+/**
+ * @author = ehmr
+ */
+Given(~'^que o usuario esta no menu de obras e quer visualizar os detalhes da obra "([^"]*)"$') {
+	String nomeObra ->
+		TestDataAndOperations.createObra(nomeObra)
+		to ObraListPage
+		at ObraListPage
+}
+
+When(~'^o usuario seleciona a obra "([^"]*)"$') {
+	String nomeObra ->
+		at ObraListPage
+		page.checkObraAtList(nomeObra)
+		page.selectObraAtList(nomeObra)
+}
+
+Then(~'^o sistema exibe os detalhes da obra "([^"]*)"$'){
+	String nomeObra ->
+		at ObraShowPage
+		assert page.verifyName(nomeObra) == true
 }
 
 //GUI
@@ -64,11 +92,11 @@ Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 */
 Given(~'^eu estou visualizando a obra "([^"]*)"$') {
 	String nomeObra ->
-//	to ObraPage
-//	at ObraPage
-//    page.checkObraAtList(nomeObra)
-//    page.selectObra(nomeObra)
-//    at ObraShowPage
+//		to ObraPage
+//		at ObraPage
+//  	page.checkObraAtList(nomeObra)
+//  	page.selectObra(nomeObra)
+//    	at ObraShowPage
 }
 
 When(~'^eu seleciono a opcao "([^"]*)"$') {
@@ -83,39 +111,11 @@ And(~'^preencho o campo de email com o email "([^"]*)"$'){
 	String email ->
 }
 
-
 Then(~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)" e email "([^"]*)"$'){
 	String nomeObra, email ->
-    //throw new PendingException()
-	//assert page.verifyPageContainsText(email) == true
-	assert false
-}
-
-//Scenario Visualizar obra GUI
-//	Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "Praça do arsenal"
-//	When o usuário seleciona a obra "Praça do arsenal"
-//	Then o sistema exibe os detalhes da obra "Praça do arsenal"
-/**
-* @author = ehmr
-*/
-Given(~'^que o usuario esta no menu de obras e quer visualizar os detalhes da obra "([^"]*)"$') {
-	String nomeObra ->
-    TestDataAndOperations.createObra(nomeObra)
-    to ObraListPage
-    at ObraListPage
-}
-
-When(~'^o usuario seleciona a obra "([^"]*)"$') {
-	String nomeObra ->
-    at ObraListPage
-    page.checkObraAtList(nomeObra)
-    page.selectObraAtList(nomeObra)
-}
-
-Then(~'^o sistema exibe os detalhes da obra "([^"]*)"$'){
-	String nomeObra ->
-	at ObraShowPage
-	assert page.verifyName(nomeObra) == true
+	    //throw new PendingException()
+		//assert page.verifyPageContainsText(email) == true
+		assert false
 }
 
 //============other
@@ -131,7 +131,7 @@ When (~'^eu tentar visualizar a obra com o nome "([^"]*)"$'){
 }
 Then (~'^o sistema mostrara as informacoes relacionadas a obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-	assert false
+		assert false
 }
 
 /**
@@ -143,12 +143,12 @@ Then (~'^o sistema mostrara as informacoes relacionadas a obra com o nome "([^"]
 //	Then o sistema atualiza a obra com o nome "Praca do arsenal"
 When (~'^eu tentar atualizar os dados da obra com o nome "([^"]*)"$'){
 	String nomeObra ->                        //tem que verificar
-	TestDataAndOperations.atualizaObra(nomeObra)//tem que verificar
+		TestDataAndOperations.atualizaObra(nomeObra)//tem que verificar
 }
 Then (~'^o sistema atualiza a obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-	Obra obra = Obra.findByName(nomeObra)
-	assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
+		Obra obra = Obra.findByNome(nomeObra)
+		assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
 }
 
 /**
@@ -163,7 +163,7 @@ When (~'^eu tentar remover a obra com o nome "([^"]*)"$'){
 }
 Then (~'^o sistema nao ira remover a obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-	assert false
+		assert false
 }
 
 /**
@@ -175,7 +175,7 @@ Then (~'^o sistema nao ira remover a obra com o nome "([^"]*)"$'){
 //	Then o sistema ira remover a obra com nome "Praca do arsenal"
 Then (~'^o sistema ira remover a obra com nome "([^"]*)"$'){
 	String nomeObra ->
-	assert false
+		assert false
 }
 
 //other gui
@@ -202,7 +202,7 @@ And (~'^seleciono a opcao "([^"]*)"$'){
 }
 Then (~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)"$'){
 	String nomeObra ->
-	assert false
+		assert false
 }
 
 /**
@@ -219,5 +219,5 @@ And (~'^preencho os campos com o email "([^"]*)" e senha "([^"]*)"$'){
 }
 And (~'^passo visualizar na minha rede social a postagem com o nome "([^"]*)"$'){
 	String nomeObra ->
-	assert false
+		assert false
 }

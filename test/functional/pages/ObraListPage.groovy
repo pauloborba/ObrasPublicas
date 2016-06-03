@@ -21,10 +21,8 @@ class ObraListPage extends Page{
         //def obraColumns = obraRows[row].find('td')
         def testObra = Obra.findByNome(nomeObra)
 
-
-
         boolean find = false
-        obraRows.each {obraRow -> find = (find || (obraRow[0].text() == testObra.nome && obraRow[1].text() == testObra.descricao))}
+        obraRows.each {obraRow -> find = (find || (obraRow.find('td')[0].text() == testObra.nome && obraRow.find('td')[1].text() == testObra.descricao))}
 
         assert (find == true)
     }
@@ -36,4 +34,5 @@ class ObraListPage extends Page{
         def showLink = obraRow.find('td').find([text:nomeObra])
         showLink.click()
     }
+
 }

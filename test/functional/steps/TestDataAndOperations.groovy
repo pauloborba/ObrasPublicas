@@ -104,7 +104,6 @@ class TestDataAndOperations {
         cont.create()
         cont.save()
         cont.response.reset()
-
     }
 
     static public void createEndereco(String CEP, int numero) {
@@ -115,6 +114,18 @@ class TestDataAndOperations {
         cont.response.reset()
     }
 
+    static public void atualizaObra(String nomeObra) {
+
+    }
+
+    static public void atualizaPolitico(String politicoCPF) {
+
+    }
+
+    static public void atualizaEndereco(String enderecoCEP) {
+
+    }
+
     static public boolean obraCompatibleTo(obra, nomeObra) {
         def testObra = findObraByNome(nomeObra)
         def compatible = false
@@ -122,9 +133,9 @@ class TestDataAndOperations {
             compatible = true
         } else if (testObra != null && obra != null) {
             compatible = true
-           // testObra.each { key, data ->
-           //     compatible = compatible && (obra."$key" == data)
-           // }
+            testObra.each { key, data ->
+                compatible = compatible && (obra."$key" == data)
+            }
         }
         return compatible
     }
@@ -136,9 +147,9 @@ class TestDataAndOperations {
             compatible = true
         } else if (testPolitico != null && politico != null) {
             compatible = true
-            //testPolitico.each { key, data ->
-            //    compatible = compatible && (politico."$key" == data)
-            //}
+            testPolitico.each { key, data ->
+                compatible = compatible && (politico."$key" == data)
+            }
         }
         return compatible
     }
