@@ -18,13 +18,12 @@ class ObraListPage extends Page{
         def listDiv = $('div', id: 'list-obra')
         def obraTable = (listDiv.find('table'))[0]
         def obraRows  = obraTable.find('tbody').find('tr')
-        //def obraColumns = obraRows[row].find('td')
         def testObra = Obra.findByNome(nomeObra)
 
         boolean find = false
         obraRows.each {obraRow -> find = (find || (obraRow.find('td')[0].text() == testObra.nome && obraRow.find('td')[1].text() == testObra.descricao))}
 
-        assert (find == true)
+        return find
     }
 
     def selectObraAtList(String nomeObra) {

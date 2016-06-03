@@ -14,11 +14,6 @@ Scenario: Adicionar obra existente
   When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
   Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
 
-Scenario: Visualizar obra
-  Given que o sistema tem uma obra chamada "Praca do arsenal"
-  When eu tentar visualizar a obra com o nome "Praca do arsenal"
-  Then o sistema mostrara as informacoes relacionadas a obra com o nome "Praca do arsenal"
-
 Scenario: Atualizar obra
   Given que o sistema nao tem uma obra chamada "Praca do arsenal"
   When eu tentar atualizar os dados da obra com o nome "Praca do arsenal"
@@ -42,7 +37,7 @@ Scenario: Receber atualizacoes da obra por email
   And preencho o campo de email com o email "teste@obralimpa.com"
   Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com"
 
-Scenario: Visualizar obra GUI
+Scenario: Visualizar obra
   Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"
   When o usuario seleciona a obra "Praca do arsenal"
   Then o sistema exibe os detalhes da obra "Praca do arsenal"
