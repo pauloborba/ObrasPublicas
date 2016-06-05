@@ -19,11 +19,6 @@ Scenario: Atualizar obra
   When eu tentar atualizar os dados da obra com o nome "Praca do arsenal"
   Then o sistema atualiza a obra com o nome "Praca do arsenal"
 
-Scenario: Remover obra nao existente
-  Given que o sistema nao tem uma obra chamada "Praca do arsenal"
-  When eu tentar remover a obra com o nome "Praca do arsenal"
-  Then o sistema nao ira remover a obra com o nome "Praca do arsenal"
-
 Scenario: Remover obra existente 
     Given que o sistema tem uma obra chamada "Praca do arsenal"
     When eu tentar remover a obra com o nome "Praca do arsenal"

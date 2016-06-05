@@ -1,7 +1,6 @@
 package steps
 
 import obraspublicas.*
-import sun.security.util.PendingException
 import util.EnderecoController
 
 class TestDataAndOperations {
@@ -16,11 +15,10 @@ class TestDataAndOperations {
              dataTermino        : (new Date("12 October 2016")),
              latitude           : 12,
              longitude          : 45,
-             empresaResponsavel : "Moura Dubeux"//,
-             //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
+             empresaResponsavel : "Moura Dubeux"
             ],
 
-            [nome               : "Ilha do Retiro",
+            [nome               : "Ilha do retiro",
              descricao          : "Casa do leão",
              imagem             : "youtube.com.br",
              precoPlanejado     : 1250000.23,
@@ -29,25 +27,8 @@ class TestDataAndOperations {
              dataTermino        : (new Date("12 October 2010")),
              latitude           : 12,
              longitude          : 40,
-             empresaResponsavel : "Edu Dubeux"//,
-             //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("98765432109")
+             empresaResponsavel : "Edu Dubeux"
             ]
-    ]
-
-    static enderecos = [
-            [numero: 323,
-             rua: "Avenida camarao",
-             bairro: "Cordeiro",
-             cidade: "Recife",
-             estado: "Pernambuco",
-             CEP: "50721-360"],
-
-            [numero: 319,
-             rua: "Avenida Domingos Ferreira",
-             bairro: "Boa Viagem",
-             cidade: "Recife",
-             estado: "Pernambuco",
-             CEP: "12345-67"]
     ]
 
     static politicos = [
@@ -68,6 +49,30 @@ class TestDataAndOperations {
              email    : "robsobra@obra.com"]
     ]
 
+    static politicoObra = [
+            [nomeObra: "Praca do arsenal",
+             cpfResponsavel: "01234567891"],
+
+            [nomeObra: "Ilha do retiro",
+             cpfResponsavel: "98765432109"]
+    ]
+
+    static enderecos = [
+            [numero: 323,
+             rua: "Avenida camarao",
+             bairro: "Cordeiro",
+             cidade: "Recife",
+             estado: "Pernambuco",
+             CEP: "50721-360"],
+
+            [numero: 319,
+             rua: "Avenida Domingos Ferreira",
+             bairro: "Boa Viagem",
+             cidade: "Recife",
+             estado: "Pernambuco",
+             CEP: "12345-67"]
+    ]
+
     static public def findObraByNome(String obraNome) {
         return obras.find { obra ->
             obra.nome == obraNome
@@ -86,11 +91,26 @@ class TestDataAndOperations {
         }
     }
 
+    static public def findPoliticoObraByNome(String nomeObra){
+        politicoObra.find { poliObra ->
+            poliObra.nomeObra == nomeObra
+        }
+    }
+
+    static public def findPoliticoObraByCPF(String cpfResponsavel){
+        politicoObra.findAll { poliObra ->
+            poliObra.cpfResponsavel == cpfResponsavel
+        }
+    }
+
     static public void createObra(String obraNome) {
-        Politico politicoResponsa = TestDataAndOperations.createPolitico("01234567891")
+        def poliObra = TestDataAndOperations.findPoliticoObraByNome(obraNome)
+
+        if(Politico.findAllByCpf(poliObra.cpfResponsavel).size() == 0)
+            TestDataAndOperations.createPolitico(poliObra.cpfResponsavel)
 
         def cont = new ObraController()
-        cont.params << TestDataAndOperations.findObraByNome(obraNome) << [politicoResponsavel: Politico.findByCpf("01234567891")]
+        cont.params << TestDataAndOperations.findObraByNome(obraNome) << [politicoResponsavel: Politico.findByCpf(poliObra.cpfResponsavel)]
         cont.request.setContent(new byte[1000])
         cont.create()
         cont.save()
@@ -114,6 +134,13 @@ class TestDataAndOperations {
         cont.response.reset()
     }
 
+    static public void removeObra(String nomeObra){
+        def testObra = Obra.findByNome(nomeObra)
+        def cont = new ObraController()
+        cont.params << [id: testObra.id]
+        cont.delete()
+    }
+
     static public void atualizaObra(String nomeObra) {
 
     }
@@ -127,7 +154,7 @@ class TestDataAndOperations {
     }
 
     static public boolean obraCompatibleTo(obra, nomeObra) {
-        def testObra = findObraByNome(nomeObra)
+        def testObra = TestDataAndOperations.findObraByNome(nomeObra)
         def compatible = false
         if (testObra == null && obra == null) {
             compatible = true
@@ -136,7 +163,11 @@ class TestDataAndOperations {
             testObra.each { key, data ->
                 compatible = compatible && (obra."$key" == data)
             }
+
+            def poliObra = TestDataAndOperations.findPoliticoObraByNome(nomeObra)
+            compatible = compatible && (poliObra.cpfResponsavel == obra.politicoResponsavel.cpf)
         }
+
         return compatible
     }
 

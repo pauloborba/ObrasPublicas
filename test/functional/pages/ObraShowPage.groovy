@@ -18,7 +18,7 @@ class ObraShowPage extends Page{
         }
     }
 
-    def verifyName(String nomeObra){
+    def verifyNomeObra(String nomeObra){
         def listDiv = $('div', id: 'show-obra')
         def obraTable = (listDiv.find('ol'))[0]
         def obraRows  = obraTable.find('li')
