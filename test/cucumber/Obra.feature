@@ -43,10 +43,3 @@ Scenario: Nova pagina de obra
   And eu tento cadastrar a obra com o nome "Praca do Arsenal"
   And seleciono a opcao "Salvar"
   Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"
-
-Scenario: compartilhar obra na rede social
-  Given eu estou visualizando a obra "Praca do arsenal"
-  When  eu seleciono a opcao "Compartilhar na Rede Social"
-  And preencho os campos com o email "teste@teste.com" e senha "senha"
-  Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"
-  And passo visualizar na minha rede social a postagem com o nome "Praca do Arsenal"
