@@ -127,8 +127,8 @@ Then(~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)" e email "([^"]*
 //	When eu tentar atualizar os dados da obra com o nome "Praca do arsenal"
 //	Then o sistema atualiza a obra com o nome "Praca do arsenal"
 When (~'^eu tentar atualizar os dados da obra com o nome "([^"]*)"$'){
-	String nomeObra ->                        //tem que verificar
-		TestDataAndOperations.atualizaObra(nomeObra)//tem que verificar
+	String nomeObra ->
+		TestDataAndOperations.atualizaObra(nomeObra)
 }
 Then (~'^o sistema atualiza a obra com o nome "([^"]*)"$'){
 	String nomeObra ->
@@ -187,16 +187,3 @@ Then (~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)"$'){
 /**
  * @author = tpa
  **/
-//Scenario: compartilhar obra na rede social
-//	Given eu estou visualizando a obra "Praca do Arsenal"
-//	When  eu seleciono a opcao "Compartilhar na Rede Social"
-//  And preencho os campos com o email "teste@teste.com" e senha "senha"
-//	Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"
-//	And passo visualizar na minha rede social a postagem com o nome "Praca do Arsenal"
-And (~'^preencho os campos com o email "([^"]*)" e senha "([^"]*)"$'){
-	String email, senha ->
-}
-And (~'^passo visualizar na minha rede social a postagem com o nome "([^"]*)"$'){
-	String nomeObra ->
-		assert false
-}
