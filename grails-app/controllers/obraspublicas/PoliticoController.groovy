@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class PoliticoController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -24,7 +24,9 @@ class PoliticoController {
     }
 
     @Transactional
-    def save(Politico politicoInstance) {
+    def save() {
+        Politico politicoInstance = new Politico(params)
+
         if (politicoInstance == null) {
             notFound()
             return

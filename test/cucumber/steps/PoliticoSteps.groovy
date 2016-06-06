@@ -23,7 +23,7 @@ When (~'^eu tentar cadastrar um politico com o nome "([^"]*)" e CPF "([^"]*)"$')
 Then(~'^o sistema irá cadastrar o politico de nome "([^"]*)" e CPF "([^"]*)"$'){
     String politicoName, cpf ->
         Politico politico = Politico.findByName(politicoName)
-        assert TestDataAndOperations.compatibleTo(politico, politicoName,cpf)
+        assert TestDataAndOperations.politicoCompatibleTo(politico, cpf)
 }
 
 //Scenario: Atualizar político
@@ -61,7 +61,7 @@ When (~'^eu tento remover o polico com o nome"([^"]*)" e CPF "([^"]*)"$') {
 Then(~'^o sistema irá remover o politico de nome "([^"]*)" e CPF "([^"]*)"$'){
     String politicoName, cpf ->
         Politico politico = Politico.findByName(politicoName)
-        assert TestDataAndOperations.compatibleTo(politico, politicoName,cpf)
+        assert TestDataAndOperations.politicoCompatibleTo(politico, cpf)
 }
 
 //Scenario: Adicionar político existente

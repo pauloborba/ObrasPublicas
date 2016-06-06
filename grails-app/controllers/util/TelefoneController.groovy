@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class TelefoneController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -16,7 +16,7 @@ class TelefoneController {
     }
 
     def show(Telefone telefoneInstance) {
-        respond telefoneInstance, model:[formatedFone: telefoneInstance.getFormatedFone()]
+        respond telefoneInstance
     }
 
     def create() {
@@ -24,7 +24,9 @@ class TelefoneController {
     }
 
     @Transactional
-    def save(Telefone telefoneInstance) {
+    def save() {
+        Telefone telefoneInstance = new Telefone(params)
+
         if (telefoneInstance == null) {
             notFound()
             return

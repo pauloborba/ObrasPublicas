@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class EnderecoController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -24,7 +24,9 @@ class EnderecoController {
     }
 
     @Transactional
-    def save(Endereco enderecoInstance) {
+    def save() {
+        Endereco enderecoInstance = new Endereco(params)
+
         if (enderecoInstance == null) {
             notFound()
             return

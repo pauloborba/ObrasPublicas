@@ -1,7 +1,5 @@
 package obraspublicas
 
-import util.Endereco
-
 class Obra {
     String nome
     String descricao
@@ -20,6 +18,7 @@ class Obra {
         precoPlanejado blank: false
         dataPlanejada blank: false
         dataTermino null: true
+        nome unique: true
     }
 
     public String toString(){

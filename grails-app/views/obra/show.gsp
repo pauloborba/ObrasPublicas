@@ -121,25 +121,7 @@
 					
 				</li>
 				</g:if>
-
-
-				<li class="fieldcontain">
-					<span id="statusValor-label" class="property-label">Status</span>
-
-					<span class="property-value" aria-labelledby="statusValor-label">${obraInstance?.statusOrcamento}</span>
-
-				</li>
-
-
-
-				<g:if test="${obraInstance?.dataTermino>obraInstance?.dataPlanejada}">
-					<li class="fieldcontain">
-						<span id="statusPrazo-label" class="property-label">Status prazo</span>
-
-						<span class="property-value" aria-labelledby="statusPrazo-label">Obra Atrasada</span>
-					</li>
-				</g:if>
-
+			
 			</ol>
 			<g:form url="[resource:obraInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
