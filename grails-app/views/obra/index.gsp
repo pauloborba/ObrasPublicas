@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="${resource(dir:'css', file: 'obra.css')}"/>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'obra.label', default: 'Obra')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
@@ -28,11 +29,13 @@
 
 						<g:sortableColumn property="descricao" title="${message(code: 'obra.descricao.label', default: 'Descricao')}" />
 
+						<g:sortableColumn property="descricao" title="${message(code: 'obra.descricao.label', default: '.')}" />
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${obraInstanceList}" status="i" var="obraInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					<tr class="${obraInstance.statusAndamento ? 'highLightGreen' : 'highLightRed'}">
 					
 						<td><g:link action="show" id="${obraInstance.id}">${fieldValue(bean: obraInstance, field: "nome")}</g:link></td>
 
@@ -41,7 +44,7 @@
 						<td>
 						<g:form url="[resource:obraInstance, action:'verificarStatusAndamentoObra']">
 							<fieldset class="buttons">
-								<g:actionSubmit class="Verificar" action="verificarStatusAndamentoObra" value="Verificar Andamento" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+								<g:actionSubmit class="Verificar" action="verificarStatusAndamentoObra" value="Verificar Andamento"/>
 							</fieldset>
 						</g:form>
 						</td>

@@ -30,13 +30,7 @@ class ObraController {
 
         obraInstance.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'obra.label', default: 'Obra'), obraInstance.id])
-                redirect obraInstance
-            }
-            '*' { respond obraInstance, [status: CREATED] }
-        }
+        redirect (action: "index")
     }
 
 
