@@ -1,0 +1,473 @@
+<!DOCTYPE html><html xmlns:lxslt="http://xml.apache.org/xslt" xmlns:stringutils="xalan://org.apache.tools.ant.util.StringUtils">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>
+        Unit Test Results
+     - Failed tests</title>
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="report" class="container container_8">
+<div class="grid_6 alpha">
+<div class="grailslogo"></div>
+<h1>
+        Unit Test Results
+     - Failed tests</h1>
+<p class="intro">
+                        Executed
+                        9
+                        tests
+                    
+                        with
+                        4 failures
+                        .
+                    </p>
+</div>
+<div class="grid_2 omega">
+<nav id="navigationlinks">
+<p>
+<a href="failed.html">
+                    Tests with failure and errors
+                </a>
+</p>
+<p>
+<a href="index.html">
+                    Package summary
+                </a>
+</p>
+<p>
+<a href="all.html">
+                    Show all tests
+                </a>
+</p>
+</nav>
+</div>
+<div class="clear"></div>
+<div class="testsuite failure">
+<div class="header">
+<h2>Obra</h2>
+<h3>
+                        Executed
+                        9
+                        tests
+                    
+                        with
+                        4 failures
+                        .
+                    </h3>
+</div>
+<div class="testcase clearfix success grid_8 alpha omega" data-name="Adicionar obra nao existente">
+<div class="grid_3 alpha">
+<p>
+<span class="icon success"></span><b class="testname message success">Adicionar obra nao existente</b>
+</p>
+<p class="summary">Executed in 1.275 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix success grid_8 alpha omega" data-name="Adicionar obra existente">
+<div class="grid_3 alpha">
+<p>
+<span class="icon success"></span><b class="testname message success">Adicionar obra existente</b>
+</p>
+<p class="summary">Executed in 0.231 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix failure grid_8 alpha omega" data-name="Atualizar obra">
+<div class="grid_3 alpha">
+<p>
+<span class="icon failure"></span><b class="testname message failure">Atualizar obra</b>
+</p>
+<p class="summary">Executed in 0.193 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo">
+<div class="details">
+<p>
+<b class="message">assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
+                             |                |     |
+                             false            null  Praca do arsenal</b>
+</p>
+<pre>Assertion failed: 
+
+assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
+                             |                |     |
+                             false            null  Praca do arsenal
+
+	at ObraSteps$_run_closure14.doCall(ObraSteps.groovy:137)
+	at ✽.Then o sistema atualiza a obra com o nome "Praca do arsenal"(Obra.feature:20)
+</pre>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix success grid_8 alpha omega" data-name="Remover obra existente">
+<div class="grid_3 alpha">
+<p>
+<span class="icon success"></span><b class="testname message success">Remover obra existente</b>
+</p>
+<p class="summary">Executed in 0.324 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix success grid_8 alpha omega" data-name="Verificar status andamento obra">
+<div class="grid_3 alpha">
+<p>
+<span class="icon success"></span><b class="testname message success">Verificar status andamento obra</b>
+</p>
+<p class="summary">Executed in 0.202 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix failure grid_8 alpha omega" data-name="Receber atualizacoes da obra por email">
+<div class="grid_3 alpha">
+<p>
+<span class="icon failure"></span><b class="testname message failure">Receber atualizacoes da obra por email</b>
+</p>
+<p class="summary">Executed in 11.294 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo">
+<div class="details">
+<p>
+<b class="message">assert false
+</b>
+</p>
+<pre>Assertion failed: 
+
+assert false
+
+
+	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:120)
+	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com"(Obra.feature:37)
+</pre>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix success grid_8 alpha omega" data-name="Visualizar obra">
+<div class="grid_3 alpha">
+<p>
+<span class="icon success"></span><b class="testname message success">Visualizar obra</b>
+</p>
+<p class="summary">Executed in 1.876 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix failure grid_8 alpha omega" data-name="Nova pagina de obra">
+<div class="grid_3 alpha">
+<p>
+<span class="icon failure"></span><b class="testname message failure">Nova pagina de obra</b>
+</p>
+<p class="summary">Executed in 0.552 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo">
+<div class="details">
+<p>
+<b class="message">assert false
+</b>
+</p>
+<pre>Assertion failed: 
+
+assert false
+
+
+	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:209)
+	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"(Obra.feature:49)
+</pre>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix failure grid_8 alpha omega" data-name="compartilhar obra na rede social">
+<div class="grid_3 alpha">
+<p>
+<span class="icon failure"></span><b class="testname message failure">compartilhar obra na rede social</b>
+</p>
+<p class="summary">Executed in 0.982 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo">
+<div class="details">
+<p>
+<b class="message">assert false
+</b>
+</p>
+<pre>Assertion failed: 
+
+assert false
+
+
+	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:209)
+	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"(Obra.feature:55)
+</pre>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="clearfix output footer">
+<div class="sysout">
+<h2>Standard output</h2>
+<pre class="stdout">Feature: Obra
+  As a usuario do sistema
+  I want to adicionar, remover, modificar e visualizar obras no sistema
+  So That eu posso gerar paginas web para exibir informacoes sobre a obra
+
+--Output from Adicionar obra nao existente--
+--Output from Adicionar obra existente--
+  #CONTROLLER
+  Scenario: Adicionar obra nao existente                            # Obra.feature:7
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal" # ObraSteps.groovy:18
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal" # ObraSteps.groovy:25
+    Then o sistema ira cadastrar a obra de nome "Praca do arsenal"  # ObraSteps.groovy:30
+
+--Output from Atualizar obra--
+  Scenario: Adicionar obra existente                                   # Obra.feature:12
+    Given que o sistema tem uma obra chamada "Praca do arsenal"        # ObraSteps.groovy:44
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:25
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal" # ObraSteps.groovy:51
+
+--Output from Remover obra existente--
+  Scenario: Atualizar obra                                                  # Obra.feature:17
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"         # ObraSteps.groovy:18
+    When eu tentar atualizar os dados da obra com o nome "Praca do arsenal" # ObraSteps.groovy:130
+    Then o sistema atualiza a obra com o nome "Praca do arsenal"            # ObraSteps.groovy:134
+      Assertion failed: 
+      
+      assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
+                                   |                |     |
+                                   false            null  Praca do arsenal
+      
+      	at ObraSteps$_run_closure14.doCall(ObraSteps.groovy:137)
+      	at ✽.Then o sistema atualiza a obra com o nome "Praca do arsenal"(Obra.feature:20)
+
+
+--Output from Verificar status andamento obra--
+  Scenario: Remover obra existente                                # Obra.feature:22
+    Given que o sistema tem uma obra chamada "Praca do arsenal"   # ObraSteps.groovy:44
+    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:148
+    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:153
+
+--Output from Receber atualizacoes da obra por email--
+  Scenario: Verificar status andamento obra                                                                 # Obra.feature:27
+    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:165
+    When eu tentar verificar o status da obra com o nome "Praca atrasada"                                   # ObraSteps.groovy:172
+    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"                             # ObraSteps.groovy:177
+
+--Output from Visualizar obra--
+  #GUI
+  Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:33
+    Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:94
+    When eu seleciono a opcao "Receber atualizacao por email"                                            # ObraSteps.groovy:104
+    And preencho o campo de email com o email "teste@obralimpa.com"                                      # ObraSteps.groovy:112
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com" # ObraSteps.groovy:116
+      Assertion failed: 
+      
+      assert false
+      
+      
+      	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:120)
+      	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com"(Obra.feature:37)
+
+
+--Output from Nova pagina de obra--
+  Scenario: Visualizar obra                                                                            # Obra.feature:39
+    Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:64
+    When o usuario seleciona a obra "Praca do arsenal"                                                 # ObraSteps.groovy:71
+    Then o sistema exibe os detalhes da obra "Praca do arsenal"                                        # ObraSteps.groovy:78
+
+--Output from compartilhar obra na rede social--
+  Scenario: Nova pagina de obra                                                                         # Obra.feature:44
+    Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:195
+    When eu seleciono a opcao "Cadastrar"                                                               # ObraSteps.groovy:104
+    And eu tento cadastrar a obra com o nome "Praca do Arsenal"                                         # ObraSteps.groovy:201
+    And seleciono a opcao "Salvar"                                                                      # ObraSteps.groovy:204
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"                              # ObraSteps.groovy:207
+      Assertion failed: 
+      
+      assert false
+      
+      
+      	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:209)
+      	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"(Obra.feature:49)
+
+
+  Scenario: compartilhar obra na rede social                                           # Obra.feature:51
+    Given eu estou visualizando a obra "Praca do arsenal"                              # ObraSteps.groovy:94
+    When eu seleciono a opcao "Compartilhar na Rede Social"                            # ObraSteps.groovy:104
+    And preencho os campos com o email "teste@teste.com" e senha "senha"               # ObraSteps.groovy:221
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"             # ObraSteps.groovy:207
+      Assertion failed: 
+      
+      assert false
+      
+      
+      	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:209)
+      	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"(Obra.feature:55)
+
+    And passo visualizar na minha rede social a postagem com o nome "Praca do Arsenal" # ObraSteps.groovy:224
+</pre>
+</div>
+<div class="syserr">
+<h2>System error</h2>
+<pre class="syserr">
+--Output from Adicionar obra nao existente--
+--Output from Adicionar obra existente--
+--Output from Atualizar obra--
+--Output from Remover obra existente--
+--Output from Verificar status andamento obra--
+--Output from Receber atualizacoes da obra por email--Starting ChromeDriver 2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4) on port 10328
+Only local connections are allowed.
+
+--Output from Visualizar obra--
+--Output from Nova pagina de obra--
+--Output from compartilhar obra na rede social--</pre>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+<!--
+            Parses JUnit output and associates it with the corresponding test case
+        -->
+<script language="javascript">
+
+
+/**
+ * The JUnit report format is incredibly stuipd in the
+ * sense that it accumulates output from all test methods
+ * into a single xml node.
+ */
+(function() {
+
+    var outputElements = findOutputElements();
+    for (var i in outputElements) {
+        var outputElement = outputElements[i];
+        var textOutput = outputElement.element.firstChild.nodeValue;
+        var header = outputElement.getHeader();
+        appendTestMethodOutput(textOutput, header);
+    }
+
+    function findOutputElements() {
+        var outputElements = [];
+        var preElements = document.getElementsByTagName("pre");
+        for (var i in preElements) {
+            var preElement = preElements[i];
+            var className = preElement.className || "";
+            if (className.indexOf("stdout") >= 0) {
+                var outputElement = new OutputElement(preElement, "output");
+                outputElements.push(outputElement);
+            } else if (className.indexOf("syserr") >= 0) {
+                var outputElement = new OutputElement(preElement, "error");
+                outputElements.push(outputElement);
+            }
+        }
+
+        return outputElements;
+    }
+
+    function OutputElement(element, type) {
+        this.element = element;
+        this.type = type;
+
+        this.getHeader = function() {
+            if (type === "output") {
+                return "System output";
+            } else if ("error") {
+                return "System error";
+            }
+        }
+    }
+
+    function appendTestMethodOutput(text, header) {
+        var testOutput = new TestMethodOutput(header);
+
+        var lines = text.split(/\r\n|\r|\n/);
+        for (var i in lines) {
+            var line = lines[i];
+            var matches = line.match(/^--Output from (.*)--$/);
+            if (matches !== null && matches.length == 2) {
+                testOutput.flushToDom();
+                testOutput.testName = matches[1];
+            } else {
+                testOutput.addLine(line);
+            }
+        }
+
+        testOutput.flushToDom();
+    }
+
+    function TestMethodOutput(header) {
+        this.header = header;
+        this.testName = undefined;
+        this.buffer = "";
+
+        this.addLine = function(line) {
+            this.buffer += line + "\n";
+        }
+
+        this.flushToDom = function() {
+            if (this.testName !== undefined) {
+                var domNode = getTestcaseElementByName(this.testName);
+                if (domNode !== undefined && trimString(this.buffer).length > 0) {
+                    this.appendTo(domNode);
+                }
+
+                this.reset();
+            }
+        }
+
+        this.appendTo = function(domNode) {
+            var node = document.createElement("div");
+            node.innerHTML = '<p><b class="message">' + header + '</b></p>';
+
+            var preNode = document.createElement("pre");
+            preNode.appendChild(document.createTextNode(this.buffer));
+            node.appendChild(preNode);
+
+            var outputContainer = findElementByTagClassAndParent("div", "outputinfo", domNode);
+            outputContainer.appendChild(node);
+        }
+
+        this.reset = function() {
+            this.methodName = undefined;
+            this.buffer = "";
+        }
+    }
+
+    function getTestcaseElementByName(name) {
+        var divElements = document.getElementsByTagName("div");
+        var elementCount = divElements.length;
+        for (var i=0; i<elementCount; i++) {
+            var el = divElements[i];
+            if (el.getAttribute("data-name") === name) {
+                return el;
+            }
+        }
+    }
+
+    function findElementByTagClassAndParent(tagName, className, parentNode) {
+        var elements = parentNode.getElementsByTagName(tagName);
+        for (var i in elements) {
+            var element = elements[i];
+
+            // Not 100% correct, but good enough here
+            if (element.className !== undefined && element.className.indexOf(className) >= 0) {
+                return element;
+            }
+        }
+    }
+
+    function trimString(str) {
+        return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+    }
+
+})();
+
+        </script>
+</body>
+</html>

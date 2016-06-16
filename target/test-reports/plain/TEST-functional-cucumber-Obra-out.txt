@@ -1,0 +1,98 @@
+Feature: Obra
+  As a usuario do sistema
+  I want to adicionar, remover, modificar e visualizar obras no sistema
+  So That eu posso gerar paginas web para exibir informacoes sobre a obra
+
+--Output from Adicionar obra nao existente--
+--Output from Adicionar obra existente--
+  #CONTROLLER
+  Scenario: Adicionar obra nao existente                            # Obra.feature:7
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal" # ObraSteps.groovy:18
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal" # ObraSteps.groovy:25
+    Then o sistema ira cadastrar a obra de nome "Praca do arsenal"  # ObraSteps.groovy:30
+
+--Output from Atualizar obra--
+  Scenario: Adicionar obra existente                                   # Obra.feature:12
+    Given que o sistema tem uma obra chamada "Praca do arsenal"        # ObraSteps.groovy:44
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:25
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal" # ObraSteps.groovy:51
+
+--Output from Remover obra existente--
+  Scenario: Atualizar obra                                                  # Obra.feature:17
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"         # ObraSteps.groovy:18
+    When eu tentar atualizar os dados da obra com o nome "Praca do arsenal" # ObraSteps.groovy:130
+    Then o sistema atualiza a obra com o nome "Praca do arsenal"            # ObraSteps.groovy:134
+      Assertion failed: 
+      
+      assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
+                                   |                |     |
+                                   false            null  Praca do arsenal
+      
+      	at ObraSteps$_run_closure14.doCall(ObraSteps.groovy:137)
+      	at ✽.Then o sistema atualiza a obra com o nome "Praca do arsenal"(Obra.feature:20)
+
+
+--Output from Verificar status andamento obra--
+  Scenario: Remover obra existente                                # Obra.feature:22
+    Given que o sistema tem uma obra chamada "Praca do arsenal"   # ObraSteps.groovy:44
+    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:148
+    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:153
+
+--Output from Receber atualizacoes da obra por email--
+  Scenario: Verificar status andamento obra                                                                 # Obra.feature:27
+    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:165
+    When eu tentar verificar o status da obra com o nome "Praca atrasada"                                   # ObraSteps.groovy:172
+    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"                             # ObraSteps.groovy:177
+
+--Output from Visualizar obra--
+  #GUI
+  Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:33
+    Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:94
+    When eu seleciono a opcao "Receber atualizacao por email"                                            # ObraSteps.groovy:104
+    And preencho o campo de email com o email "teste@obralimpa.com"                                      # ObraSteps.groovy:112
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com" # ObraSteps.groovy:116
+      Assertion failed: 
+      
+      assert false
+      
+      
+      	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:120)
+      	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com"(Obra.feature:37)
+
+
+--Output from Nova pagina de obra--
+  Scenario: Visualizar obra                                                                            # Obra.feature:39
+    Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:64
+    When o usuario seleciona a obra "Praca do arsenal"                                                 # ObraSteps.groovy:71
+    Then o sistema exibe os detalhes da obra "Praca do arsenal"                                        # ObraSteps.groovy:78
+
+--Output from compartilhar obra na rede social--
+  Scenario: Nova pagina de obra                                                                         # Obra.feature:44
+    Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:195
+    When eu seleciono a opcao "Cadastrar"                                                               # ObraSteps.groovy:104
+    And eu tento cadastrar a obra com o nome "Praca do Arsenal"                                         # ObraSteps.groovy:201
+    And seleciono a opcao "Salvar"                                                                      # ObraSteps.groovy:204
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"                              # ObraSteps.groovy:207
+      Assertion failed: 
+      
+      assert false
+      
+      
+      	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:209)
+      	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"(Obra.feature:49)
+
+
+  Scenario: compartilhar obra na rede social                                           # Obra.feature:51
+    Given eu estou visualizando a obra "Praca do arsenal"                              # ObraSteps.groovy:94
+    When eu seleciono a opcao "Compartilhar na Rede Social"                            # ObraSteps.groovy:104
+    And preencho os campos com o email "teste@teste.com" e senha "senha"               # ObraSteps.groovy:221
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"             # ObraSteps.groovy:207
+      Assertion failed: 
+      
+      assert false
+      
+      
+      	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:209)
+      	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"(Obra.feature:55)
+
+    And passo visualizar na minha rede social a postagem com o nome "Praca do Arsenal" # ObraSteps.groovy:224
