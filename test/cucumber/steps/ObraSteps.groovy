@@ -1,6 +1,7 @@
 import cucumber.api.PendingException
 import pages.ObraListPage
 import pages.ObraShowPage
+import util.ObraStrings
 
 import static cucumber.api.groovy.EN.*
 import obraspublicas.*
@@ -152,6 +153,30 @@ When (~'^eu tentar remover a obra com o nome "([^"]*)"$'){
 Then (~'^o sistema ira remover a obra com nome "([^"]*)"$'){
 	String nomeObra ->
 		assert Obra.count() == (sizeObrasBefore-1)
+}
+
+/**
+ * @author = ehmr
+ **/
+//Scenario: Verificar status andamento obra
+//	Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "Em dia"
+//	When eu tentar verificar o status da obra com o nome "Praca atrasada"
+//	Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"
+Given(~'^que o sistema tem uma obra chamada "([^"]*)" que esta atrasada mas esta com status "([^"]*)"$'){
+	String nomeObra, statusAndamentoObra ->
+        TestDataAndOperations.createObra(nomeObra)
+        Obra testObra = Obra.findByNome(nomeObra)
+        assert testObra != null
+}
+
+When (~'^eu tentar verificar o status da obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+        TestDataAndOperations.sincronizarverificarStatusAndamentoObra(nomeObra)
+}
+
+Then (~'^o sistema ira atualizar obra com nome "([^"]*)" para "([^"]*)"$'){
+	String nomeObra, statusAndamentoObra ->
+        assert TestDataAndOperations.verificarStatusAndamentoObra(nomeObra, ObraStrings."$statusAndamentoObra")
 }
 
 //other gui

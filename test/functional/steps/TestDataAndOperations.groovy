@@ -21,13 +21,25 @@ class TestDataAndOperations {
             [nome               : "Ilha do retiro",
              descricao          : "Casa do leão",
              imagem             : "youtube.com.br",
-             precoPlanejado     : 1250000.23,
-             precoFinal         : 1200000.50,
+             precoPlanejado     : 1250000.24,
+             precoFinal         : 1200000.54,
              dataPlanejada      : (new Date("12 October 2017")),
              dataTermino        : (new Date("12 October 2010")),
              latitude           : 12,
              longitude          : 40,
              empresaResponsavel : "Edu Dubeux"
+            ],
+
+            [nome               : "Praca atrasada",
+             descricao          : "Praça atrasada do exemplo loko",
+             imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
+             precoPlanejado     : 1250000.22,
+             precoFinal         : 25000000.52,
+             dataPlanejada      : (new Date("12 October 2012")),
+             dataTermino        : (new Date("12 October 2015")),
+             latitude           : 12,
+             longitude          : 45,
+             empresaResponsavel : "Loko Dubeux"
             ]
     ]
 
@@ -54,6 +66,9 @@ class TestDataAndOperations {
              cpfResponsavel: "01234567891"],
 
             [nomeObra: "Ilha do retiro",
+             cpfResponsavel: "98765432109"],
+
+            [nomeObra: "Praca atrasada",
              cpfResponsavel: "98765432109"]
     ]
 
@@ -139,6 +154,8 @@ class TestDataAndOperations {
         def cont = new ObraController()
         cont.params << [id: testObra.id]
         cont.delete()
+
+        cont.response.reset()
     }
 
     static public void atualizaObra(String nomeObra) {
@@ -151,6 +168,23 @@ class TestDataAndOperations {
 
     static public void atualizaEndereco(String enderecoCEP) {
 
+    }
+
+    //TODO
+    static public void sincronizarverificarStatusAndamentoObra(String nomeObra){
+        def testObra = Obra.findByNome(nomeObra)
+        def cont = new ObraController()
+        cont.params << [id: testObra.id]
+
+        cont.verificarStatusAndamentoObra()
+        cont.response.reset()
+    }
+
+    //TODO
+    static public boolean verificarStatusAndamentoObra(String nomeObra, String statusAndamentoEsperado){
+        def obra = Obra.findByNome(nomeObra)
+
+        return obra.getStatusAndamentObra() == statusAndamentoEsperado
     }
 
     static public boolean obraCompatibleTo(obra, nomeObra) {

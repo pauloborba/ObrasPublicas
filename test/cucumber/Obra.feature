@@ -24,6 +24,10 @@ Scenario: Remover obra existente
     When eu tentar remover a obra com o nome "Praca do arsenal"
     Then o sistema ira remover a obra com nome "Praca do arsenal"
 
+Scenario: Verificar status andamento obra
+    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"
+    When eu tentar verificar o status da obra com o nome "Praca atrasada"
+    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"
 
 #GUI
 Scenario: Receber atualizacoes da obra por email

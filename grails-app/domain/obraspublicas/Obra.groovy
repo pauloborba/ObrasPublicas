@@ -1,5 +1,7 @@
 package obraspublicas
 
+import util.ObraStrings
+
 class Obra {
     String nome
     String descricao
@@ -12,6 +14,9 @@ class Obra {
     double longitude
     String empresaResponsavel
 
+    boolean statusAndamento
+    boolean statusPreco
+
     static hasOne = [politicoResponsavel : Politico]
 
     static constraints = {
@@ -19,6 +24,8 @@ class Obra {
         dataPlanejada blank: false
         dataTermino null: true
         nome unique: true
+        statusAndamento default: true
+        statusPreco default: true
     }
 
     public String toString(){
@@ -37,25 +44,39 @@ class Obra {
         return this.dataTermino.getDay() + "/" + this.dataTermino.getMonth() + "/" + this.dataTermino.getYear()
     }
 
-    public String getStatusAndamentObra(){
+    public void verificarStatusAndamentoObra(){
         if(dataTermino == null){
             if(System.currentTimeMillis() > this.dataPlanejada.getTime())
-                return "A obra está atrasada!"
+                statusAndamento =  false
             else
-                return "A obra está no prazo!"
+                statusAndamento = true
 
         }else{
             if(this.dataTermino > this.dataPlanejada)
-                return "Esta obra foi entregue atrasada!"
+                statusAndamento = false
             else
-                return "Esta obra foi entregue no prazo!"
+                statusAndamento = true
         }
     }
 
-    public String getStatusPrecoObra(){
+    public void verificarStatusPrecoObra(){
         if(this.precoPlanejado >= this.precoFinal)
-            return "Esta obra não estourou o orçamento!"
+            statusPreco = true
         else
-            return "Esta obra estourou o orçamento!"
+            statusPreco = false
+    }
+
+    public String getStatusAndamentObra(){
+        if(statusAndamento)
+            return ObraStrings.emDia
+        else
+            return ObraStrings.atrasada
+    }
+
+    public String getStatusPrecoObra(){
+        if(statusPreco)
+            return ObraStrings.noOrcamento
+        else
+            return ObraStrings.estourouOrcamento
     }
 }

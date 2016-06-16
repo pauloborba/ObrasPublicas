@@ -23,6 +23,23 @@ class ObraController {
         respond new Obra(params)
     }
 
+    def verificarStatusAndamentoObra(){
+        def obraInstance = Obra.get(params.id)
+
+        obraInstance.verificarStatusAndamentoObra()
+
+        obraInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'obra.label', default: 'Obra'), obraInstance.id])
+                redirect obraInstance
+            }
+            '*' { respond obraInstance, [status: CREATED] }
+        }
+    }
+
+
     @Transactional
     def save() {
         Obra obraInstance = new Obra(params)
