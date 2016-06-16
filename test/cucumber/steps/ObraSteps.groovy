@@ -171,7 +171,7 @@ Given(~'^que o sistema tem uma obra chamada "([^"]*)" que esta atrasada mas esta
 
 When (~'^eu tentar verificar o status da obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-        TestDataAndOperations.sincronizarverificarStatusAndamentoObra(nomeObra)
+        TestDataAndOperations.sincronizarStatusAndamentoObra(nomeObra)
 }
 
 Then (~'^o sistema ira atualizar obra com nome "([^"]*)" para "([^"]*)"$'){

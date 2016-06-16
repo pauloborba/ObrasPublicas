@@ -158,20 +158,22 @@ class TestDataAndOperations {
         cont.response.reset()
     }
 
+    //TODO
     static public void atualizaObra(String nomeObra) {
 
     }
 
+    //TODO
     static public void atualizaPolitico(String politicoCPF) {
 
     }
 
+    //TODO
     static public void atualizaEndereco(String enderecoCEP) {
 
     }
 
-    //TODO
-    static public void sincronizarverificarStatusAndamentoObra(String nomeObra){
+    static public void sincronizarStatusAndamentoObra(String nomeObra){
         def testObra = Obra.findByNome(nomeObra)
         def cont = new ObraController()
         cont.params << [id: testObra.id]

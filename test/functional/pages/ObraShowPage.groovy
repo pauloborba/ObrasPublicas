@@ -19,12 +19,19 @@ class ObraShowPage extends Page{
     }
 
     def verifyNomeObra(String nomeObra){
+        boolean find = false
+        def obraRows = getDisplayedFields()
+
+        obraRows.each {obraRow -> find = (find || (obraRow.find('span')[1].text() == nomeObra))}
+        return find
+    }
+
+    def getDisplayedFields(){
         def listDiv = $('div', id: 'show-obra')
         def obraTable = (listDiv.find('ol'))[0]
         def obraRows  = obraTable.find('li')
 
-        boolean find = false
-        obraRows.each {obraRow -> find = (find || (obraRow.find('span')[1].text() == nomeObra))}
-        return find
+        return obraRows
     }
+
 }
