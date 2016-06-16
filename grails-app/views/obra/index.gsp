@@ -27,7 +27,7 @@
 						<g:sortableColumn property="nome" title="${message(code: 'obra.nome.label', default: 'Nome')}" />
 
 						<g:sortableColumn property="descricao" title="${message(code: 'obra.descricao.label', default: 'Descricao')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
@@ -38,6 +38,13 @@
 
 						<td>${fieldValue(bean: obraInstance, field: "descricao")}</td>
 
+						<td>
+						<g:form url="[resource:obraInstance, action:'verificarStatusAndamentoObra']">
+							<fieldset class="buttons">
+								<g:actionSubmit class="Verificar" action="verificarStatusAndamentoObra" value="Verificar Andamento" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+							</fieldset>
+						</g:form>
+						</td>
 					</tr>
 				</g:each>
 				</tbody>

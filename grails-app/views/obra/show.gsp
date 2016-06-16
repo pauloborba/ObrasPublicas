@@ -121,6 +121,15 @@
 					
 				</li>
 				</g:if>
+
+
+				<li class="fieldcontain">
+					<span id="statusAndamento-label" class="property-label"><g:message code="obra.statusAndamento.label" default="Status Andamento" /></span>
+
+					<span class="property-value" aria-labelledby="statusAndamento-label"><g:fieldValue bean="${obraInstance}" field="statusAndamento"/></span>
+
+				</li>
+
 			
 			</ol>
 			<g:form url="[resource:obraInstance, action:'delete']" method="DELETE">
