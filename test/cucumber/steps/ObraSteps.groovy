@@ -187,20 +187,3 @@ Then (~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)"$'){
 /**
  * @author = tpa
  **/
-//Scenario: Atualizar obra
-//Given eu estou no menu de obras e existe uma obra com o nome "Praça do arsenal" na lista de obras
-//When eu seleciono a opcao "Atualizar"
-//And eu tento atualizar os campos da obra com o nome "Praça do arsenal"
-//And seleciono a opcao "Salvar"
-//Then eu vejo uma mensagem de confirmacao com o nome "Praça do arsenal"
-
-Given (~'^eu estou no menu de obras e existe uma obra com o nome "([^"]*)" na lista de obras$'){
-	String nomeObra ->
-		to ObraListPage
-		at ObraListPage
-		assert page.checkObraAtList(nomeObra) == false
-}
-
-And (~'^eu tento atualizar os campos da obra com o nome "([^"]*)"$'){
-	String nomeObra ->
-}
