@@ -125,7 +125,6 @@ class TestDataAndOperations {
         cont.save()
         cont.response.reset()
     }
-
     static public void createEndereco(String CEP, int numero) {
         def cont = new EnderecoController()
         cont.params << TestDataAndOperations.findEnderecoByceoAndNumero(CEP, numero)
@@ -207,14 +206,9 @@ class TestDataAndOperations {
 
 
     static public boolean checkDataFI(String inicial_, String final_){
-        Date ini = (new Date(inicial_))
-        Date fin = (new Date(final_))
-        boolean a = ini > fin
-        return a
+        return (new Date(inicial_)) > (new Date(final_))
     }
     static public boolean checkDataFC(String final_){
-        Date fin = (new Date(final_))
-        boolean a = System.currentTimeMillis() > fin.getTime()
-        return a
+        return System.currentTimeMillis() > (new Date(final_)).getTime()
     }
 }
