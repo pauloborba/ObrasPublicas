@@ -1,11 +1,13 @@
 
 --Output from Adicionar obra nao existente--
 --Output from Adicionar obra existente--
---Output from Visualizar obra--
 --Output from Atualizar obra--
---Output from Remover obra nao existente--
 --Output from Remover obra existente--
 --Output from Receber atualizacoes da obra por email--
 --Output from Visualizar obra--
 --Output from Nova pagina de obra--
---Output from compartilhar obra na rede social--
+--Output from Atualizar obra--
+--Output from Adicionar obra com data de termino anterior a data de início--
+--Output from Adicionar obra com data de termino anterior a data corrente--
+--Output from Atualizar nome de obra com nome já existente--
+--Output from Adicionar obra de um politico inexistente--

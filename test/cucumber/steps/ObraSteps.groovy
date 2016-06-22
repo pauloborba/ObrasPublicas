@@ -15,7 +15,7 @@ import steps.TestDataAndOperations
 * @author = ehmr
 */
 Given(~'^que o sistema nao tem uma obra chamada "([^"]*)"$'){
-	String nomeObra -> 
+	String nomeObra ->
 		Obra obra = Obra.findByNome(nomeObra)
 		assert obra == null
 		//assert true
@@ -23,8 +23,9 @@ Given(~'^que o sistema nao tem uma obra chamada "([^"]*)"$'){
 
 When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-    	TestDataAndOperations.createObra(nomeObra)
+		TestDataAndOperations.createObra(nomeObra)
 }
+
 
 Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
@@ -50,9 +51,8 @@ Given(~'^que o sistema tem uma obra chamada "([^"]*)"$'){
 Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
 		obras = Obra.findAllByNome(nomeObra)
-    	assert obras.size() == 1
+		assert obras.size() <= 1
 }
-
 //Scenario Visualizar obra
 //	Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "Praça do arsenal"
 //	When o usuário seleciona a obra "Praça do arsenal"
@@ -127,13 +127,65 @@ Then(~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)" e email "([^"]*
 //	When eu tentar atualizar os dados da obra com o nome "Praca do arsenal"
 //	Then o sistema atualiza a obra com o nome "Praca do arsenal"
 When (~'^eu tentar atualizar os dados da obra com o nome "([^"]*)"$'){
-	String nomeObra ->
-		TestDataAndOperations.atualizaObra(nomeObra)
+	String nomeObra ->                        //tem que verificar
+		TestDataAndOperations.atualizaObra(nomeObra)//tem que verificar
 }
 Then (~'^o sistema atualiza a obra com o nome "([^"]*)"$'){
 	String nomeObra ->
 		Obra obra = Obra.findByNome(nomeObra)
 		assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
+}
+//Scenario: Adicionar obra com data de termino anterior a data de início
+//Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+//When eu tento cadastrar uma obra com o nome "Praca do arsenal"
+//And insiro a data inicial "12 October 2017" e a data final "12 October 2013"
+//Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+
+And (~'^insiro a data inicial "([^"]*)" e a data final "([^"]*)"$'){
+	String ini, fin ->
+		assert TestDataAndOperations.checkDataFI(ini,fin) == true
+}
+
+//Scenario:  Adicionar obra com data de termino anterior a data corrente
+//Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+//When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+//And insiro a data final "12 October 2013"
+//Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+And (~'^insiro a data final "([^"]*)"$'){
+	String fin ->
+		assert TestDataAndOperations.checkDataFC(fin) == true
+}
+//Scenario: Atualizar nome de obra com nome já existente
+//Given que o sistema tem uma obra chamada "Praca do arsenal"
+//And tem uma obra com o nome "Ilha do retiro"
+//When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do retiro"
+//Then o sistema não atualiza a obra com o novo nome "Ilha do retiro"
+
+And(~'^tem uma obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+		Obra obra = TestDataAndOperations.findObraByNome(nomeObra)
+		assert obra != null
+}
+When(~'^eu tentar atualizar o nome da obra "([^"]*)" com o nome "([^"]*)"$'){
+	String nome1, nome2 ->
+		assert TestDataAndOperations.checkAtualizaNome(nome1, nome2) == false
+}
+
+Then(~'^o sistema não atualiza a obra com o novo nome "([^"]*)"$'){
+	String nomeObra ->
+		obras = Obra.findAllByNome(nomeObra)
+		assert obras.size() <= 1
+}
+
+//Scenario: Adicionar obra de um politico inexistente
+//Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+//And não existe um politico com o cpf "11122233344"
+//When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+//Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+And(~'^não existe um politico com o cpf "([^"]*)"$'){
+	String cpf ->
+		Obra obra = TestDataAndOperations.findPoliticoByCPF(cpf)
+		assert obra == null
 }
 
 /**

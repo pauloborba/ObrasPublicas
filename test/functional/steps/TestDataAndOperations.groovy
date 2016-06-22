@@ -142,6 +142,12 @@ class TestDataAndOperations {
     }
 
     static public void atualizaObra(String nomeObra) {
+        def cont = new ObraController()
+        cont.params << TestDataAndOperations.findObraByNome(nomeObra)
+        cont.request.setContent(new byte[1000])
+        cont.update()
+        cont.save()
+        cont.response.reset()
 
     }
 
@@ -197,5 +203,18 @@ class TestDataAndOperations {
             }
         }
         return compatible
+    }
+
+
+    static public boolean checkDataFI(String inicial_, String final_){
+        Date ini = (new Date(inicial_))
+        Date fin = (new Date(final_))
+        boolean a = ini > fin
+        return a
+    }
+    static public boolean checkDataFC(String final_){
+        Date fin = (new Date(final_))
+        boolean a = System.currentTimeMillis() > fin.getTime()
+        return a
     }
 }

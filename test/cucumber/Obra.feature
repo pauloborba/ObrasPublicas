@@ -51,6 +51,33 @@ Scenario: Atualizar obra
   And seleciono a opcao "Salvar"
   Then eu vejo uma mensagem de confirmacao com o nome "Praça do arsenal"
 
+Scenario: Adicionar obra com data de termino anterior a data de início
+  Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+  When eu tento cadastrar uma obra com o nome "Praca do arsenal"
+  And insiro a data inicial "12 October 2017" e a data final "12 October 2013"
+  Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+
+Scenario:  Adicionar obra com data de termino anterior a data corrente
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+    And insiro a data final "12 October 2013"
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+
+Scenario: Atualizar nome de obra com nome já existente
+    Given que o sistema tem uma obra chamada "Praca do arsenal"
+    And tem uma obra com o nome "Ilha do retiro"
+    When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do retiro"
+    Then o sistema não atualiza a obra com o novo nome "Ilha do retiro"
+
+Scenario: Adicionar obra de um politico inexistente
+  Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+  And não existe um politico com o cpf "11122233344"
+  When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+  Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+
+
+
+
 
 
 
