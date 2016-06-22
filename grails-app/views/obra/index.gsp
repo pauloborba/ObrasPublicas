@@ -37,6 +37,13 @@
 						<td><g:link action="show" id="${obraInstance.id}">${fieldValue(bean: obraInstance, field: "nome")}</g:link></td>
 
 						<td>${fieldValue(bean: obraInstance, field: "descricao")}</td>
+						<td>
+							<g:form url="[resource:obraInstance, action:'getDiasPrazoFinal']">
+								<fieldset class="buttons">
+									<g:actionSubmit class="Verificar" action="getDiasPrazoFinal" value="Prazo em dias"/>
+								</fieldset>
+							</g:form>
+						</td>
 
 					</tr>
 				</g:each>

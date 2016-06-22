@@ -23,6 +23,11 @@ class ObraController {
         respond new Obra(params)
     }
 
+    def getDiasPrazoFinal() {
+        respond obraInstance
+
+    }
+
     @Transactional
     def save() {
         Obra obraInstance = new Obra(params)
