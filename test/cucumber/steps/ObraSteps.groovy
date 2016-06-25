@@ -1,6 +1,7 @@
 import cucumber.api.PendingException
 import pages.ObraListPage
 import pages.ObraShowPage
+import util.ObraStrings
 
 import static cucumber.api.groovy.EN.*
 import obraspublicas.*
@@ -15,7 +16,7 @@ import steps.TestDataAndOperations
 * @author = ehmr
 */
 Given(~'^que o sistema nao tem uma obra chamada "([^"]*)"$'){
-	String nomeObra ->
+	String nomeObra -> 
 		Obra obra = Obra.findByNome(nomeObra)
 		assert obra == null
 		//assert true
@@ -23,9 +24,8 @@ Given(~'^que o sistema nao tem uma obra chamada "([^"]*)"$'){
 
 When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-		TestDataAndOperations.createObra(nomeObra)
+    	TestDataAndOperations.createObra(nomeObra)
 }
-
 
 Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
@@ -51,8 +51,53 @@ Given(~'^que o sistema tem uma obra chamada "([^"]*)"$'){
 Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
 		obras = Obra.findAllByNome(nomeObra)
-		assert obras.size() <= 1
+    	assert obras.size() == 1
 }
+
+
+//Scenario: Buscar percentual de obras atrasadas
+//Given que o sistema tem uma lista de "4" Obras
+//And o sistema tem "3" obra atrasada
+//Then o percentual de atrasos sera de "75" por cento
+Given(~'^que o sistema tem uma lista de "([^"]*)" Obras$'){
+	int qtdObras ->
+		obras = TestDataAndOperations.getObras()
+		assert obras.size()==qtdObras
+}
+
+And(~'^o sistema tem "([^"]*)" obra atrasada$'){
+	int qtdObrasAtrasadas ->
+		int qtdAtrasos = TestDataAndOperations.qtdObrasAtrasadas();
+		assert qtdAtrasos==qtdObrasAtrasadas
+}
+
+Then(~'^o percentual de atrasos sera de "([^"]*)" por cento$'){
+	int percentualAtrasos ->
+		assert TestDataAndOperations.relatorioAtraso()==percentualAtrasos
+}
+
+//Scenario: Buscar percentual de obras com orcamento estourado
+//Given que o sistema tem uma lista de "4" Obras com seus orcamentos
+//And o sistema tem "3" obra com orcamento estourado
+//Then o percentual de orcamento estourado sera de "75" por cento
+Given(~'^que o sistema tem uma lista de "([^"]*)" Obras com seus orcamentos$'){
+	int qtdObras ->
+		obras = TestDataAndOperations.getObras()
+		assert obras.size()==qtdObras
+}
+
+And(~'o sistema tem "([^"]*)" obra com orcamento estourado$'){
+	int qtdObrasAtrasadas ->
+		int qtdAtrasos = TestDataAndOperations.qtdObrasAtrasadas();
+		assert qtdAtrasos==qtdObrasAtrasadas
+}
+
+Then(~'^o percentual de orcamento estourado sera de "([^"]*)" por cento$'){
+	int percentualAtrasos ->
+		assert TestDataAndOperations.relatorioAtraso()==percentualAtrasos
+}
+
+
 //Scenario Visualizar obra
 //	Given que o usuário está no menu de obras e quer visualizar os detalhes da obra "Praça do arsenal"
 //	When o usuário seleciona a obra "Praça do arsenal"
@@ -157,9 +202,9 @@ And (~'^insiro a data final "([^"]*)"$'){
 }
 //Scenario: Atualizar nome de obra com nome já existente
 //Given que o sistema tem uma obra chamada "Praca do arsenal"
-//And tem uma obra com o nome "Ilha do retiro"
-//When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do retiro"
-//Then o sistema não atualiza a obra com o novo nome "Ilha do retiro"
+//And tem uma obra com o nome "Ilha do Retiro"
+//When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do Retiro"
+//Then o sistema não atualiza a obra com o novo nome "Ilha do Retiro"
 
 And(~'^tem uma obra com o nome "([^"]*)"$'){
 	String nomeObra ->
@@ -187,6 +232,35 @@ And(~'^não existe um politico com o cpf "([^"]*)"$'){
 		Obra obra = TestDataAndOperations.findPoliticoByCPF(cpf)
 		assert obra == null
 }
+//Scenario: Devolver a taxa de obras atrasadas de um determinado político
+//Given que o sistema tem um politico com o cpf "98765432109"
+//And o sistema tem "2" obras associada ao politico com o cpf "98765432109"
+//And o sistema tem "1" obra atrasada associada ao politico com o cpf "98765432109"
+//Then o percentual de obras atrasadas para o politico com o cpf "98765432109" é de "50" por cento
+
+Given(~'^que o sistema tem um politico com o cpf "([^"]*)"$'){
+	String cpf ->
+		Politico politico = TestDataAndOperations.findPoliticoByCPF(cpf)
+		assert politico != null
+}
+
+And(~'^o sistema tem "([^"]*)" obras associada ao politico com o cpf "([^"]*)"$'){
+	int qtdObrasPolitico, String cpf ->
+		int qtd = TestDataAndOperations.qtdObrasPolitico(cpf)
+		assert qtd == qtdObrasPolitico
+}
+And(~'^o sistema tem "([^"]*)" obra atrasada associada ao politico com o cpf "([^"]*)"$'){
+	int qtdObrasAtrasadasPolitico, String cpf ->
+		int qtd = TestDataAndOperations.qtdObrasAtrasadasPolitico(cpf)
+		assert qtdObrasAtrasadasPolitico == qtd
+}
+Then(~'^o percentual de obras atrasadas para o politico com o cpf "([^"]*)" é de "([^"]*)" por cento$'){
+	String cpf, float porcetagem ->
+		float qtd = TestDataAndOperations.taxaObrasAtrasadasPolitico(cpf)
+		assert porcetagem == qtd
+}
+
+
 
 /**
  * @author = ehmr
@@ -204,6 +278,30 @@ When (~'^eu tentar remover a obra com o nome "([^"]*)"$'){
 Then (~'^o sistema ira remover a obra com nome "([^"]*)"$'){
 	String nomeObra ->
 		assert Obra.count() == (sizeObrasBefore-1)
+}
+
+/**
+ * @author = ehmr
+ **/
+//Scenario: Verificar status andamento obra
+//	Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "Em dia"
+//	When eu tentar verificar o status da obra com o nome "Praca atrasada"
+//	Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"
+Given(~'^que o sistema tem uma obra chamada "([^"]*)" que esta atrasada mas esta com status "([^"]*)"$'){
+	String nomeObra, statusAndamentoObra ->
+        TestDataAndOperations.createObra(nomeObra)
+        Obra testObra = Obra.findByNome(nomeObra)
+        assert testObra != null
+}
+
+When (~'^eu tentar verificar o status da obra com o nome "([^"]*)"$'){
+	String nomeObra ->
+        TestDataAndOperations.sincronizarStatusAndamentoObra(nomeObra)
+}
+
+Then (~'^o sistema ira atualizar obra com nome "([^"]*)" para "([^"]*)"$'){
+	String nomeObra, statusAndamentoObra ->
+        assert TestDataAndOperations.verificarStatusAndamentoObra(nomeObra, ObraStrings."$statusAndamentoObra")
 }
 
 //other gui
@@ -236,6 +334,4 @@ Then (~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)"$'){
 		assert false
 }
 
-/**
- * @author = tpa
- **/
+

@@ -9,13 +9,23 @@ Scenario: Adicionar obra nao existente
   When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
   Then o sistema ira cadastrar a obra de nome "Praca do arsenal"
 
+Scenario: Buscar percentual de obras atrasadas
+  Given que o sistema tem uma lista de "4" Obras
+  And o sistema tem "3" obra atrasada
+  Then o percentual de atrasos sera de "75" por cento
+
+Scenario: Buscar percentual de obras com orcamento estourado
+  Given que o sistema tem uma lista de "4" Obras com seus orcamentos
+  And o sistema tem "3" obra com orcamento estourado
+  Then o percentual de orcamento estourado sera de "75" por cento
+
 Scenario: Adicionar obra existente
   Given que o sistema tem uma obra chamada "Praca do arsenal"
   When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
   Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
 
 Scenario: Atualizar obra
-  Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+  Given que o sistema tem uma obra chamada "Praca do arsenal"
   When eu tentar atualizar os dados da obra com o nome "Praca do arsenal"
   Then o sistema atualiza a obra com o nome "Praca do arsenal"
 
@@ -24,6 +34,40 @@ Scenario: Remover obra existente
     When eu tentar remover a obra com o nome "Praca do arsenal"
     Then o sistema ira remover a obra com nome "Praca do arsenal"
 
+Scenario: Verificar status andamento obra
+    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"
+    When eu tentar verificar o status da obra com o nome "Praca atrasada"
+    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"
+
+Scenario: Adicionar obra com data de termino anterior a data de início
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+    And insiro a data inicial "12 October 2017" e a data final "12 October 2013"
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+
+Scenario:  Adicionar obra com data de termino anterior a data corrente
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+    And insiro a data final "12 October 2013"
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+
+Scenario: Atualizar nome de obra com nome já existente
+    Given que o sistema tem uma obra chamada "Praca do arsenal"
+    And tem uma obra com o nome "Ilha do Retiro"
+    When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do Retiro"
+    Then o sistema não atualiza a obra com o novo nome "Ilha do Retiro"
+
+Scenario: Adicionar obra de um politico inexistente
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+    And não existe um politico com o cpf "11122233344"
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+
+Scenario: Devolver a taxa de obras atrasadas de um determinado político
+    Given que o sistema tem um politico com o cpf "98765432109"
+    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"
+    And o sistema tem "1" obra atrasada associada ao politico com o cpf "98765432109"
+    Then o percentual de obras atrasadas para o politico com o cpf "98765432109" é de "50" por cento
 
 #GUI
 Scenario: Receber atualizacoes da obra por email
@@ -43,41 +87,3 @@ Scenario: Nova pagina de obra
   And eu tento cadastrar a obra com o nome "Praca do Arsenal"
   And seleciono a opcao "Salvar"
   Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"
-
-Scenario: Atualizar obra
-  Given eu estou no menu de obras e existe uma obra com o nome "Praça do arsenal" na lista de obras
-  When eu seleciono a opcao "Atualizar"
-  And eu tento atualizar os campos da obra com o nome "Praça do arsenal"
-  And seleciono a opcao "Salvar"
-  Then eu vejo uma mensagem de confirmacao com o nome "Praça do arsenal"
-
-Scenario: Adicionar obra com data de termino anterior a data de início
-  Given que o sistema nao tem uma obra chamada "Praca do arsenal"
-  When eu tento cadastrar uma obra com o nome "Praca do arsenal"
-  And insiro a data inicial "12 October 2017" e a data final "12 October 2013"
-  Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
-
-Scenario:  Adicionar obra com data de termino anterior a data corrente
-    Given que o sistema nao tem uma obra chamada "Praca do arsenal"
-    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
-    And insiro a data final "12 October 2013"
-    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
-
-Scenario: Atualizar nome de obra com nome já existente
-    Given que o sistema tem uma obra chamada "Praca do arsenal"
-    And tem uma obra com o nome "Ilha do retiro"
-    When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do retiro"
-    Then o sistema não atualiza a obra com o novo nome "Ilha do retiro"
-
-Scenario: Adicionar obra de um politico inexistente
-  Given que o sistema nao tem uma obra chamada "Praca do arsenal"
-  And não existe um politico com o cpf "11122233344"
-  When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
-  Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
-
-
-
-
-
-
-

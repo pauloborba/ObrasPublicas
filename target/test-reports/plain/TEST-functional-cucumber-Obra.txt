@@ -1,5 +1,5 @@
 Testsuite: Obra
-Tests run: 12, Failures: 7, Errors: 3, Time elapsed: 2,604 sec
+Tests run: 15, Failures: 0, Errors: 4, Time elapsed: 3,2 sec
 ------------- Standard Output ---------------
 Feature: Obra
   As a usuario do sistema
@@ -7,487 +7,431 @@ Feature: Obra
   So That eu posso gerar paginas web para exibir informacoes sobre a obra
 
 --Output from Adicionar obra nao existente--
---Output from Adicionar obra existente--
+--Output from Buscar percentual de obras atrasadas--
   #CONTROLLER
   Scenario: Adicionar obra nao existente                            # Obra.feature:7
-    Given que o sistema nao tem uma obra chamada "Praca do arsenal" # ObraSteps.groovy:17
-    When eu tentar cadastrar uma obra com o nome "Praca do arsenal" # ObraSteps.groovy:24
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal" # ObraSteps.groovy:18
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal" # ObraSteps.groovy:25
     Then o sistema ira cadastrar a obra de nome "Praca do arsenal"  # ObraSteps.groovy:30
-      Assertion failed: 
-      
-      assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
-                                   |                |     |
-                                   false            null  Praca do arsenal
-      
-      	at ObraSteps$_run_closure3.doCall(ObraSteps.groovy:33)
-      	at ✽.Then o sistema ira cadastrar a obra de nome "Praca do arsenal"(Obra.feature:10)
 
+--Output from Buscar percentual de obras com orcamento estourado--
+  Scenario: Buscar percentual de obras atrasadas        # Obra.feature:12
+    Given que o sistema tem uma lista de "4" Obras      # ObraSteps.groovy:62
+    And o sistema tem "3" obra atrasada                 # ObraSteps.groovy:68
+    Then o percentual de atrasos sera de "75" por cento # ObraSteps.groovy:74
+
+--Output from Adicionar obra existente--
+  Scenario: Buscar percentual de obras com orcamento estourado         # Obra.feature:17
+    Given que o sistema tem uma lista de "4" Obras com seus orcamentos # ObraSteps.groovy:83
+    And o sistema tem "3" obra com orcamento estourado                 # ObraSteps.groovy:89
+    Then o percentual de orcamento estourado sera de "75" por cento    # ObraSteps.groovy:95
 
 --Output from Atualizar obra--
-  Scenario: Adicionar obra existente                                   # Obra.feature:12
+  Scenario: Adicionar obra existente                                   # Obra.feature:22
     Given que o sistema tem uma obra chamada "Praca do arsenal"        # ObraSteps.groovy:44
-      Assertion failed: 
-      
-      assert obra != null
-             |    |
-             null false
-      
-      	at ObraSteps$_run_closure4.doCall(ObraSteps.groovy:48)
-      	at ✽.Given que o sistema tem uma obra chamada "Praca do arsenal"(Obra.feature:13)
-
-    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:24
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:25
     Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal" # ObraSteps.groovy:51
 
 --Output from Remover obra existente--
-  Scenario: Atualizar obra                                                  # Obra.feature:17
-    Given que o sistema nao tem uma obra chamada "Praca do arsenal"         # ObraSteps.groovy:17
-    When eu tentar atualizar os dados da obra com o nome "Praca do arsenal" # ObraSteps.groovy:129
-    Then o sistema atualiza a obra com o nome "Praca do arsenal"            # ObraSteps.groovy:133
-      Assertion failed: 
-      
-      assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
-                                   |                |     |
-                                   false            null  Praca do arsenal
-      
-      	at ObraSteps$_run_closure14.doCall(ObraSteps.groovy:136)
-      	at ✽.Then o sistema atualiza a obra com o nome "Praca do arsenal"(Obra.feature:20)
+  Scenario: Atualizar obra                                                  # Obra.feature:27
+    Given que o sistema tem uma obra chamada "Praca do arsenal"             # ObraSteps.groovy:44
+    When eu tentar atualizar os dados da obra com o nome "Praca do arsenal" # ObraSteps.groovy:174
+    Then o sistema atualiza a obra com o nome "Praca do arsenal"            # ObraSteps.groovy:178
 
-
---Output from Receber atualizacoes da obra por email--
-  Scenario: Remover obra existente                                # Obra.feature:22
+--Output from Verificar status andamento obra--
+  Scenario: Remover obra existente                                # Obra.feature:32
     Given que o sistema tem uma obra chamada "Praca do arsenal"   # ObraSteps.groovy:44
-      Assertion failed: 
-      
-      assert obra != null
-             |    |
-             null false
-      
-      	at ObraSteps$_run_closure4.doCall(ObraSteps.groovy:48)
-      	at ✽.Given que o sistema tem uma obra chamada "Praca do arsenal"(Obra.feature:23)
-
-    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:199
-    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:204
-
---Output from Visualizar obra--
-  #GUI
-  Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:29
-    Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:93
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14665538589981314453061$_run_closure1@2acddbca'
-      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
-      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
-      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
-      	at geb.Configuration.createDriver(Configuration.groovy:354)
-      	at geb.Configuration.getDriver(Configuration.groovy:343)
-      	at geb.Browser.getDriver(Browser.groovy:105)
-      	at geb.Browser.go(Browser.groovy:394)
-      	at geb.Browser$go$3.call(Unknown Source)
-      	at geb.Page.to(Page.groovy:184)
-      	at geb.Browser.via(Browser.groovy:475)
-      	at geb.Browser$via$2.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:434)
-      	at geb.Browser$to$1.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:412)
-      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-      	at ObraSteps$_run_closure9.doCall(ObraSteps.groovy:96)
-      	at ✽.Given eu estou visualizando a obra "Praca do arsenal"(Obra.feature:30)
-      Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
-      	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
-      	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
-      	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
-      	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
-      	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14665538589981314453061$_run_closure1.doCall(script14665538589981314453061.groovy:8)
-      	at script14665538589981314453061$_run_closure1.doCall(script14665538589981314453061.groovy)
-      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
-      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
-      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
-      	at geb.Configuration.createDriver(Configuration.groovy:354)
-      	at geb.Configuration.getDriver(Configuration.groovy:343)
-      	at geb.Browser.getDriver(Browser.groovy:105)
-      	at geb.Browser.go(Browser.groovy:394)
-      	at geb.Browser$go$3.call(Unknown Source)
-      	at geb.Page.to(Page.groovy:184)
-      	at geb.Browser.via(Browser.groovy:475)
-      	at geb.Browser$via$2.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:434)
-      	at geb.Browser$to$1.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:412)
-      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-      	at ObraSteps$_run_closure9.doCall(ObraSteps.groovy:96)
-      	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
-      	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
-      	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
-      	at cucumber.runtime.groovy.GroovyStepDefinition.execute(GroovyStepDefinition.java:68)
-      	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
-      	at cucumber.runtime.Runtime.runStep(Runtime.java:298)
-      	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
-      	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
-      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
-      	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
-      	at cucumber.runtime.model.CucumberFeature$run$0.call(Unknown Source)
-      	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
-      	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
-      	at grails.plugin.cucumber.Cucumber$run$1.call(Unknown Source)
-      	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
-      	at grails.plugin.cucumber.CucumberTestType.this$3$runFeatures(CucumberTestType.groovy)
-      	at grails.plugin.cucumber.CucumberTestType$this$3$runFeatures$3.callCurrent(Unknown Source)
-      	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
-      	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
-      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
-      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
-      	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
-      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
-      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
-      	at gant.Gant.withBuildListeners(Gant.groovy:427)
-      	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
-      	at gant.Gant$this$2$withBuildListeners$0.callCurrent(Unknown Source)
-      	at gant.Gant.dispatch(Gant.groovy:415)
-      	at gant.Gant.this$2$dispatch(Gant.groovy)
-      	at gant.Gant.invokeMethod(Gant.groovy)
-      	at gant.Gant.executeTargets(Gant.groovy:591)
-      	at gant.Gant.executeTargets(Gant.groovy:590)
-
-    When eu seleciono a opcao "Receber atualizacao por email"                                            # ObraSteps.groovy:103
-    And preencho o campo de email com o email "teste@obralimpa.com"                                      # ObraSteps.groovy:111
-    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com" # ObraSteps.groovy:115
-
---Output from Nova pagina de obra--
-  Scenario: Visualizar obra                                                                            # Obra.feature:35
-    Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:63
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14665538592481314453061$_run_closure1@3d24696e'
-      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
-      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
-      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
-      	at geb.Configuration.createDriver(Configuration.groovy:354)
-      	at geb.Configuration.getDriver(Configuration.groovy:343)
-      	at geb.Browser.getDriver(Browser.groovy:105)
-      	at geb.Browser.go(Browser.groovy:394)
-      	at geb.Browser$go$3.call(Unknown Source)
-      	at geb.Page.to(Page.groovy:184)
-      	at geb.Browser.via(Browser.groovy:475)
-      	at geb.Browser$via$2.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:434)
-      	at geb.Browser$to$1.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:412)
-      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-      	at ObraSteps$_run_closure6.doCall(ObraSteps.groovy:66)
-      	at ✽.Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"(Obra.feature:36)
-      Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
-      	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
-      	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
-      	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
-      	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
-      	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14665538592481314453061$_run_closure1.doCall(script14665538592481314453061.groovy:8)
-      	at script14665538592481314453061$_run_closure1.doCall(script14665538592481314453061.groovy)
-      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
-      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
-      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
-      	at geb.Configuration.createDriver(Configuration.groovy:354)
-      	at geb.Configuration.getDriver(Configuration.groovy:343)
-      	at geb.Browser.getDriver(Browser.groovy:105)
-      	at geb.Browser.go(Browser.groovy:394)
-      	at geb.Browser$go$3.call(Unknown Source)
-      	at geb.Page.to(Page.groovy:184)
-      	at geb.Browser.via(Browser.groovy:475)
-      	at geb.Browser$via$2.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:434)
-      	at geb.Browser$to$1.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:412)
-      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-      	at ObraSteps$_run_closure6.doCall(ObraSteps.groovy:66)
-      	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
-      	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
-      	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
-      	at cucumber.runtime.groovy.GroovyStepDefinition.execute(GroovyStepDefinition.java:68)
-      	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
-      	at cucumber.runtime.Runtime.runStep(Runtime.java:298)
-      	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
-      	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
-      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
-      	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
-      	at cucumber.runtime.model.CucumberFeature$run$0.call(Unknown Source)
-      	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
-      	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
-      	at grails.plugin.cucumber.Cucumber$run$1.call(Unknown Source)
-      	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
-      	at grails.plugin.cucumber.CucumberTestType.this$3$runFeatures(CucumberTestType.groovy)
-      	at grails.plugin.cucumber.CucumberTestType$this$3$runFeatures$3.callCurrent(Unknown Source)
-      	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
-      	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
-      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
-      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
-      	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
-      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
-      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
-      	at gant.Gant.withBuildListeners(Gant.groovy:427)
-      	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
-      	at gant.Gant$this$2$withBuildListeners$0.callCurrent(Unknown Source)
-      	at gant.Gant.dispatch(Gant.groovy:415)
-      	at gant.Gant.this$2$dispatch(Gant.groovy)
-      	at gant.Gant.invokeMethod(Gant.groovy)
-      	at gant.Gant.executeTargets(Gant.groovy:591)
-      	at gant.Gant.executeTargets(Gant.groovy:590)
-
-    When o usuario seleciona a obra "Praca do arsenal"                                                 # ObraSteps.groovy:70
-    Then o sistema exibe os detalhes da obra "Praca do arsenal"                                        # ObraSteps.groovy:77
-
---Output from Atualizar obra--
-  Scenario: Nova pagina de obra                                                                         # Obra.feature:40
-    Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:222
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14665538593581314453061$_run_closure1@2c405dae'
-      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
-      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
-      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
-      	at geb.Configuration.createDriver(Configuration.groovy:354)
-      	at geb.Configuration.getDriver(Configuration.groovy:343)
-      	at geb.Browser.getDriver(Browser.groovy:105)
-      	at geb.Browser.go(Browser.groovy:394)
-      	at geb.Browser$go$3.call(Unknown Source)
-      	at geb.Page.to(Page.groovy:184)
-      	at geb.Browser.via(Browser.groovy:475)
-      	at geb.Browser$via$2.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:434)
-      	at geb.Browser$to$1.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:412)
-      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-      	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:224)
-      	at ✽.Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras(Obra.feature:41)
-      Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
-      	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
-      	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
-      	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
-      	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
-      	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14665538593581314453061$_run_closure1.doCall(script14665538593581314453061.groovy:8)
-      	at script14665538593581314453061$_run_closure1.doCall(script14665538593581314453061.groovy)
-      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
-      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
-      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
-      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
-      	at geb.Configuration.createDriver(Configuration.groovy:354)
-      	at geb.Configuration.getDriver(Configuration.groovy:343)
-      	at geb.Browser.getDriver(Browser.groovy:105)
-      	at geb.Browser.go(Browser.groovy:394)
-      	at geb.Browser$go$3.call(Unknown Source)
-      	at geb.Page.to(Page.groovy:184)
-      	at geb.Browser.via(Browser.groovy:475)
-      	at geb.Browser$via$2.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:434)
-      	at geb.Browser$to$1.callCurrent(Unknown Source)
-      	at geb.Browser.to(Browser.groovy:412)
-      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-      	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:224)
-      	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
-      	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
-      	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
-      	at cucumber.runtime.groovy.GroovyStepDefinition.execute(GroovyStepDefinition.java:68)
-      	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
-      	at cucumber.runtime.Runtime.runStep(Runtime.java:298)
-      	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
-      	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
-      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
-      	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
-      	at cucumber.runtime.model.CucumberFeature$run$0.call(Unknown Source)
-      	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
-      	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
-      	at grails.plugin.cucumber.Cucumber$run$1.call(Unknown Source)
-      	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
-      	at grails.plugin.cucumber.CucumberTestType.this$3$runFeatures(CucumberTestType.groovy)
-      	at grails.plugin.cucumber.CucumberTestType$this$3$runFeatures$3.callCurrent(Unknown Source)
-      	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
-      	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
-      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
-      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
-      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
-      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
-      	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
-      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
-      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
-      	at gant.Gant.withBuildListeners(Gant.groovy:427)
-      	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
-      	at gant.Gant$this$2$withBuildListeners$0.callCurrent(Unknown Source)
-      	at gant.Gant.dispatch(Gant.groovy:415)
-      	at gant.Gant.this$2$dispatch(Gant.groovy)
-      	at gant.Gant.invokeMethod(Gant.groovy)
-      	at gant.Gant.executeTargets(Gant.groovy:591)
-      	at gant.Gant.executeTargets(Gant.groovy:590)
-
-    When eu seleciono a opcao "Cadastrar"                                                               # ObraSteps.groovy:103
-    And eu tento cadastrar a obra com o nome "Praca do Arsenal"                                         # ObraSteps.groovy:228
-    And seleciono a opcao "Salvar"                                                                      # ObraSteps.groovy:231
-    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"                              # ObraSteps.groovy:234
+    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:273
+    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:278
 
 --Output from Adicionar obra com data de termino anterior a data de início--
-  Scenario: Atualizar obra                                                                            # Obra.feature:47
-    Given eu estou no menu de obras e existe uma obra com o nome "Praça do arsenal" na lista de obras
-    When eu seleciono a opcao "Atualizar"                                                             # ObraSteps.groovy:103
-    And eu tento atualizar os campos da obra com o nome "Praça do arsenal"
-    And seleciono a opcao "Salvar"                                                                    # ObraSteps.groovy:231
-    Then eu vejo uma mensagem de confirmacao com o nome "Praça do arsenal"                            # ObraSteps.groovy:234
+  Scenario: Verificar status andamento obra                                                                 # Obra.feature:37
+    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:290
+      java.lang.NullPointerException: Cannot get property 'cpfResponsavel' on null object
+      	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:141)
+      	at steps.TestDataAndOperations$createObra.call(Unknown Source)
+      	at ObraSteps$_run_closure33.doCall(ObraSteps.groovy:292)
+      	at ✽.Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"(Obra.feature:38)
+
+    When eu tentar verificar o status da obra com o nome "Praca atrasada"                                   # ObraSteps.groovy:297
+    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"                             # ObraSteps.groovy:302
 
 --Output from Adicionar obra com data de termino anterior a data corrente--
-  Scenario: Adicionar obra com data de termino anterior a data de início         # Obra.feature:54
-    Given que o sistema nao tem uma obra chamada "Praca do arsenal"              # ObraSteps.groovy:17
-    When eu tento cadastrar uma obra com o nome "Praca do arsenal"
-    And insiro a data inicial "12 October 2017" e a data final "12 October 2013" # ObraSteps.groovy:144
+  Scenario: Adicionar obra com data de termino anterior a data de início         # Obra.feature:42
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"              # ObraSteps.groovy:18
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"              # ObraSteps.groovy:25
+    And insiro a data inicial "12 October 2017" e a data final "12 October 2013" # ObraSteps.groovy:189
     Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"           # ObraSteps.groovy:51
 
 --Output from Atualizar nome de obra com nome já existente--
-  Scenario: Adicionar obra com data de termino anterior a data corrente # Obra.feature:60
-    Given que o sistema nao tem uma obra chamada "Praca do arsenal"     # ObraSteps.groovy:17
-    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"     # ObraSteps.groovy:24
-    And insiro a data final "12 October 2013"                           # ObraSteps.groovy:154
+  Scenario: Adicionar obra com data de termino anterior a data corrente # Obra.feature:48
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"     # ObraSteps.groovy:18
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"     # ObraSteps.groovy:25
+    And insiro a data final "12 October 2013"                           # ObraSteps.groovy:199
     Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"  # ObraSteps.groovy:51
 
 --Output from Adicionar obra de um politico inexistente--
-  Scenario: Atualizar nome de obra com nome já existente                                   # Obra.feature:66
+  Scenario: Atualizar nome de obra com nome já existente                                   # Obra.feature:54
     Given que o sistema tem uma obra chamada "Praca do arsenal"                            # ObraSteps.groovy:44
-      Assertion failed: 
-      
-      assert obra != null
-             |    |
-             null false
-      
-      	at ObraSteps$_run_closure4.doCall(ObraSteps.groovy:48)
-      	at ✽.Given que o sistema tem uma obra chamada "Praca do arsenal"(Obra.feature:67)
+    And tem uma obra com o nome "Ilha do Retiro"                                           # ObraSteps.groovy:209
+    When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do Retiro" # ObraSteps.groovy:214
+    Then o sistema não atualiza a obra com o novo nome "Ilha do Retiro"                    # ObraSteps.groovy:219
 
-    And tem uma obra com o nome "Ilha do retiro"                                           # ObraSteps.groovy:164
-    When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do retiro" # ObraSteps.groovy:169
-    Then o sistema não atualiza a obra com o novo nome "Ilha do retiro"                    # ObraSteps.groovy:174
-
-  Scenario: Adicionar obra de um politico inexistente                  # Obra.feature:72
-    Given que o sistema nao tem uma obra chamada "Praca do arsenal"    # ObraSteps.groovy:17
-    And não existe um politico com o cpf "11122233344"                 # ObraSteps.groovy:185
-    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:24
+--Output from Devolver a taxa de obras atrasadas de um determinado político--
+  Scenario: Adicionar obra de um politico inexistente                  # Obra.feature:60
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"    # ObraSteps.groovy:18
+    And não existe um politico com o cpf "11122233344"                 # ObraSteps.groovy:230
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:25
     Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal" # ObraSteps.groovy:51
+
+--Output from Receber atualizacoes da obra por email--
+  Scenario: Devolver a taxa de obras atrasadas de um determinado político                            # Obra.feature:66
+    Given que o sistema tem um politico com o cpf "98765432109"                                      # ObraSteps.groovy:241
+    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                        # ObraSteps.groovy:247
+    And o sistema tem "1" obra atrasada associada ao politico com o cpf "98765432109"                # ObraSteps.groovy:252
+    Then o percentual de obras atrasadas para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:257
+
+--Output from Visualizar obra--
+  #GUI
+  Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:73
+    Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:138
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137053500987652$_run_closure1@444c1ad1'
+      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
+      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
+      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
+      	at geb.Configuration.createDriver(Configuration.groovy:354)
+      	at geb.Configuration.getDriver(Configuration.groovy:343)
+      	at geb.Browser.getDriver(Browser.groovy:105)
+      	at geb.Browser.go(Browser.groovy:394)
+      	at geb.Browser$go$3.call(Unknown Source)
+      	at geb.Page.to(Page.groovy:184)
+      	at geb.Browser.via(Browser.groovy:475)
+      	at geb.Browser$via$2.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:434)
+      	at geb.Browser$to$1.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:412)
+      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
+      	at ObraSteps$_run_closure15.doCall(ObraSteps.groovy:141)
+      	at ✽.Given eu estou visualizando a obra "Praca do arsenal"(Obra.feature:74)
+      Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
+      	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
+      	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
+      	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
+      	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
+      	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
+      	at script1466885137053500987652$_run_closure1.doCall(script1466885137053500987652.groovy:8)
+      	at script1466885137053500987652$_run_closure1.doCall(script1466885137053500987652.groovy)
+      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
+      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
+      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
+      	at geb.Configuration.createDriver(Configuration.groovy:354)
+      	at geb.Configuration.getDriver(Configuration.groovy:343)
+      	at geb.Browser.getDriver(Browser.groovy:105)
+      	at geb.Browser.go(Browser.groovy:394)
+      	at geb.Browser$go$3.call(Unknown Source)
+      	at geb.Page.to(Page.groovy:184)
+      	at geb.Browser.via(Browser.groovy:475)
+      	at geb.Browser$via$2.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:434)
+      	at geb.Browser$to$1.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:412)
+      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
+      	at ObraSteps$_run_closure15.doCall(ObraSteps.groovy:141)
+      	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
+      	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
+      	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+      	at cucumber.runtime.groovy.GroovyStepDefinition.execute(GroovyStepDefinition.java:68)
+      	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
+      	at cucumber.runtime.Runtime.runStep(Runtime.java:298)
+      	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+      	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
+      	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
+      	at cucumber.runtime.model.CucumberFeature$run$0.call(Unknown Source)
+      	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
+      	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
+      	at grails.plugin.cucumber.Cucumber$run$1.call(Unknown Source)
+      	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
+      	at grails.plugin.cucumber.CucumberTestType.this$3$runFeatures(CucumberTestType.groovy)
+      	at grails.plugin.cucumber.CucumberTestType$this$3$runFeatures$3.callCurrent(Unknown Source)
+      	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
+      	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
+      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
+      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
+      	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
+      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
+      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
+      	at gant.Gant.withBuildListeners(Gant.groovy:427)
+      	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+      	at gant.Gant$this$2$withBuildListeners$0.callCurrent(Unknown Source)
+      	at gant.Gant.dispatch(Gant.groovy:415)
+      	at gant.Gant.this$2$dispatch(Gant.groovy)
+      	at gant.Gant.invokeMethod(Gant.groovy)
+      	at gant.Gant.executeTargets(Gant.groovy:591)
+      	at gant.Gant.executeTargets(Gant.groovy:590)
+
+    When eu seleciono a opcao "Receber atualizacao por email"                                            # ObraSteps.groovy:148
+    And preencho o campo de email com o email "teste@obralimpa.com"                                      # ObraSteps.groovy:156
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com" # ObraSteps.groovy:160
+
+--Output from Nova pagina de obra--
+  Scenario: Visualizar obra                                                                            # Obra.feature:79
+    Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:108
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137263500987652$_run_closure1@7f4c6d1d'
+      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
+      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
+      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
+      	at geb.Configuration.createDriver(Configuration.groovy:354)
+      	at geb.Configuration.getDriver(Configuration.groovy:343)
+      	at geb.Browser.getDriver(Browser.groovy:105)
+      	at geb.Browser.go(Browser.groovy:394)
+      	at geb.Browser$go$3.call(Unknown Source)
+      	at geb.Page.to(Page.groovy:184)
+      	at geb.Browser.via(Browser.groovy:475)
+      	at geb.Browser$via$2.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:434)
+      	at geb.Browser$to$1.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:412)
+      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
+      	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:111)
+      	at ✽.Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"(Obra.feature:80)
+      Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
+      	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
+      	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
+      	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
+      	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
+      	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
+      	at script1466885137263500987652$_run_closure1.doCall(script1466885137263500987652.groovy:8)
+      	at script1466885137263500987652$_run_closure1.doCall(script1466885137263500987652.groovy)
+      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
+      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
+      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
+      	at geb.Configuration.createDriver(Configuration.groovy:354)
+      	at geb.Configuration.getDriver(Configuration.groovy:343)
+      	at geb.Browser.getDriver(Browser.groovy:105)
+      	at geb.Browser.go(Browser.groovy:394)
+      	at geb.Browser$go$3.call(Unknown Source)
+      	at geb.Page.to(Page.groovy:184)
+      	at geb.Browser.via(Browser.groovy:475)
+      	at geb.Browser$via$2.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:434)
+      	at geb.Browser$to$1.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:412)
+      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
+      	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:111)
+      	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
+      	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
+      	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+      	at cucumber.runtime.groovy.GroovyStepDefinition.execute(GroovyStepDefinition.java:68)
+      	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
+      	at cucumber.runtime.Runtime.runStep(Runtime.java:298)
+      	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+      	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
+      	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
+      	at cucumber.runtime.model.CucumberFeature$run$0.call(Unknown Source)
+      	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
+      	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
+      	at grails.plugin.cucumber.Cucumber$run$1.call(Unknown Source)
+      	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
+      	at grails.plugin.cucumber.CucumberTestType.this$3$runFeatures(CucumberTestType.groovy)
+      	at grails.plugin.cucumber.CucumberTestType$this$3$runFeatures$3.callCurrent(Unknown Source)
+      	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
+      	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
+      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
+      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
+      	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
+      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
+      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
+      	at gant.Gant.withBuildListeners(Gant.groovy:427)
+      	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+      	at gant.Gant$this$2$withBuildListeners$0.callCurrent(Unknown Source)
+      	at gant.Gant.dispatch(Gant.groovy:415)
+      	at gant.Gant.this$2$dispatch(Gant.groovy)
+      	at gant.Gant.invokeMethod(Gant.groovy)
+      	at gant.Gant.executeTargets(Gant.groovy:591)
+      	at gant.Gant.executeTargets(Gant.groovy:590)
+
+    When o usuario seleciona a obra "Praca do arsenal"                                                 # ObraSteps.groovy:115
+    Then o sistema exibe os detalhes da obra "Praca do arsenal"                                        # ObraSteps.groovy:122
+
+  Scenario: Nova pagina de obra                                                                         # Obra.feature:84
+    Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:320
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137372500987652$_run_closure1@42def239'
+      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
+      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
+      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
+      	at geb.Configuration.createDriver(Configuration.groovy:354)
+      	at geb.Configuration.getDriver(Configuration.groovy:343)
+      	at geb.Browser.getDriver(Browser.groovy:105)
+      	at geb.Browser.go(Browser.groovy:394)
+      	at geb.Browser$go$3.call(Unknown Source)
+      	at geb.Page.to(Page.groovy:184)
+      	at geb.Browser.via(Browser.groovy:475)
+      	at geb.Browser$via$2.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:434)
+      	at geb.Browser$to$1.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:412)
+      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
+      	at ObraSteps$_run_closure36.doCall(ObraSteps.groovy:322)
+      	at ✽.Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras(Obra.feature:85)
+      Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
+      	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
+      	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
+      	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
+      	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
+      	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
+      	at script1466885137372500987652$_run_closure1.doCall(script1466885137372500987652.groovy:8)
+      	at script1466885137372500987652$_run_closure1.doCall(script1466885137372500987652.groovy)
+      	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
+      	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
+      	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
+      	at geb.driver.CachingDriverFactory.getDriver(CachingDriverFactory.groovy:79)
+      	at geb.Configuration.createDriver(Configuration.groovy:354)
+      	at geb.Configuration.getDriver(Configuration.groovy:343)
+      	at geb.Browser.getDriver(Browser.groovy:105)
+      	at geb.Browser.go(Browser.groovy:394)
+      	at geb.Browser$go$3.call(Unknown Source)
+      	at geb.Page.to(Page.groovy:184)
+      	at geb.Browser.via(Browser.groovy:475)
+      	at geb.Browser$via$2.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:434)
+      	at geb.Browser$to$1.callCurrent(Unknown Source)
+      	at geb.Browser.to(Browser.groovy:412)
+      	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
+      	at ObraSteps$_run_closure36.doCall(ObraSteps.groovy:322)
+      	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
+      	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
+      	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+      	at cucumber.runtime.groovy.GroovyStepDefinition.execute(GroovyStepDefinition.java:68)
+      	at cucumber.runtime.StepDefinitionMatch.runStep(StepDefinitionMatch.java:37)
+      	at cucumber.runtime.Runtime.runStep(Runtime.java:298)
+      	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+      	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+      	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
+      	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
+      	at cucumber.runtime.model.CucumberFeature$run$0.call(Unknown Source)
+      	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
+      	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
+      	at grails.plugin.cucumber.Cucumber$run$1.call(Unknown Source)
+      	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
+      	at grails.plugin.cucumber.CucumberTestType.this$3$runFeatures(CucumberTestType.groovy)
+      	at grails.plugin.cucumber.CucumberTestType$this$3$runFeatures$3.callCurrent(Unknown Source)
+      	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
+      	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
+      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
+      	at org.codehaus.gant.GantMetaClass.invokeMethod(GantMetaClass.java:133)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16_closure18.doCall(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding.withTargetEvent(GantBinding.groovy:90)
+      	at org.codehaus.gant.GantBinding.this$4$withTargetEvent(GantBinding.groovy)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy:185)
+      	at org.codehaus.gant.GantBinding$_initializeGantBinding_closure5_closure16.doCall(GantBinding.groovy)
+      	at gant.Gant$_dispatch_closure5.doCall(Gant.groovy:381)
+      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy:415)
+      	at gant.Gant$_dispatch_closure7.doCall(Gant.groovy)
+      	at gant.Gant.withBuildListeners(Gant.groovy:427)
+      	at gant.Gant.this$2$withBuildListeners(Gant.groovy)
+      	at gant.Gant$this$2$withBuildListeners$0.callCurrent(Unknown Source)
+      	at gant.Gant.dispatch(Gant.groovy:415)
+      	at gant.Gant.this$2$dispatch(Gant.groovy)
+      	at gant.Gant.invokeMethod(Gant.groovy)
+      	at gant.Gant.executeTargets(Gant.groovy:591)
+      	at gant.Gant.executeTargets(Gant.groovy:590)
+
+    When eu seleciono a opcao "Cadastrar"                                                               # ObraSteps.groovy:148
+    And eu tento cadastrar a obra com o nome "Praca do Arsenal"                                         # ObraSteps.groovy:326
+    And seleciono a opcao "Salvar"                                                                      # ObraSteps.groovy:329
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"                              # ObraSteps.groovy:332
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
 
 --Output from Adicionar obra nao existente--
+--Output from Buscar percentual de obras atrasadas--
+--Output from Buscar percentual de obras com orcamento estourado--
 --Output from Adicionar obra existente--
 --Output from Atualizar obra--
 --Output from Remover obra existente--
---Output from Receber atualizacoes da obra por email--
---Output from Visualizar obra--
---Output from Nova pagina de obra--
---Output from Atualizar obra--
+--Output from Verificar status andamento obra--
 --Output from Adicionar obra com data de termino anterior a data de início--
 --Output from Adicionar obra com data de termino anterior a data corrente--
 --Output from Atualizar nome de obra com nome já existente--
---Output from Adicionar obra de um politico inexistente--------------- ---------------- ---------------
+--Output from Adicionar obra de um politico inexistente--
+--Output from Devolver a taxa de obras atrasadas de um determinado político--
+--Output from Receber atualizacoes da obra por email--
+--Output from Visualizar obra--
+--Output from Nova pagina de obra--------------- ---------------- ---------------
 
-Testcase: Adicionar obra nao existente took 0,756 sec
-	FAILED
-assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
-                             |                |     |
-                             false            null  Praca do arsenal
-Assertion failed: 
-
-assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
-                             |                |     |
-                             false            null  Praca do arsenal
-
-	at ObraSteps$_run_closure3.doCall(ObraSteps.groovy:33)
-	at ✽.Then o sistema ira cadastrar a obra de nome "Praca do arsenal"(Obra.feature:10)
-
-Testcase: Adicionar obra existente took 0,013 sec
-	FAILED
-assert obra != null
-       |    |
-       null false
-Assertion failed: 
-
-assert obra != null
-       |    |
-       null false
-
-	at ObraSteps$_run_closure4.doCall(ObraSteps.groovy:48)
-	at ✽.Given que o sistema tem uma obra chamada "Praca do arsenal"(Obra.feature:13)
-
-Testcase: Atualizar obra took 0,033 sec
-	FAILED
-assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
-                             |                |     |
-                             false            null  Praca do arsenal
-Assertion failed: 
-
-assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
-                             |                |     |
-                             false            null  Praca do arsenal
-
-	at ObraSteps$_run_closure14.doCall(ObraSteps.groovy:136)
-	at ✽.Then o sistema atualiza a obra com o nome "Praca do arsenal"(Obra.feature:20)
-
-Testcase: Remover obra existente took 0,012 sec
-	FAILED
-assert obra != null
-       |    |
-       null false
-Assertion failed: 
-
-assert obra != null
-       |    |
-       null false
-
-	at ObraSteps$_run_closure4.doCall(ObraSteps.groovy:48)
-	at ✽.Given que o sistema tem uma obra chamada "Praca do arsenal"(Obra.feature:23)
-
-Testcase: Receber atualizacoes da obra por email took 0,137 sec
+Testcase: Adicionar obra nao existente took 0,859 sec
+Testcase: Buscar percentual de obras atrasadas took 0,084 sec
+Testcase: Buscar percentual de obras com orcamento estourado took 0,093 sec
+Testcase: Adicionar obra existente took 0,226 sec
+Testcase: Atualizar obra took 0,14 sec
+Testcase: Remover obra existente took 0,155 sec
+Testcase: Verificar status andamento obra took 0,019 sec
 	Caused an ERROR
-failed to create driver from callback 'script14665538589981314453061$_run_closure1@2acddbca'
-geb.driver.DriverCreationException: failed to create driver from callback 'script14665538589981314453061$_run_closure1@2acddbca'
+Cannot get property 'cpfResponsavel' on null object
+java.lang.NullPointerException: Cannot get property 'cpfResponsavel' on null object
+	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:141)
+	at ObraSteps$_run_closure33.doCall(ObraSteps.groovy:292)
+	at ✽.Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"(Obra.feature:38)
+
+Testcase: Adicionar obra com data de termino anterior a data de início took 0,183 sec
+Testcase: Adicionar obra com data de termino anterior a data corrente took 0,194 sec
+Testcase: Atualizar nome de obra com nome já existente took 0,182 sec
+Testcase: Adicionar obra de um politico inexistente took 0,147 sec
+Testcase: Devolver a taxa de obras atrasadas de um determinado político took 0,078 sec
+Testcase: Receber atualizacoes da obra por email took 0,133 sec
+	Caused an ERROR
+failed to create driver from callback 'script1466885137053500987652$_run_closure1@444c1ad1'
+geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137053500987652$_run_closure1@444c1ad1'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -501,15 +445,15 @@ geb.driver.DriverCreationException: failed to create driver from callback 'scrip
 	at geb.Browser.to(Browser.groovy:434)
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-	at ObraSteps$_run_closure9.doCall(ObraSteps.groovy:96)
-	at ✽.Given eu estou visualizando a obra "Praca do arsenal"(Obra.feature:30)
+	at ObraSteps$_run_closure15.doCall(ObraSteps.groovy:141)
+	at ✽.Given eu estou visualizando a obra "Praca do arsenal"(Obra.feature:74)
 Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
 	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
 	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script14665538589981314453061$_run_closure1.doCall(script14665538589981314453061.groovy:8)
+	at script1466885137053500987652$_run_closure1.doCall(script1466885137053500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -523,7 +467,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at geb.Browser.to(Browser.groovy:434)
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-	at ObraSteps$_run_closure9.doCall(ObraSteps.groovy:96)
+	at ObraSteps$_run_closure15.doCall(ObraSteps.groovy:141)
 	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
 	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
 	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
@@ -541,10 +485,10 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
 	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
 
-Testcase: Visualizar obra took 0,018 sec
+Testcase: Visualizar obra took 0,031 sec
 	Caused an ERROR
-failed to create driver from callback 'script14665538592481314453061$_run_closure1@3d24696e'
-geb.driver.DriverCreationException: failed to create driver from callback 'script14665538592481314453061$_run_closure1@3d24696e'
+failed to create driver from callback 'script1466885137263500987652$_run_closure1@7f4c6d1d'
+geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137263500987652$_run_closure1@7f4c6d1d'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -558,15 +502,15 @@ geb.driver.DriverCreationException: failed to create driver from callback 'scrip
 	at geb.Browser.to(Browser.groovy:434)
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-	at ObraSteps$_run_closure6.doCall(ObraSteps.groovy:66)
-	at ✽.Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"(Obra.feature:36)
+	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:111)
+	at ✽.Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"(Obra.feature:80)
 Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
 	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
 	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script14665538592481314453061$_run_closure1.doCall(script14665538592481314453061.groovy:8)
+	at script1466885137263500987652$_run_closure1.doCall(script1466885137263500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -580,7 +524,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at geb.Browser.to(Browser.groovy:434)
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-	at ObraSteps$_run_closure6.doCall(ObraSteps.groovy:66)
+	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:111)
 	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
 	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
 	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
@@ -598,10 +542,10 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
 	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
 
-Testcase: Nova pagina de obra took 0,01 sec
+Testcase: Nova pagina de obra took 0,008 sec
 	Caused an ERROR
-failed to create driver from callback 'script14665538593581314453061$_run_closure1@2c405dae'
-geb.driver.DriverCreationException: failed to create driver from callback 'script14665538593581314453061$_run_closure1@2c405dae'
+failed to create driver from callback 'script1466885137372500987652$_run_closure1@42def239'
+geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137372500987652$_run_closure1@42def239'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -615,15 +559,15 @@ geb.driver.DriverCreationException: failed to create driver from callback 'scrip
 	at geb.Browser.to(Browser.groovy:434)
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:224)
-	at ✽.Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras(Obra.feature:41)
+	at ObraSteps$_run_closure36.doCall(ObraSteps.groovy:322)
+	at ✽.Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras(Obra.feature:85)
 Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
 	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
 	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script14665538593581314453061$_run_closure1.doCall(script14665538593581314453061.groovy:8)
+	at script1466885137372500987652$_run_closure1.doCall(script1466885137372500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -637,7 +581,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at geb.Browser.to(Browser.groovy:434)
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-	at ObraSteps$_run_closure23.doCall(ObraSteps.groovy:224)
+	at ObraSteps$_run_closure36.doCall(ObraSteps.groovy:322)
 	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
 	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
 	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
@@ -655,78 +599,3 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
 	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
 
-Testcase: Atualizar obra took 0,009 sec
-	FAILED
-Undefined Step: Given eu estou no menu de obras e existe uma obra com o nome "Praça do arsenal" na lista de obras
-cucumber.runtime.UndefinedStepException: Undefined Step: Given eu estou no menu de obras e existe uma obra com o nome "Praça do arsenal" na lista de obras
-	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
-	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
-	at cucumber.runtime.Utils$1.call(Utils.java:37)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
-	at cucumber.runtime.Utils.invoke(Utils.java:31)
-	at cucumber.runtime.RuntimeOptions$1.invoke(RuntimeOptions.java:243)
-	at cucumber.runtime.Runtime.runStep(Runtime.java:280)
-	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
-	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
-	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
-	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
-	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
-	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
-	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
-
-	FAILED
-Undefined Step: And eu tento atualizar os campos da obra com o nome "Praça do arsenal"
-cucumber.runtime.UndefinedStepException: Undefined Step: And eu tento atualizar os campos da obra com o nome "Praça do arsenal"
-	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
-	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
-	at cucumber.runtime.Utils$1.call(Utils.java:37)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
-	at cucumber.runtime.Utils.invoke(Utils.java:31)
-	at cucumber.runtime.RuntimeOptions$1.invoke(RuntimeOptions.java:243)
-	at cucumber.runtime.Runtime.runStep(Runtime.java:280)
-	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
-	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
-	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
-	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
-	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
-	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
-	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
-
-Testcase: Adicionar obra com data de termino anterior a data de início took 0,009 sec
-	FAILED
-Undefined Step: When eu tento cadastrar uma obra com o nome "Praca do arsenal"
-cucumber.runtime.UndefinedStepException: Undefined Step: When eu tento cadastrar uma obra com o nome "Praca do arsenal"
-	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
-	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
-	at cucumber.runtime.Utils$1.call(Utils.java:37)
-	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
-	at cucumber.runtime.Utils.invoke(Utils.java:31)
-	at cucumber.runtime.RuntimeOptions$1.invoke(RuntimeOptions.java:243)
-	at cucumber.runtime.Runtime.runStep(Runtime.java:280)
-	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
-	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
-	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
-	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
-	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
-	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
-	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
-	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
-
-Testcase: Adicionar obra com data de termino anterior a data corrente took 0,087 sec
-Testcase: Atualizar nome de obra com nome já existente took 0,011 sec
-	FAILED
-assert obra != null
-       |    |
-       null false
-Assertion failed: 
-
-assert obra != null
-       |    |
-       null false
-
-	at ObraSteps$_run_closure4.doCall(ObraSteps.groovy:48)
-	at ✽.Given que o sistema tem uma obra chamada "Praca do arsenal"(Obra.feature:67)
-
-Testcase: Adicionar obra de um politico inexistente took 0,02 sec

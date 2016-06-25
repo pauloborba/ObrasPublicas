@@ -15,9 +15,7 @@ class ObraListPage extends Page{
     }
 
     def checkObraAtList(nomeObra){
-        def listDiv = $('div', id: 'list-obra')
-        def obraTable = (listDiv.find('table'))[0]
-        def obraRows  = obraTable.find('tbody').find('tr')
+        def obraRows = getTableRows()
         def testObra = Obra.findByNome(nomeObra)
 
         boolean find = false
@@ -27,11 +25,16 @@ class ObraListPage extends Page{
     }
 
     def selectObraAtList(String nomeObra) {
-        def listDiv = $('div', id: 'list-obra')
-        def obraTable = (listDiv.find('table'))[0]
-        def obraRow  = obraTable.find('tbody').find('tr')
+        def obraRow  = getTableRows()
         def showLink = obraRow.find('td').find([text:nomeObra])
         showLink.click()
     }
 
+    def getTableRows(){
+        def listDiv = $('div', id: 'list-obra')
+        def obraTable = (listDiv.find('table'))[0]
+        def obraRow  = obraTable.find('tbody').find('tr')
+
+        return obraRow
+    }
 }

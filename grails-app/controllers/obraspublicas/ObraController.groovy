@@ -15,6 +15,45 @@ class ObraController {
         respond Obra.list(params), model:[obraInstanceCount: Obra.count()]
     }
 
+    def relatorioAtrasada() {
+        float taxaAtrasada=0
+        if(Obra.list().size()>0) {
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).isAtrasada()) {
+                    taxaAtrasada++
+                }
+            }
+
+            taxaAtrasada = taxaAtrasada / Obra.list().size()
+
+            taxaAtrasada = taxaAtrasada * 100
+        }
+        respond Obra.list(params), model:[taxaAtrasada: taxaAtrasada]
+    }
+
+    def relatorioEstourada() {
+        float taxaEstouro=0
+        if(Obra.list().size()>0) {
+
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).isEstourada()) {
+                    taxaEstouro++
+                }
+            }
+
+            taxaEstouro = taxaEstouro / Obra.list().size()
+
+            taxaEstouro = taxaEstouro * 100
+        }
+
+        respond Obra.list(params), model:[taxaEstouro: taxaEstouro]
+    }
+
+    def relatorios(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Obra.list(params), model:[obraInstanceCount: Obra.count()]
+    }
+
     def show(Obra obraInstance) {
         respond obraInstance
     }
@@ -23,10 +62,16 @@ class ObraController {
         respond new Obra(params)
     }
 
-    def getDiasPrazoFinal() {
-        respond obraInstance
+    def verificarStatusAndamentoObra(){
+        def obraInstance = Obra.get(params.id)
 
+        obraInstance.verificarStatusAndamentoObra()
+
+        obraInstance.save flush:true
+
+        redirect (action: "index")
     }
+
 
     @Transactional
     def save() {

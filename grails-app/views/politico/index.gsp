@@ -35,14 +35,14 @@
 						<g:sortableColumn property="email" title="${message(code: 'politico.email.label', default: 'Email')}" />
 					
 						<g:sortableColumn property="partido" title="${message(code: 'politico.partido.label', default: 'Partido')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
+
 				<g:each in="${politicoInstanceList}" status="i" var="politicoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${politicoInstance.id}">${fieldValue(bean: politicoInstance, field: "cpf")}</g:link></td>
+						<td>${fieldValue(bean: politicoInstance, field: "cpf")}</td>
 					
 						<td>${fieldValue(bean: politicoInstance, field: "nome")}</td>
 					
@@ -53,7 +53,17 @@
 						<td>${fieldValue(bean: politicoInstance, field: "email")}</td>
 					
 						<td>${fieldValue(bean: politicoInstance, field: "partido")}</td>
-					
+
+
+						<td><g:link class="edit" action="edit" resource="${politicoInstance}"><img src="${assetPath(src: 'document-write.png')}" width="50px"/></g:link></td>
+
+						<td>
+							<g:form url="[resource:politicoInstance, action:'delete']" method="DELETE">
+								<g:actionSubmitImage value="${message(code: 'default.button.delete.label', default: 'Delete')}" action="delete"
+													 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"
+													 src="${assetPath(src: 'DeleteRed.png')}" width="50px"/>
+							</g:form>
+						</td>
 					</tr>
 				</g:each>
 				</tbody>
