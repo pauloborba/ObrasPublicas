@@ -69,6 +69,12 @@ Scenario: Devolver a taxa de obras atrasadas de um determinado político
     And o sistema tem "1" obra atrasada associada ao politico com o cpf "98765432109"
     Then o percentual de obras atrasadas para o politico com o cpf "98765432109" é de "50" por cento
 
+Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado político
+    Given que o sistema tem um politico com o cpf "98765432109"
+    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"
+    And o sistema tem "1" obra com orçamento estourado associada ao politico com o cpf "98765432109"
+    Then o percentual de obras com orcamento estourado para o politico com o cpf "98765432109" é de "50" por cento
+
 #GUI
 Scenario: Receber atualizacoes da obra por email
   Given eu estou visualizando a obra "Praca do arsenal"

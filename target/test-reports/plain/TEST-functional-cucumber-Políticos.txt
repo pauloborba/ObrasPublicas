@@ -1,5 +1,5 @@
 Testsuite: Políticos
-Tests run: 7, Failures: 5, Errors: 0, Time elapsed: 0,863 sec
+Tests run: 7, Failures: 5, Errors: 0, Time elapsed: 0,792 sec
 ------------- Standard Output ---------------
 Feature: Políticos
   As a usuário do sistema
@@ -64,9 +64,9 @@ Feature: Políticos
 --Output from Visualizar político--
 --Output from Editar informações de um politico--------------- ---------------- ---------------
 
-Testcase: Adicionar politico nao existente took 0,146 sec
-Testcase: Adicionar politico existente took 0,098 sec
-Testcase: Atualizar político took 0,047 sec
+Testcase: Adicionar politico nao existente took 0,099 sec
+Testcase: Adicionar politico existente took 0,093 sec
+Testcase: Atualizar político took 0,037 sec
 	FAILED
 Undefined Step: Given que exista um politico com nome “Eduardo” e CPF "01234567890”
 cucumber.runtime.UndefinedStepException: Undefined Step: Given que exista um politico com nome “Eduardo” e CPF "01234567890”
@@ -182,7 +182,7 @@ cucumber.runtime.UndefinedStepException: Undefined Step: Then o sistema ira most
 	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 
-Testcase: Novo político took 0,003 sec
+Testcase: Novo político took 0,004 sec
 	FAILED
 Undefined Step: Given que eu estou no menu “Políticos”
 cucumber.runtime.UndefinedStepException: Undefined Step: Given que eu estou no menu “Políticos”
@@ -374,7 +374,7 @@ cucumber.runtime.UndefinedStepException: Undefined Step: Then “Guilherme” co
 	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 
-Testcase: Editar informações de um politico took 0,003 sec
+Testcase: Editar informações de um politico took 0,002 sec
 	FAILED
 Undefined Step: Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
 cucumber.runtime.UndefinedStepException: Undefined Step: Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”

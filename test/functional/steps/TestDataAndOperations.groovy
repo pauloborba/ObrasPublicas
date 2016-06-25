@@ -23,7 +23,7 @@ class TestDataAndOperations {
         descricao          : "Casa do leão",
         imagem             : "youtube.com.br",
         precoPlanejado     : 1250000.23,
-        precoFinal         : 1200000.50,
+        precoFinal         : 100000.00,
         dataPlanejada      : (new Date("12 October 2017")),
         dataTermino        : (new Date("12 October 2010")),
         latitude           : 12,
@@ -79,9 +79,6 @@ class TestDataAndOperations {
     ]
 
     static politicoObra = [
-            [nomeObra: "Praca do arsenal",
-             cpfResponsavel: "01234567891"],
-
             [nomeObra: "Ilha do Retiro",
              cpfResponsavel: "98765432109"],
 
@@ -370,5 +367,39 @@ class TestDataAndOperations {
         return (testObra != null) && (testObra1 != null)
     }
 
+    static public float taxaObrasEstouradasPolitico(String cpf){
+        float taxaAtrasoPolitico = 0
+        int div = 0;
+        for(int i = 0; i < politicoObra.size(); i++){
+            if(politicoObra.get(i).cpfResponsavel == cpf){
+                def ob = findObraByNome(politicoObra.get(i).nomeObra);
+                div++;
+                if(ob.precoFinal>ob.precoPlanejado){
+                    taxaAtrasoPolitico++;
+                }
+            }
+        }
+        taxaAtrasoPolitico = taxaAtrasoPolitico/div
+        taxaAtrasoPolitico = taxaAtrasoPolitico*100
+        return taxaAtrasoPolitico
 
+    }
+
+
+    static public int qtdObrasEstouradasPolitico(String cpf){
+        int obrasAtrasoPolitico = 0
+
+        for(int i = 0; i < politicoObra.size(); i++){
+            if(politicoObra.get(i).cpfResponsavel == cpf){
+                def ob = findObraByNome(politicoObra.get(i).nomeObra);
+
+                if(ob.precoFinal>ob.precoPlanejado){
+                    obrasAtrasoPolitico++;
+                }
+            }
+        }
+
+        return obrasAtrasoPolitico
+
+    }
 }

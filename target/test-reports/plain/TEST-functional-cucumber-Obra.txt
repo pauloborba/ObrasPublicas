@@ -1,5 +1,5 @@
 Testsuite: Obra
-Tests run: 15, Failures: 0, Errors: 4, Time elapsed: 3,2 sec
+Tests run: 16, Failures: 0, Errors: 4, Time elapsed: 3,688 sec
 ------------- Standard Output ---------------
 Feature: Obra
   As a usuario do sistema
@@ -41,20 +41,20 @@ Feature: Obra
 --Output from Verificar status andamento obra--
   Scenario: Remover obra existente                                # Obra.feature:32
     Given que o sistema tem uma obra chamada "Praca do arsenal"   # ObraSteps.groovy:44
-    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:273
-    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:278
+    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:288
+    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:293
 
 --Output from Adicionar obra com data de termino anterior a data de início--
   Scenario: Verificar status andamento obra                                                                 # Obra.feature:37
-    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:290
+    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:305
       java.lang.NullPointerException: Cannot get property 'cpfResponsavel' on null object
-      	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:141)
+      	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:138)
       	at steps.TestDataAndOperations$createObra.call(Unknown Source)
-      	at ObraSteps$_run_closure33.doCall(ObraSteps.groovy:292)
+      	at ObraSteps$_run_closure35.doCall(ObraSteps.groovy:307)
       	at ✽.Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"(Obra.feature:38)
 
-    When eu tentar verificar o status da obra com o nome "Praca atrasada"                                   # ObraSteps.groovy:297
-    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"                             # ObraSteps.groovy:302
+    When eu tentar verificar o status da obra com o nome "Praca atrasada"                                   # ObraSteps.groovy:312
+    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"                             # ObraSteps.groovy:317
 
 --Output from Adicionar obra com data de termino anterior a data corrente--
   Scenario: Adicionar obra com data de termino anterior a data de início         # Obra.feature:42
@@ -84,18 +84,25 @@ Feature: Obra
     When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:25
     Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal" # ObraSteps.groovy:51
 
---Output from Receber atualizacoes da obra por email--
+--Output from Devolver a taxa de obras com orçamentos estourados de um determinado político--
   Scenario: Devolver a taxa de obras atrasadas de um determinado político                            # Obra.feature:66
     Given que o sistema tem um politico com o cpf "98765432109"                                      # ObraSteps.groovy:241
     And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                        # ObraSteps.groovy:247
     And o sistema tem "1" obra atrasada associada ao politico com o cpf "98765432109"                # ObraSteps.groovy:252
     Then o percentual de obras atrasadas para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:257
 
+--Output from Receber atualizacoes da obra por email--
+  Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado político                          # Obra.feature:72
+    Given que o sistema tem um politico com o cpf "98765432109"                                                    # ObraSteps.groovy:241
+    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                                      # ObraSteps.groovy:247
+    And o sistema tem "1" obra com orçamento estourado associada ao politico com o cpf "98765432109"               # ObraSteps.groovy:268
+    Then o percentual de obras com orcamento estourado para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:273
+
 --Output from Visualizar obra--
   #GUI
-  Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:73
+  Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:79
     Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:138
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137053500987652$_run_closure1@444c1ad1'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439574500987652$_run_closure1@1740a2c1'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -114,15 +121,15 @@ Feature: Obra
       	at geb.Browser.to(Browser.groovy:412)
       	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
       	at ObraSteps$_run_closure15.doCall(ObraSteps.groovy:141)
-      	at ✽.Given eu estou visualizando a obra "Praca do arsenal"(Obra.feature:74)
+      	at ✽.Given eu estou visualizando a obra "Praca do arsenal"(Obra.feature:80)
       Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
       	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
       	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script1466885137053500987652$_run_closure1.doCall(script1466885137053500987652.groovy:8)
-      	at script1466885137053500987652$_run_closure1.doCall(script1466885137053500987652.groovy)
+      	at script1466887439574500987652$_run_closure1.doCall(script1466887439574500987652.groovy:8)
+      	at script1466887439574500987652$_run_closure1.doCall(script1466887439574500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -193,9 +200,9 @@ Feature: Obra
     Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com" # ObraSteps.groovy:160
 
 --Output from Nova pagina de obra--
-  Scenario: Visualizar obra                                                                            # Obra.feature:79
+  Scenario: Visualizar obra                                                                            # Obra.feature:85
     Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:108
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137263500987652$_run_closure1@7f4c6d1d'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439981500987652$_run_closure1@79203885'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -214,15 +221,15 @@ Feature: Obra
       	at geb.Browser.to(Browser.groovy:412)
       	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
       	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:111)
-      	at ✽.Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"(Obra.feature:80)
+      	at ✽.Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"(Obra.feature:86)
       Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
       	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
       	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script1466885137263500987652$_run_closure1.doCall(script1466885137263500987652.groovy:8)
-      	at script1466885137263500987652$_run_closure1.doCall(script1466885137263500987652.groovy)
+      	at script1466887439981500987652$_run_closure1.doCall(script1466887439981500987652.groovy:8)
+      	at script1466887439981500987652$_run_closure1.doCall(script1466887439981500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -291,9 +298,9 @@ Feature: Obra
     When o usuario seleciona a obra "Praca do arsenal"                                                 # ObraSteps.groovy:115
     Then o sistema exibe os detalhes da obra "Praca do arsenal"                                        # ObraSteps.groovy:122
 
-  Scenario: Nova pagina de obra                                                                         # Obra.feature:84
-    Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:320
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137372500987652$_run_closure1@42def239'
+  Scenario: Nova pagina de obra                                                                         # Obra.feature:90
+    Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:335
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887440143500987652$_run_closure1@3d07fa1d'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -311,16 +318,16 @@ Feature: Obra
       	at geb.Browser$to$1.callCurrent(Unknown Source)
       	at geb.Browser.to(Browser.groovy:412)
       	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-      	at ObraSteps$_run_closure36.doCall(ObraSteps.groovy:322)
-      	at ✽.Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras(Obra.feature:85)
+      	at ObraSteps$_run_closure38.doCall(ObraSteps.groovy:337)
+      	at ✽.Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras(Obra.feature:91)
       Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
       	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
       	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script1466885137372500987652$_run_closure1.doCall(script1466885137372500987652.groovy:8)
-      	at script1466885137372500987652$_run_closure1.doCall(script1466885137372500987652.groovy)
+      	at script1466887440143500987652$_run_closure1.doCall(script1466887440143500987652.groovy:8)
+      	at script1466887440143500987652$_run_closure1.doCall(script1466887440143500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -338,7 +345,7 @@ Feature: Obra
       	at geb.Browser$to$1.callCurrent(Unknown Source)
       	at geb.Browser.to(Browser.groovy:412)
       	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-      	at ObraSteps$_run_closure36.doCall(ObraSteps.groovy:322)
+      	at ObraSteps$_run_closure38.doCall(ObraSteps.groovy:337)
       	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
       	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
       	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
@@ -387,9 +394,9 @@ Feature: Obra
       	at gant.Gant.executeTargets(Gant.groovy:590)
 
     When eu seleciono a opcao "Cadastrar"                                                               # ObraSteps.groovy:148
-    And eu tento cadastrar a obra com o nome "Praca do Arsenal"                                         # ObraSteps.groovy:326
-    And seleciono a opcao "Salvar"                                                                      # ObraSteps.groovy:329
-    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"                              # ObraSteps.groovy:332
+    And eu tento cadastrar a obra com o nome "Praca do Arsenal"                                         # ObraSteps.groovy:341
+    And seleciono a opcao "Salvar"                                                                      # ObraSteps.groovy:344
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"                              # ObraSteps.groovy:347
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
 
@@ -405,33 +412,35 @@ Feature: Obra
 --Output from Atualizar nome de obra com nome já existente--
 --Output from Adicionar obra de um politico inexistente--
 --Output from Devolver a taxa de obras atrasadas de um determinado político--
+--Output from Devolver a taxa de obras com orçamentos estourados de um determinado político--
 --Output from Receber atualizacoes da obra por email--
 --Output from Visualizar obra--
 --Output from Nova pagina de obra--------------- ---------------- ---------------
 
-Testcase: Adicionar obra nao existente took 0,859 sec
-Testcase: Buscar percentual de obras atrasadas took 0,084 sec
-Testcase: Buscar percentual de obras com orcamento estourado took 0,093 sec
-Testcase: Adicionar obra existente took 0,226 sec
-Testcase: Atualizar obra took 0,14 sec
-Testcase: Remover obra existente took 0,155 sec
-Testcase: Verificar status andamento obra took 0,019 sec
+Testcase: Adicionar obra nao existente took 0,909 sec
+Testcase: Buscar percentual de obras atrasadas took 0,087 sec
+Testcase: Buscar percentual de obras com orcamento estourado took 0,089 sec
+Testcase: Adicionar obra existente took 0,177 sec
+Testcase: Atualizar obra took 0,144 sec
+Testcase: Remover obra existente took 0,184 sec
+Testcase: Verificar status andamento obra took 0,023 sec
 	Caused an ERROR
 Cannot get property 'cpfResponsavel' on null object
 java.lang.NullPointerException: Cannot get property 'cpfResponsavel' on null object
-	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:141)
-	at ObraSteps$_run_closure33.doCall(ObraSteps.groovy:292)
+	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:138)
+	at ObraSteps$_run_closure35.doCall(ObraSteps.groovy:307)
 	at ✽.Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"(Obra.feature:38)
 
-Testcase: Adicionar obra com data de termino anterior a data de início took 0,183 sec
-Testcase: Adicionar obra com data de termino anterior a data corrente took 0,194 sec
-Testcase: Atualizar nome de obra com nome já existente took 0,182 sec
-Testcase: Adicionar obra de um politico inexistente took 0,147 sec
-Testcase: Devolver a taxa de obras atrasadas de um determinado político took 0,078 sec
-Testcase: Receber atualizacoes da obra por email took 0,133 sec
+Testcase: Adicionar obra com data de termino anterior a data de início took 0,132 sec
+Testcase: Adicionar obra com data de termino anterior a data corrente took 0,119 sec
+Testcase: Atualizar nome de obra com nome já existente took 0,118 sec
+Testcase: Adicionar obra de um politico inexistente took 0,163 sec
+Testcase: Devolver a taxa de obras atrasadas de um determinado político took 0,163 sec
+Testcase: Devolver a taxa de obras com orçamentos estourados de um determinado político took 0,162 sec
+Testcase: Receber atualizacoes da obra por email took 0,247 sec
 	Caused an ERROR
-failed to create driver from callback 'script1466885137053500987652$_run_closure1@444c1ad1'
-geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137053500987652$_run_closure1@444c1ad1'
+failed to create driver from callback 'script1466887439574500987652$_run_closure1@1740a2c1'
+geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439574500987652$_run_closure1@1740a2c1'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -446,14 +455,14 @@ geb.driver.DriverCreationException: failed to create driver from callback 'scrip
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
 	at ObraSteps$_run_closure15.doCall(ObraSteps.groovy:141)
-	at ✽.Given eu estou visualizando a obra "Praca do arsenal"(Obra.feature:74)
+	at ✽.Given eu estou visualizando a obra "Praca do arsenal"(Obra.feature:80)
 Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
 	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
 	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script1466885137053500987652$_run_closure1.doCall(script1466885137053500987652.groovy:8)
+	at script1466887439574500987652$_run_closure1.doCall(script1466887439574500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -487,8 +496,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 
 Testcase: Visualizar obra took 0,031 sec
 	Caused an ERROR
-failed to create driver from callback 'script1466885137263500987652$_run_closure1@7f4c6d1d'
-geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137263500987652$_run_closure1@7f4c6d1d'
+failed to create driver from callback 'script1466887439981500987652$_run_closure1@79203885'
+geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439981500987652$_run_closure1@79203885'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -503,14 +512,14 @@ geb.driver.DriverCreationException: failed to create driver from callback 'scrip
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
 	at ObraSteps$_run_closure12.doCall(ObraSteps.groovy:111)
-	at ✽.Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"(Obra.feature:80)
+	at ✽.Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"(Obra.feature:86)
 Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
 	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
 	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script1466885137263500987652$_run_closure1.doCall(script1466885137263500987652.groovy:8)
+	at script1466887439981500987652$_run_closure1.doCall(script1466887439981500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -542,10 +551,10 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
 	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
 
-Testcase: Nova pagina de obra took 0,008 sec
+Testcase: Nova pagina de obra took 0,013 sec
 	Caused an ERROR
-failed to create driver from callback 'script1466885137372500987652$_run_closure1@42def239'
-geb.driver.DriverCreationException: failed to create driver from callback 'script1466885137372500987652$_run_closure1@42def239'
+failed to create driver from callback 'script1466887440143500987652$_run_closure1@3d07fa1d'
+geb.driver.DriverCreationException: failed to create driver from callback 'script1466887440143500987652$_run_closure1@3d07fa1d'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -559,15 +568,15 @@ geb.driver.DriverCreationException: failed to create driver from callback 'scrip
 	at geb.Browser.to(Browser.groovy:434)
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-	at ObraSteps$_run_closure36.doCall(ObraSteps.groovy:322)
-	at ✽.Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras(Obra.feature:85)
+	at ObraSteps$_run_closure38.doCall(ObraSteps.groovy:337)
+	at ✽.Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras(Obra.feature:91)
 Caused by: java.lang.IllegalStateException: The driver executable does not exist: C:\Users\thayo\Documents\GitHub\ObrasPublicas\chromedrivers\chromedrivermac
 	at com.google.common.base.Preconditions.checkState(Preconditions.java:177)
 	at org.openqa.selenium.remote.service.DriverService.checkExecutable(DriverService.java:117)
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script1466885137372500987652$_run_closure1.doCall(script1466885137372500987652.groovy:8)
+	at script1466887440143500987652$_run_closure1.doCall(script1466887440143500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -581,7 +590,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at geb.Browser.to(Browser.groovy:434)
 	at geb.Browser.to(Browser.groovy:412)
 	at geb.binding.BindingUpdater$InvocationForwarding.doCall(BindingUpdater.groovy:72)
-	at ObraSteps$_run_closure36.doCall(ObraSteps.groovy:322)
+	at ObraSteps$_run_closure38.doCall(ObraSteps.groovy:337)
 	at cucumber.runtime.groovy.GroovyBackend.invoke(GroovyBackend.java:155)
 	at cucumber.runtime.groovy.GroovyStepDefinition$1.call(GroovyStepDefinition.java:71)
 	at cucumber.runtime.Timeout.timeout(Timeout.java:13)

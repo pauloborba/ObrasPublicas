@@ -260,6 +260,21 @@ Then(~'^o percentual de obras atrasadas para o politico com o cpf "([^"]*)" é d
 		assert porcetagem == qtd
 }
 
+//Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado político
+//Given que o sistema tem um politico com o cpf "98765432109"
+//And o sistema tem "2" obras associada ao politico com o cpf "98765432109"
+//And o sistema tem "1" obra com orçamento estourado associada ao politico com o cpf "98765432109"
+//Then o percentual de obras com orcamento estourado para o politico com o cpf "98765432109" é de "50" por cento
+And(~'^o sistema tem "([^"]*)" obra com orçamento estourado associada ao politico com o cpf "([^"]*)"$') {
+	int qtdObrasEstouradasPolitico, String cpf ->
+		int qtd = TestDataAndOperations.qtdObrasEstouradasPolitico(cpf)
+		assert qtdObrasEstouradasPolitico == qtd
+}
+Then(~'^o percentual de obras com orcamento estourado para o politico com o cpf "([^"]*)" é de "([^"]*)" por cento$'){
+	String cpf, float porcetagem ->
+		float qtd = TestDataAndOperations.taxaObrasEstouradasPolitico(cpf)
+		assert porcetagem == qtd
+}
 
 
 /**
