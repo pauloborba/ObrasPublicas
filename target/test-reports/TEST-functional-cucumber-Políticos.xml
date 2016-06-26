@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="5" hostname="DESKTOP-E7V941A" name="Políticos" tests="7" time="0.792" timestamp="2016-06-25T20:44:00">
+<testsuite errors="0" failures="6" hostname="DESKTOP-E7V941A" name="Políticos" tests="8" time="0.95" timestamp="2016-06-26T14:05:50">
   <properties />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar politico nao existente" time="0.099" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar politico existente" time="0.093" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar político" time="0.151">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar politico nao existente" time="0.118" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar politico existente" time="0.105" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar político" time="0.128">
     <failure message="Undefined Step: Given que exista um politico com nome “Eduardo” e CPF &quot;01234567890”" type="grails.plugin.cucumber.FakeAssertionFailedError">cucumber.runtime.UndefinedStepException: Undefined Step: Given que exista um politico com nome “Eduardo” e CPF &quot;01234567890”
 	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
 	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
@@ -56,7 +56,7 @@
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 </failure>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Remover político existente" time="0.136">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Remover político existente" time="0.098">
     <failure message="Undefined Step: Given o sistema tem um político com nome “Eduardo” e CPF &quot;01234567890”" type="grails.plugin.cucumber.FakeAssertionFailedError">cucumber.runtime.UndefinedStepException: Undefined Step: Given o sistema tem um político com nome “Eduardo” e CPF &quot;01234567890”
 	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
 	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
@@ -109,7 +109,7 @@
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 </failure>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Novo político" time="0.123">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Novo político" time="0.132">
     <failure message="Undefined Step: Given que eu estou no menu “Políticos”" type="grails.plugin.cucumber.FakeAssertionFailedError">cucumber.runtime.UndefinedStepException: Undefined Step: Given que eu estou no menu “Políticos”
 	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
 	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
@@ -213,7 +213,7 @@
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 </failure>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Visualizar político" time="0.085">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Visualizar político" time="0.092">
     <failure message="Undefined Step: Given que o visitante “Guilherme” está no Menu “políticos”" type="grails.plugin.cucumber.FakeAssertionFailedError">cucumber.runtime.UndefinedStepException: Undefined Step: Given que o visitante “Guilherme” está no Menu “políticos”
 	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
 	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
@@ -283,7 +283,7 @@
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 </failure>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Editar informações de um politico" time="0.021">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Editar informações de um politico" time="0.124">
     <failure message="Undefined Step: Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”" type="grails.plugin.cucumber.FakeAssertionFailedError">cucumber.runtime.UndefinedStepException: Undefined Step: Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
 	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
 	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
@@ -353,6 +353,42 @@
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 </failure>
   </testcase>
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Visualizar informações de obras de político" time="0.014">
+    <failure message="Undefined Step: Given que estou visualizando o político com o cpf &quot;98765432109&quot;" type="grails.plugin.cucumber.FakeAssertionFailedError">cucumber.runtime.UndefinedStepException: Undefined Step: Given que estou visualizando o político com o cpf &quot;98765432109&quot;
+	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
+	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
+	at cucumber.runtime.Utils$1.call(Utils.java:37)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+	at cucumber.runtime.Utils.invoke(Utils.java:31)
+	at cucumber.runtime.RuntimeOptions$1.invoke(RuntimeOptions.java:243)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:280)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
+	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
+	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
+	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
+	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
+</failure>
+    <failure message="Undefined Step: Then Consigo ver as taxas de obras atrasadas com orçamento estourado do político com cpf &quot;98765432109&quot;" type="grails.plugin.cucumber.FakeAssertionFailedError">cucumber.runtime.UndefinedStepException: Undefined Step: Then Consigo ver as taxas de obras atrasadas com orçamento estourado do político com cpf &quot;98765432109&quot;
+	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
+	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
+	at cucumber.runtime.Utils$1.call(Utils.java:37)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+	at cucumber.runtime.Utils.invoke(Utils.java:31)
+	at cucumber.runtime.RuntimeOptions$1.invoke(RuntimeOptions.java:243)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:280)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
+	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
+	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
+	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
+	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
+</failure>
+  </testcase>
   <system-out><![CDATA[Feature: Políticos
   As a usuário do sistema
   I want to adicionar, remover, modificar e visualizar políticos no sistema
@@ -400,11 +436,17 @@
     When “Guilherme” tenta visualizar o político  “Anderson”  com o CPF “102.102.152-15”
     Then “Guilherme” conseguirá visualizar as informações
 
+--Output from Visualizar informações de obras de político--
   Scenario: Editar informações de um politico                                                                       # Politico.feature:43
     Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
     When ao  tentar atualizar os dados do político “Eduardo” com cpf “01234567890”
     Then eu recebo a mensagem de confirmação
     And Consigo ver as informações do político cadastrado
+
+  Scenario: Visualizar informações de obras de político                                                    # Politico.feature:49
+    Given que estou visualizando o político com o cpf "98765432109"
+    When seleciono a opcao "Andamento Obras"                                                               # ObraSteps.groovy:344
+    Then Consigo ver as taxas de obras atrasadas com orçamento estourado do político com cpf "98765432109"
 ]]></system-out>
   <system-err><![CDATA[
 --Output from Adicionar politico nao existente--
@@ -413,5 +455,6 @@
 --Output from Remover político existente--
 --Output from Novo político--
 --Output from Visualizar político--
---Output from Editar informações de um politico--]]></system-err>
+--Output from Editar informações de um politico--
+--Output from Visualizar informações de obras de político--]]></system-err>
 </testsuite>

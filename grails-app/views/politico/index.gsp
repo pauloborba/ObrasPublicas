@@ -55,15 +55,17 @@
 						<td>${fieldValue(bean: politicoInstance, field: "partido")}</td>
 
 
-						<td><g:link class="edit" action="edit" resource="${politicoInstance}"><img src="${assetPath(src: 'document-write.png')}" width="50px"/></g:link></td>
+						<td><g:link class="edit" action="edit" resource="${politicoInstance}"><img src="${assetPath(src: 'editIco.png')}" width="50px"/></g:link></td>
 
 						<td>
 							<g:form url="[resource:politicoInstance, action:'delete']" method="DELETE">
 								<g:actionSubmitImage value="${message(code: 'default.button.delete.label', default: 'Delete')}" action="delete"
 													 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"
-													 src="${assetPath(src: 'DeleteRed.png')}" width="50px"/>
+													 src="${assetPath(src: 'deleteIco.png')}" width="50px"/>
 							</g:form>
 						</td>
+						<td><g:link action="taxasAtrasadasPolitico" id="${politicoInstance.id}"> Taxas de atraso </g:link></td>
+						<td><g:link action="taxasEstouradasPolítico" id="${politicoInstance.id}"> Taxas de estouro </g:link></td>
 					</tr>
 				</g:each>
 				</tbody>

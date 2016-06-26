@@ -42,16 +42,10 @@ Feature: Obra
     Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:293
 
 --Output from Adicionar obra com data de termino anterior a data de início--
-  Scenario: Verificar status andamento obra                                                                 # Obra.feature:37
-    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:305
-      java.lang.NullPointerException: Cannot get property 'cpfResponsavel' on null object
-      	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:138)
-      	at steps.TestDataAndOperations$createObra.call(Unknown Source)
-      	at ObraSteps$_run_closure35.doCall(ObraSteps.groovy:307)
-      	at ✽.Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"(Obra.feature:38)
-
-    When eu tentar verificar o status da obra com o nome "Praca atrasada"                                   # ObraSteps.groovy:312
-    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"                             # ObraSteps.groovy:317
+  Scenario: Verificar status andamento obra                                                                   # Obra.feature:37
+    Given que o sistema tem uma obra chamada "Praca do arsenal" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:305
+    When eu tentar verificar o status da obra com o nome "Praca do arsenal"                                   # ObraSteps.groovy:312
+    Then o sistema ira atualizar obra com nome "Praca do arsenal" para "atrasada"                             # ObraSteps.groovy:317
 
 --Output from Adicionar obra com data de termino anterior a data corrente--
   Scenario: Adicionar obra com data de termino anterior a data de início         # Obra.feature:42
@@ -99,7 +93,7 @@ Feature: Obra
   #GUI
   Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:79
     Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:138
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439574500987652$_run_closure1@1740a2c1'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950226500987652$_run_closure1@4575d7f2'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -125,8 +119,8 @@ Feature: Obra
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script1466887439574500987652$_run_closure1.doCall(script1466887439574500987652.groovy:8)
-      	at script1466887439574500987652$_run_closure1.doCall(script1466887439574500987652.groovy)
+      	at script1466949950226500987652$_run_closure1.doCall(script1466949950226500987652.groovy:8)
+      	at script1466949950226500987652$_run_closure1.doCall(script1466949950226500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -199,7 +193,7 @@ Feature: Obra
 --Output from Nova pagina de obra--
   Scenario: Visualizar obra                                                                            # Obra.feature:85
     Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:108
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439981500987652$_run_closure1@79203885'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950612500987652$_run_closure1@2b6968f8'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -225,8 +219,8 @@ Feature: Obra
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script1466887439981500987652$_run_closure1.doCall(script1466887439981500987652.groovy:8)
-      	at script1466887439981500987652$_run_closure1.doCall(script1466887439981500987652.groovy)
+      	at script1466949950612500987652$_run_closure1.doCall(script1466949950612500987652.groovy:8)
+      	at script1466949950612500987652$_run_closure1.doCall(script1466949950612500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -297,7 +291,7 @@ Feature: Obra
 
   Scenario: Nova pagina de obra                                                                         # Obra.feature:90
     Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:335
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887440143500987652$_run_closure1@3d07fa1d'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950729500987652$_run_closure1@7ab31ee8'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -323,8 +317,8 @@ Feature: Obra
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script1466887440143500987652$_run_closure1.doCall(script1466887440143500987652.groovy:8)
-      	at script1466887440143500987652$_run_closure1.doCall(script1466887440143500987652.groovy)
+      	at script1466949950729500987652$_run_closure1.doCall(script1466949950729500987652.groovy:8)
+      	at script1466949950729500987652$_run_closure1.doCall(script1466949950729500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)

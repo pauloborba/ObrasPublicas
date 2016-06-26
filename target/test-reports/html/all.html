@@ -15,14 +15,14 @@
      - All tests </h1>
 <p class="intro">
                         Executed
-                        23
+                        24
                         tests
                     
                         with
-                        4 errors
+                        3 errors
 
                         and
-                        5 failures
+                        6 failures
                         .
                     </p>
 </div>
@@ -51,11 +51,11 @@
 <h2>Pol&iacute;ticos</h2>
 <h3>
                         Executed
-                        7
+                        8
                         tests
                     
                         with
-                        5 failures
+                        6 failures
                         .
                     </h3>
 </div>
@@ -64,7 +64,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar politico nao existente</b>
 </p>
-<p class="summary">Executed in 0.099 seconds.</p>
+<p class="summary">Executed in 0.118 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -74,7 +74,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar politico existente</b>
 </p>
-<p class="summary">Executed in 0.093 seconds.</p>
+<p class="summary">Executed in 0.105 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -84,7 +84,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Atualizar pol&iacute;tico</b>
 </p>
-<p class="summary">Executed in 0.151 seconds.</p>
+<p class="summary">Executed in 0.128 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -161,7 +161,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Remover pol&iacute;tico existente</b>
 </p>
-<p class="summary">Executed in 0.136 seconds.</p>
+<p class="summary">Executed in 0.098 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -238,7 +238,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Novo pol&iacute;tico</b>
 </p>
-<p class="summary">Executed in 0.123 seconds.</p>
+<p class="summary">Executed in 0.132 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -381,7 +381,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Visualizar pol&iacute;tico</b>
 </p>
-<p class="summary">Executed in 0.085 seconds.</p>
+<p class="summary">Executed in 0.092 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -480,7 +480,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Editar informa&ccedil;&otilde;es de um politico</b>
 </p>
-<p class="summary">Executed in 0.021 seconds.</p>
+<p class="summary">Executed in 0.124 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -574,6 +574,61 @@
 </div>
 <div class="clear"></div>
 </div>
+<div class="testcase clearfix failure grid_8 alpha omega" data-name="Visualizar informa&ccedil;&otilde;es de obras de pol&iacute;tico">
+<div class="grid_3 alpha">
+<p>
+<span class="icon failure"></span><b class="testname message failure">Visualizar informa&ccedil;&otilde;es de obras de pol&iacute;tico</b>
+</p>
+<p class="summary">Executed in 0.014 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo">
+<div class="details">
+<p>
+<b class="message">Undefined Step: Given que estou visualizando o pol&iacute;tico com o cpf "98765432109"</b>
+</p>
+<pre>cucumber.runtime.UndefinedStepException: Undefined Step: Given que estou visualizando o pol&iacute;tico com o cpf "98765432109"
+	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
+	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
+	at cucumber.runtime.Utils$1.call(Utils.java:37)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+	at cucumber.runtime.Utils.invoke(Utils.java:31)
+	at cucumber.runtime.RuntimeOptions$1.invoke(RuntimeOptions.java:243)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:280)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
+	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
+	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
+	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
+	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
+</pre>
+</div>
+<div class="details">
+<p>
+<b class="message">Undefined Step: Then Consigo ver as taxas de obras atrasadas com or&ccedil;amento estourado do pol&iacute;tico com cpf "98765432109"</b>
+</p>
+<pre>cucumber.runtime.UndefinedStepException: Undefined Step: Then Consigo ver as taxas de obras atrasadas com or&ccedil;amento estourado do pol&iacute;tico com cpf "98765432109"
+	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
+	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
+	at cucumber.runtime.Utils$1.call(Utils.java:37)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+	at cucumber.runtime.Utils.invoke(Utils.java:31)
+	at cucumber.runtime.RuntimeOptions$1.invoke(RuntimeOptions.java:243)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:280)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
+	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
+	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
+	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
+	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
+</pre>
+</div>
+</div>
+<div class="clear"></div>
+</div>
 <div class="clearfix output footer">
 <div class="sysout">
 <h2>Standard output</h2>
@@ -624,11 +679,17 @@
     When &ldquo;Guilherme&rdquo; tenta visualizar o pol&iacute;tico  &ldquo;Anderson&rdquo;  com o CPF &ldquo;102.102.152-15&rdquo;
     Then &ldquo;Guilherme&rdquo; conseguir&aacute; visualizar as informa&ccedil;&otilde;es
 
+--Output from Visualizar informa&ccedil;&otilde;es de obras de pol&iacute;tico--
   Scenario: Editar informa&ccedil;&otilde;es de um politico                                                                       # Politico.feature:43
     Given que o usu&aacute;rio esta na tela de atualizar pol&iacute;tico visualizando o  pol&iacute;tico &ldquo;Eduardo&rdquo; com cpf &ldquo;01234567890&rdquo;
     When ao  tentar atualizar os dados do pol&iacute;tico &ldquo;Eduardo&rdquo; com cpf &ldquo;01234567890&rdquo;
     Then eu recebo a mensagem de confirma&ccedil;&atilde;o
     And Consigo ver as informa&ccedil;&otilde;es do pol&iacute;tico cadastrado
+
+  Scenario: Visualizar informa&ccedil;&otilde;es de obras de pol&iacute;tico                                                    # Politico.feature:49
+    Given que estou visualizando o pol&iacute;tico com o cpf "98765432109"
+    When seleciono a opcao "Andamento Obras"                                                               # ObraSteps.groovy:344
+    Then Consigo ver as taxas de obras atrasadas com or&ccedil;amento estourado do pol&iacute;tico com cpf "98765432109"
 </pre>
 </div>
 <div class="syserr">
@@ -640,7 +701,8 @@
 --Output from Remover pol&iacute;tico existente--
 --Output from Novo pol&iacute;tico--
 --Output from Visualizar pol&iacute;tico--
---Output from Editar informa&ccedil;&otilde;es de um politico--</pre>
+--Output from Editar informa&ccedil;&otilde;es de um politico--
+--Output from Visualizar informa&ccedil;&otilde;es de obras de pol&iacute;tico--</pre>
 </div>
 </div>
 <div class="clear"></div>
@@ -654,7 +716,7 @@
                         tests
                     
                         with
-                        4 errors
+                        3 errors
                         .
                     </h3>
 </div>
@@ -663,7 +725,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar obra nao existente</b>
 </p>
-<p class="summary">Executed in 0.909 seconds.</p>
+<p class="summary">Executed in 1.031 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -673,7 +735,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Buscar percentual de obras atrasadas</b>
 </p>
-<p class="summary">Executed in 0.087 seconds.</p>
+<p class="summary">Executed in 0.111 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -683,7 +745,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Buscar percentual de obras com orcamento estourado</b>
 </p>
-<p class="summary">Executed in 0.089 seconds.</p>
+<p class="summary">Executed in 0.145 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -693,7 +755,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar obra existente</b>
 </p>
-<p class="summary">Executed in 0.177 seconds.</p>
+<p class="summary">Executed in 0.23 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -703,7 +765,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Atualizar obra</b>
 </p>
-<p class="summary">Executed in 0.144 seconds.</p>
+<p class="summary">Executed in 0.207 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -713,30 +775,19 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Remover obra existente</b>
 </p>
-<p class="summary">Executed in 0.184 seconds.</p>
+<p class="summary">Executed in 0.295 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
 </div>
-<div class="testcase clearfix error grid_8 alpha omega" data-name="Verificar status andamento obra">
+<div class="testcase clearfix success grid_8 alpha omega" data-name="Verificar status andamento obra">
 <div class="grid_3 alpha">
 <p>
-<span class="icon error"></span><b class="testname message error">Verificar status andamento obra</b>
+<span class="icon success"></span><b class="testname message success">Verificar status andamento obra</b>
 </p>
-<p class="summary">Executed in 0.124 seconds.</p>
+<p class="summary">Executed in 0.195 seconds.</p>
 </div>
-<div class="grid_5 omega outputinfo">
-<div class="details">
-<p>
-<b class="message">Cannot get property 'cpfResponsavel' on null object</b>
-</p>
-<pre>java.lang.NullPointerException: Cannot get property 'cpfResponsavel' on null object
-	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:138)
-	at ObraSteps$_run_closure35.doCall(ObraSteps.groovy:307)
-	at ✽.Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"(Obra.feature:38)
-</pre>
-</div>
-</div>
+<div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
 </div>
 <div class="testcase clearfix success grid_8 alpha omega" data-name="Adicionar obra com data de termino anterior a data de in&iacute;cio">
@@ -744,7 +795,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar obra com data de termino anterior a data de in&iacute;cio</b>
 </p>
-<p class="summary">Executed in 0.132 seconds.</p>
+<p class="summary">Executed in 0.145 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -754,7 +805,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar obra com data de termino anterior a data corrente</b>
 </p>
-<p class="summary">Executed in 0.119 seconds.</p>
+<p class="summary">Executed in 0.155 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -764,7 +815,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Atualizar nome de obra com nome j&aacute; existente</b>
 </p>
-<p class="summary">Executed in 0.118 seconds.</p>
+<p class="summary">Executed in 0.191 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -774,7 +825,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar obra de um politico inexistente</b>
 </p>
-<p class="summary">Executed in 0.163 seconds.</p>
+<p class="summary">Executed in 0.156 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -784,7 +835,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Devolver a taxa de obras atrasadas de um determinado pol&iacute;tico</b>
 </p>
-<p class="summary">Executed in 0.163 seconds.</p>
+<p class="summary">Executed in 0.156 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -794,7 +845,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Devolver a taxa de obras com or&ccedil;amentos estourados de um determinado pol&iacute;tico</b>
 </p>
-<p class="summary">Executed in 0.162 seconds.</p>
+<p class="summary">Executed in 0.134 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -804,14 +855,14 @@
 <p>
 <span class="icon error"></span><b class="testname message error">Receber atualizacoes da obra por email</b>
 </p>
-<p class="summary">Executed in 0.38 seconds.</p>
+<p class="summary">Executed in 0.343 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
 <p>
-<b class="message">failed to create driver from callback 'script1466887439574500987652$_run_closure1@1740a2c1'</b>
+<b class="message">failed to create driver from callback 'script1466949950226500987652$_run_closure1@4575d7f2'</b>
 </p>
-<pre>geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439574500987652$_run_closure1@1740a2c1'
+<pre>geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950226500987652$_run_closure1@4575d7f2'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -833,7 +884,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-	at script1466887439574500987652$_run_closure1.doCall(script1466887439574500987652.groovy:8)
+	at script1466949950226500987652$_run_closure1.doCall(script1466949950226500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -874,14 +925,14 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 <p>
 <span class="icon error"></span><b class="testname message error">Visualizar obra</b>
 </p>
-<p class="summary">Executed in 0.127 seconds.</p>
+<p class="summary">Executed in 0.139 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
 <p>
-<b class="message">failed to create driver from callback 'script1466887439981500987652$_run_closure1@79203885'</b>
+<b class="message">failed to create driver from callback 'script1466949950612500987652$_run_closure1@2b6968f8'</b>
 </p>
-<pre>geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439981500987652$_run_closure1@79203885'
+<pre>geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950612500987652$_run_closure1@2b6968f8'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -903,7 +954,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-	at script1466887439981500987652$_run_closure1.doCall(script1466887439981500987652.groovy:8)
+	at script1466949950612500987652$_run_closure1.doCall(script1466949950612500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -944,14 +995,14 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 <p>
 <span class="icon error"></span><b class="testname message error">Nova pagina de obra</b>
 </p>
-<p class="summary">Executed in 0.019 seconds.</p>
+<p class="summary">Executed in 0.016 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
 <p>
-<b class="message">failed to create driver from callback 'script1466887440143500987652$_run_closure1@3d07fa1d'</b>
+<b class="message">failed to create driver from callback 'script1466949950729500987652$_run_closure1@7ab31ee8'</b>
 </p>
-<pre>geb.driver.DriverCreationException: failed to create driver from callback 'script1466887440143500987652$_run_closure1@3d07fa1d'
+<pre>geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950729500987652$_run_closure1@7ab31ee8'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -973,7 +1024,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-	at script1466887440143500987652$_run_closure1.doCall(script1466887440143500987652.groovy:8)
+	at script1466949950729500987652$_run_closure1.doCall(script1466949950729500987652.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -1056,16 +1107,10 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
     Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:293
 
 --Output from Adicionar obra com data de termino anterior a data de in&iacute;cio--
-  Scenario: Verificar status andamento obra                                                                 # Obra.feature:37
-    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:305
-      java.lang.NullPointerException: Cannot get property 'cpfResponsavel' on null object
-      	at steps.TestDataAndOperations.createObra(TestDataAndOperations.groovy:138)
-      	at steps.TestDataAndOperations$createObra.call(Unknown Source)
-      	at ObraSteps$_run_closure35.doCall(ObraSteps.groovy:307)
-      	at ✽.Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"(Obra.feature:38)
-
-    When eu tentar verificar o status da obra com o nome "Praca atrasada"                                   # ObraSteps.groovy:312
-    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"                             # ObraSteps.groovy:317
+  Scenario: Verificar status andamento obra                                                                   # Obra.feature:37
+    Given que o sistema tem uma obra chamada "Praca do arsenal" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:305
+    When eu tentar verificar o status da obra com o nome "Praca do arsenal"                                   # ObraSteps.groovy:312
+    Then o sistema ira atualizar obra com nome "Praca do arsenal" para "atrasada"                             # ObraSteps.groovy:317
 
 --Output from Adicionar obra com data de termino anterior a data corrente--
   Scenario: Adicionar obra com data de termino anterior a data de in&iacute;cio         # Obra.feature:42
@@ -1113,7 +1158,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
   #GUI
   Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:79
     Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:138
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439574500987652$_run_closure1@1740a2c1'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950226500987652$_run_closure1@4575d7f2'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -1139,8 +1184,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-      	at script1466887439574500987652$_run_closure1.doCall(script1466887439574500987652.groovy:8)
-      	at script1466887439574500987652$_run_closure1.doCall(script1466887439574500987652.groovy)
+      	at script1466949950226500987652$_run_closure1.doCall(script1466949950226500987652.groovy:8)
+      	at script1466949950226500987652$_run_closure1.doCall(script1466949950226500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -1213,7 +1258,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 --Output from Nova pagina de obra--
   Scenario: Visualizar obra                                                                            # Obra.feature:85
     Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:108
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887439981500987652$_run_closure1@79203885'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950612500987652$_run_closure1@2b6968f8'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -1239,8 +1284,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-      	at script1466887439981500987652$_run_closure1.doCall(script1466887439981500987652.groovy:8)
-      	at script1466887439981500987652$_run_closure1.doCall(script1466887439981500987652.groovy)
+      	at script1466949950612500987652$_run_closure1.doCall(script1466949950612500987652.groovy:8)
+      	at script1466949950612500987652$_run_closure1.doCall(script1466949950612500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -1311,7 +1356,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 
   Scenario: Nova pagina de obra                                                                         # Obra.feature:90
     Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:335
-      geb.driver.DriverCreationException: failed to create driver from callback 'script1466887440143500987652$_run_closure1@3d07fa1d'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script1466949950729500987652$_run_closure1@7ab31ee8'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -1337,8 +1382,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-      	at script1466887440143500987652$_run_closure1.doCall(script1466887440143500987652.groovy:8)
-      	at script1466887440143500987652$_run_closure1.doCall(script1466887440143500987652.groovy)
+      	at script1466949950729500987652$_run_closure1.doCall(script1466949950729500987652.groovy:8)
+      	at script1466949950729500987652$_run_closure1.doCall(script1466949950729500987652.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)

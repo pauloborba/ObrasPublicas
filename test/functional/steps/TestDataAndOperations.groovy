@@ -57,7 +57,7 @@ class TestDataAndOperations {
         longitude          : 45,
         empresaResponsavel : "Moura Dubeux"//,
         //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
-        ]
+        ],
     ]
 
     static politicos = [

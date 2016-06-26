@@ -35,7 +35,9 @@ class Obra {
 
         return desc
     }
-
+    public String getCpfPoliticoResponsavel(){
+        return this.politicoResponsavel.cpf;
+    }
     public String getDataPlanejadaFormatada(){
         return this.dataPlanejada.getDay() + "/" + this.dataPlanejada.getMonth() + "/" + this.dataPlanejada.getYear()
     }

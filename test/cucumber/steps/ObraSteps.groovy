@@ -299,9 +299,9 @@ Then (~'^o sistema ira remover a obra com nome "([^"]*)"$'){
  * @author = ehmr
  **/
 //Scenario: Verificar status andamento obra
-//	Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "Em dia"
-//	When eu tentar verificar o status da obra com o nome "Praca atrasada"
-//	Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"
+//	Given que o sistema tem uma obra chamada "Praca do arsenal" que esta atrasada mas esta com status "Em dia"
+//	When eu tentar verificar o status da obra com o nome "Praca do arsenal"
+//	Then o sistema ira atualizar obra com nome "Praca do arsenal" para "atrasada"
 Given(~'^que o sistema tem uma obra chamada "([^"]*)" que esta atrasada mas esta com status "([^"]*)"$'){
 	String nomeObra, statusAndamentoObra ->
         TestDataAndOperations.createObra(nomeObra)

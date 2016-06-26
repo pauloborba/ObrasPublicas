@@ -45,3 +45,8 @@ Scenario: Editar informações de um politico
     When ao  tentar atualizar os dados do político “Eduardo” com cpf “01234567890”
     Then eu recebo a mensagem de confirmação
     And Consigo ver as informações do político cadastrado
+
+Scenario: Visualizar informações de obras de político
+    Given que estou visualizando o político com o cpf "98765432109"
+    When seleciono a opcao "Andamento Obras"
+    Then Consigo ver as taxas de obras atrasadas com orçamento estourado do político com cpf "98765432109"
