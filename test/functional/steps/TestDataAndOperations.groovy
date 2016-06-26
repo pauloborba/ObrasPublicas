@@ -286,10 +286,7 @@ class TestDataAndOperations {
                 taxaAtrasada++
             }
         }
-
-        taxaAtrasada=taxaAtrasada/obras.size()
-
-        taxaAtrasada=taxaAtrasada*100
+        taxaAtrasada=(taxaAtrasada/obras.size())*100
 
         return taxaAtrasada
     }
@@ -302,9 +299,7 @@ class TestDataAndOperations {
             }
         }
 
-        taxaEstouro=taxaEstouro/obras.size()
-
-        taxaEstouro=taxaEstouro*100
+        taxaEstouro=(taxaEstouro/obras.size())*100
 
         return taxaEstouro
     }
@@ -320,8 +315,7 @@ class TestDataAndOperations {
                 }
             }
         }
-        taxaAtrasoPolitico = taxaAtrasoPolitico/div
-        taxaAtrasoPolitico = taxaAtrasoPolitico*100
+        taxaAtrasoPolitico = (taxaAtrasoPolitico/div)*100
         return taxaAtrasoPolitico
 
     }
@@ -381,8 +375,7 @@ class TestDataAndOperations {
                 }
             }
         }
-        taxaEstouradaPolitico = taxaEstouradaPolitico/div
-        taxaEstouradaPolitico = taxaEstouradaPolitico*100
+        taxaEstouradaPolitico = (taxaEstouradaPolitico/div)*100
         return taxaEstouradaPolitico
 
     }

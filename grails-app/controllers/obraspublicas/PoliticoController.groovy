@@ -36,10 +36,7 @@ class PoliticoController {
                 }
             }
 
-
-            taxaAtrasada = taxaAtrasada / qtdObras
-
-            taxaAtrasada = taxaAtrasada * 100
+            taxaAtrasada = (taxaAtrasada / qtdObras) * 100
         }
         respond Politico.list(params), model:[taxaAtrasadaPolitico: taxaAtrasada]
     }
@@ -57,10 +54,7 @@ class PoliticoController {
                 }
             }
 
-
-            taxaEstourada = taxaEstourada / qtdObras++;
-
-            taxaEstourada = taxaEstourada * 100
+            taxaEstourada = (taxaEstourada / qtdObras) * 100
         }
         respond Politico.list(params), model:[taxasEstouradasPolitico: taxaEstourada]
     }

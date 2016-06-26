@@ -1,5 +1,5 @@
 Testsuite: Políticos
-Tests run: 8, Failures: 6, Errors: 0, Time elapsed: 0,765 sec
+Tests run: 8, Failures: 6, Errors: 0, Time elapsed: 0,929 sec
 ------------- Standard Output ---------------
 Feature: Políticos
   As a usuário do sistema
@@ -71,9 +71,9 @@ Feature: Políticos
 --Output from Editar informações de um politico--
 --Output from Visualizar informações de obras de político--------------- ---------------- ---------------
 
-Testcase: Adicionar politico nao existente took 0,097 sec
-Testcase: Adicionar politico existente took 0,085 sec
-Testcase: Atualizar político took 0,028 sec
+Testcase: Adicionar politico nao existente took 0,103 sec
+Testcase: Adicionar politico existente took 0,095 sec
+Testcase: Atualizar político took 0,027 sec
 	FAILED
 Undefined Step: Given que exista um politico com nome “Eduardo” e CPF "01234567890”
 cucumber.runtime.UndefinedStepException: Undefined Step: Given que exista um politico com nome “Eduardo” e CPF "01234567890”
@@ -131,7 +131,7 @@ cucumber.runtime.UndefinedStepException: Undefined Step: Then o sistema irá atu
 	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 
-Testcase: Remover político existente took 0,014 sec
+Testcase: Remover político existente took 0,017 sec
 	FAILED
 Undefined Step: Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
 cucumber.runtime.UndefinedStepException: Undefined Step: Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
@@ -304,7 +304,7 @@ cucumber.runtime.UndefinedStepException: Undefined Step: And Consigo ver as info
 	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 
-Testcase: Visualizar político took 0,002 sec
+Testcase: Visualizar político took 0,003 sec
 	FAILED
 Undefined Step: Given que o visitante “Guilherme” está no Menu “políticos”
 cucumber.runtime.UndefinedStepException: Undefined Step: Given que o visitante “Guilherme” está no Menu “políticos”
@@ -381,7 +381,7 @@ cucumber.runtime.UndefinedStepException: Undefined Step: Then “Guilherme” co
 	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 
-Testcase: Editar informações de um politico took 0,002 sec
+Testcase: Editar informações de um politico took 0,003 sec
 	FAILED
 Undefined Step: Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
 cucumber.runtime.UndefinedStepException: Undefined Step: Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
@@ -458,7 +458,7 @@ cucumber.runtime.UndefinedStepException: Undefined Step: And Consigo ver as info
 	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
 	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
 
-Testcase: Visualizar informações de obras de político took 0,002 sec
+Testcase: Visualizar informações de obras de político took 0,003 sec
 	FAILED
 Undefined Step: Given que estou visualizando o político com o cpf "98765432109"
 cucumber.runtime.UndefinedStepException: Undefined Step: Given que estou visualizando o político com o cpf "98765432109"
