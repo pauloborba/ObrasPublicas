@@ -164,9 +164,7 @@ class TestDataAndOperations {
     }
 
     static public void removeObra(String nomeObra){
-        def testObra = Obra.findByNome(nomeObra)
-        def cont = new ObraController()
-        cont.params << [id: testObra.id]
+        def cont = obraId(nomeObra)
         cont.delete()
 
         cont.response.reset()
@@ -194,14 +192,17 @@ class TestDataAndOperations {
     }
 
     static public void sincronizarStatusAndamentoObra(String nomeObra){
-        def testObra = Obra.findByNome(nomeObra)
-        def cont = new ObraController()
-        cont.params << [id: testObra.id]
+        def cont = obraId(nomeObra)
 
         cont.verificarStatusAndamentoObra()
         cont.response.reset()
     }
-
+    static public def obraId(String nomeObra){
+        def testObra = Obra.findByNome(nomeObra)
+        def cont = new ObraController()
+        cont.params << [id: testObra.id]
+        return cont
+    }
     //TODO
     static public boolean verificarStatusAndamentoObra(String nomeObra, String statusAndamentoEsperado){
         def obra = Obra.findByNome(nomeObra)
@@ -324,6 +325,7 @@ class TestDataAndOperations {
         return taxaAtrasoPolitico
 
     }
+
     static public int qtdObrasAtrasadasPolitico(String cpf){
         int obrasAtrasoPolitico = 0
 
@@ -368,20 +370,20 @@ class TestDataAndOperations {
     }
 
     static public float taxaObrasEstouradasPolitico(String cpf){
-        float taxaAtrasoPolitico = 0
+        float taxaEstouradaPolitico = 0
         int div = 0;
         for(int i = 0; i < politicoObra.size(); i++){
             if(politicoObra.get(i).cpfResponsavel == cpf){
                 def ob = findObraByNome(politicoObra.get(i).nomeObra);
                 div++;
                 if(ob.precoFinal>ob.precoPlanejado){
-                    taxaAtrasoPolitico++;
+                    taxaEstouradaPolitico++;
                 }
             }
         }
-        taxaAtrasoPolitico = taxaAtrasoPolitico/div
-        taxaAtrasoPolitico = taxaAtrasoPolitico*100
-        return taxaAtrasoPolitico
+        taxaEstouradaPolitico = taxaEstouradaPolitico/div
+        taxaEstouradaPolitico = taxaEstouradaPolitico*100
+        return taxaEstouradaPolitico
 
     }
 
