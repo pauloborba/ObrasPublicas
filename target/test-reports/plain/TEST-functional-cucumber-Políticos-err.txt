@@ -4,6 +4,5 @@
 --Output from Atualizar político--
 --Output from Remover político existente--
 --Output from Novo político--
---Output from Visualizar político--
 --Output from Editar informações de um politico--
---Output from Visualizar informações de obras de político--
+--Output from Visualizar político--

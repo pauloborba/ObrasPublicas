@@ -1,6 +1,8 @@
 import obraspublicas.*
 import steps.TestDataAndOperations
 import static cucumber.api.groovy.EN.*
+import pages.PoliticoListPage
+import pages.PoliticoShowPage
 
 
 //#CONTROLLER
@@ -80,4 +82,33 @@ Then(~'^o sistema nao ira cadastrar o politico de CPF "([^"]*)"$'){
     String cpf ->
         politicos = Politico.findAllByCpf(cpf)
         assert politicos.size() == 1
+}
+/************
+ tpa
+ ******/
+
+//Scenario: Visualizar político
+//Given que o usuario esta no menu de político e quer visualizar os detalhes do político com o cpf "98765432109"
+//When o usuario seleciona o político com o cpf "98765432109"
+//Then o sistema exibe os detalhes do político com o cpf "98765432109"
+
+
+Given(~'^que o usuario esta no menu de político e quer visualizar os detalhes do político com o cpf "([^"]*)"$') {
+    String cpf ->
+        TestDataAndOperations.createPolitico(cpf)
+        to PoliticoListPage
+        at PoliticoListPage
+}
+
+When(~'^o usuario seleciona o político com o cpf "([^"]*)"$') {
+    String cpf ->
+        at PoliticoListPage
+        assert page.checkPoliticoAtList(cpf) == true
+        page.selectPoliticoAtList(cpf)
+}
+
+Then(~'^o sistema exibe os detalhes do político com o cpf "([^"]*)"$'){
+    String cpf ->
+        at PoliticoShowPage
+        assert page.verifyCpfPolitico(cpf) == true
 }

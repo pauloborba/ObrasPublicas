@@ -34,19 +34,13 @@ Feature: Políticos
     Then eu recebo a mensagem de confirmação
     And Consigo ver as informações do político cadastrado
 
-  Scenario: Visualizar político
-    Given que o visitante “Guilherme” está no Menu “políticos”
-    And o político  “Anderson”  com o CPF “102.102.152-15” está armazenado no sistema
-    When “Guilherme” tenta visualizar o político  “Anderson”  com o CPF “102.102.152-15”
-    Then “Guilherme” conseguirá visualizar as informações
-
 Scenario: Editar informações de um politico
     Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
     When ao  tentar atualizar os dados do político “Eduardo” com cpf “01234567890”
     Then eu recebo a mensagem de confirmação
     And Consigo ver as informações do político cadastrado
 
-Scenario: Visualizar informações de obras de político
-    Given que estou visualizando o político com o cpf "98765432109"
-    When seleciono a opcao "Andamento Obras"
-    Then Consigo ver as taxas de obras atrasadas com orçamento estourado do político com cpf "98765432109"
+Scenario: Visualizar político
+    Given que o usuario esta no menu de político e quer visualizar os detalhes do político com o cpf "98765432109"
+    When o usuario seleciona o político com o cpf "98765432109"
+    Then o sistema exibe os detalhes do político com o cpf "98765432109"

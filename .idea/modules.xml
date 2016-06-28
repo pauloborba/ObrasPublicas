@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ObrasPublicas.iml" filepath="$PROJECT_DIR$/ObrasPublicas.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ObrasPublicas-grailsPlugins.iml" filepath="$PROJECT_DIR$/ObrasPublicas-grailsPlugins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ObrasPublicas-master.iml" filepath="$PROJECT_DIR$/ObrasPublicas-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ObrasPublicas-master-grailsPlugins.iml" filepath="$PROJECT_DIR$/ObrasPublicas-master-grailsPlugins.iml" />
     </modules>
   </component>
 </project>

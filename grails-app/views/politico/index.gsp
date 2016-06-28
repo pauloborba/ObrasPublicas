@@ -41,8 +41,8 @@
 
 				<g:each in="${politicoInstanceList}" status="i" var="politicoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td>${fieldValue(bean: politicoInstance, field: "cpf")}</td>
+
+						<td><g:link action="show" id="${politicoInstance.id}">${fieldValue(bean: politicoInstance, field: "cpf")}</g:link></td>
 					
 						<td>${fieldValue(bean: politicoInstance, field: "nome")}</td>
 					
