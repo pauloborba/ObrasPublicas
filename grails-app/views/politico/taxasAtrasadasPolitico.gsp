@@ -15,9 +15,9 @@
         <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
     </ul>
 </div>
-<div>
+<div id="list-taxaatraso">
     <h2>
-        O percentual de obras atrasadas desse político é ${taxaAtrasadaPolitico}% ${qqstring} ${bBoolean} ${cpfString}
+        O percentual de obras atrasadas desse político é ${taxaAtrasadaPolitico}%
     </h2>
 </div>
 </body>

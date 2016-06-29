@@ -1,5 +1,5 @@
 Testsuite: Obra
-Tests run: 16, Failures: 2, Errors: 0, Time elapsed: 14,613 sec
+Tests run: 16, Failures: 2, Errors: 0, Time elapsed: 10,839 sec
 ------------- Standard Output ---------------
 Feature: Obra
   As a usuario do sistema
@@ -144,26 +144,26 @@ Feature: Obra
 --Output from Adicionar obra de um politico inexistente--
 --Output from Devolver a taxa de obras atrasadas de um determinado político--
 --Output from Devolver a taxa de obras com orçamentos estourados de um determinado político--
---Output from Receber atualizacoes da obra por email--Starting ChromeDriver 2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4) on port 21268
+--Output from Receber atualizacoes da obra por email--Starting ChromeDriver 2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4) on port 14819
 Only local connections are allowed.
 
 --Output from Visualizar obra--
 --Output from Nova pagina de obra--------------- ---------------- ---------------
 
-Testcase: Adicionar obra nao existente took 0,83 sec
-Testcase: Buscar percentual de obras atrasadas took 0,088 sec
-Testcase: Buscar percentual de obras com orcamento estourado took 0,085 sec
-Testcase: Adicionar obra existente took 0,13 sec
-Testcase: Atualizar obra took 0,111 sec
+Testcase: Adicionar obra nao existente took 0,831 sec
+Testcase: Buscar percentual de obras atrasadas took 0,093 sec
+Testcase: Buscar percentual de obras com orcamento estourado took 0,086 sec
+Testcase: Adicionar obra existente took 0,133 sec
+Testcase: Atualizar obra took 0,112 sec
 Testcase: Remover obra existente took 0,151 sec
-Testcase: Verificar status andamento obra took 0,127 sec
-Testcase: Adicionar obra com data de termino anterior a data de início took 0,104 sec
-Testcase: Adicionar obra com data de termino anterior a data corrente took 0,102 sec
-Testcase: Atualizar nome de obra com nome já existente took 0,106 sec
-Testcase: Adicionar obra de um politico inexistente took 0,098 sec
-Testcase: Devolver a taxa de obras atrasadas de um determinado político took 0,086 sec
+Testcase: Verificar status andamento obra took 0,126 sec
+Testcase: Adicionar obra com data de termino anterior a data de início took 0,103 sec
+Testcase: Adicionar obra com data de termino anterior a data corrente took 0,105 sec
+Testcase: Atualizar nome de obra com nome já existente took 0,108 sec
+Testcase: Adicionar obra de um politico inexistente took 0,099 sec
+Testcase: Devolver a taxa de obras atrasadas de um determinado político took 0,089 sec
 Testcase: Devolver a taxa de obras com orçamentos estourados de um determinado político took 0,088 sec
-Testcase: Receber atualizacoes da obra por email took 10,19 sec
+Testcase: Receber atualizacoes da obra por email took 6,468 sec
 	FAILED
 assert false
 
@@ -175,8 +175,8 @@ assert false
 	at ObraSteps$_run_closure18.doCall(ObraSteps.groovy:164)
 	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com"(Obra.feature:83)
 
-Testcase: Visualizar obra took 1,54 sec
-Testcase: Nova pagina de obra took 0,258 sec
+Testcase: Visualizar obra took 1,42 sec
+Testcase: Nova pagina de obra took 0,302 sec
 	FAILED
 assert false
 

@@ -35,16 +35,19 @@
 </nav>
 </div>
 <div class="clear"></div>
-<div class="testsuite failure">
+<div class="testsuite error">
 <div class="header">
 <h2>Pol&iacute;ticos</h2>
 <h3>
                         Executed
-                        7
+                        8
                         tests
                     
                         with
-                        4 failures
+                        one error
+
+                        and
+                        5 failures
                         .
                     </h3>
 </div>
@@ -53,7 +56,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar politico nao existente</b>
 </p>
-<p class="summary">Executed in 0.095 seconds.</p>
+<p class="summary">Executed in 0.114 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -63,7 +66,7 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Adicionar politico existente</b>
 </p>
-<p class="summary">Executed in 0.096 seconds.</p>
+<p class="summary">Executed in 0.089 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
 <div class="clear"></div>
@@ -73,7 +76,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Atualizar pol&iacute;tico</b>
 </p>
-<p class="summary">Executed in 0.094 seconds.</p>
+<p class="summary">Executed in 0.104 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -353,7 +356,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Remover pol&iacute;tico existente</b>
 </p>
-<p class="summary">Executed in 0.089 seconds.</p>
+<p class="summary">Executed in 0.088 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -631,7 +634,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Novo pol&iacute;tico</b>
 </p>
-<p class="summary">Executed in 0.096 seconds.</p>
+<p class="summary">Executed in 0.091 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -1176,7 +1179,7 @@
 <p>
 <span class="icon failure"></span><b class="testname message failure">Editar informa&ccedil;&otilde;es de um politico</b>
 </p>
-<p class="summary">Executed in 0.089 seconds.</p>
+<p class="summary">Executed in 0.088 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo">
 <div class="details">
@@ -1543,9 +1546,120 @@
 <p>
 <span class="icon success"></span><b class="testname message success">Visualizar pol&iacute;tico</b>
 </p>
-<p class="summary">Executed in 2.689 seconds.</p>
+<p class="summary">Executed in 2.756 seconds.</p>
 </div>
 <div class="grid_5 omega outputinfo"></div>
+<div class="clear"></div>
+</div>
+<div class="testcase clearfix error grid_8 alpha omega" data-name="Visualizar taxa de atraso de obras de um pol&iacute;tico">
+<div class="grid_3 alpha">
+<p>
+<span class="icon error"></span><b class="testname message error">Visualizar taxa de atraso de obras de um pol&iacute;tico</b>
+</p>
+<p class="summary">Executed in 0.238 seconds.</p>
+</div>
+<div class="grid_5 omega outputinfo">
+<div class="details">
+<p>
+<b class="message">No signature of method: PoliticoSteps.dep() is applicable for argument types: (java.util.ArrayList) values: [[[nomeObra:Ilha do Retiro, cpfResponsavel:98765432109], [nomeObra:Praca do arsenal, ...]]]
+Possible solutions: dump(), grep(), grep(java.lang.Object), run(), run(), any()</b>
+</p>
+<pre>groovy.lang.MissingMethodException: No signature of method: PoliticoSteps.dep() is applicable for argument types: (java.util.ArrayList) values: [[[nomeObra:Ilha do Retiro, cpfResponsavel:98765432109], [nomeObra:Praca do arsenal, ...]]]
+Possible solutions: dump(), grep(), grep(java.lang.Object), run(), run(), any()
+	at PoliticoSteps$_run_closure16.doCall(PoliticoSteps.groovy:131)
+	at ✽.And existe "2" obra associada ao pol&iacute;tico com o cpf "98765432109"(Politico.feature:50)
+</pre>
+</div>
+<div class="details">
+<p>
+<b class="message">Undefined Step: And existe "1" obra atrasada associada ao pol&iacute;tico com cpf "98765432109"</b>
+</p>
+<pre>cucumber.runtime.UndefinedStepException: Undefined Step: And existe "1" obra atrasada associada ao pol&iacute;tico com cpf "98765432109"
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:77)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:102)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:190)
+	at grails.plugin.cucumber.CucumberFormatter.resultUndefined(CucumberFormatter.groovy:250)
+	at grails.plugin.cucumber.CucumberFormatter.result(CucumberFormatter.groovy:215)
+	at cucumber.runtime.Utils$1.call(Utils.java:37)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:13)
+	at cucumber.runtime.Utils.invoke(Utils.java:31)
+	at cucumber.runtime.RuntimeOptions$1.invoke(RuntimeOptions.java:243)
+	at com.sun.proxy.$Proxy42.result(Unknown Source)
+	at cucumber.runtime.Runtime.runStep(Runtime.java:280)
+	at cucumber.runtime.model.StepContainer.runStep(StepContainer.java:44)
+	at cucumber.runtime.model.StepContainer.runSteps(StepContainer.java:39)
+	at cucumber.runtime.model.CucumberScenario.run(CucumberScenario.java:48)
+	at cucumber.runtime.model.CucumberFeature.run(CucumberFeature.java:163)
+	at cucumber.runtime.model.CucumberFeature$run$0.call(Unknown Source)
+	at grails.plugin.cucumber.Cucumber$_run_closure2.doCall(Cucumber.groovy:59)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016)
+	at groovy.lang.Closure.call(Closure.java:423)
+	at groovy.lang.Closure.call(Closure.java:439)
+	at org.codehaus.groovy.runtime.DefaultGroovyMethods.each(DefaultGroovyMethods.java:1379)
+	at org.codehaus.groovy.runtime.DefaultGroovyMethods.each(DefaultGroovyMethods.java:1372)
+	at org.codehaus.groovy.runtime.dgm$149.invoke(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoMetaMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:271)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:53)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+	at grails.plugin.cucumber.Cucumber.run(Cucumber.groovy:58)
+	at grails.plugin.cucumber.Cucumber$run$1.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+	at grails.plugin.cucumber.CucumberTestType.runFeatures(CucumberTestType.groovy:148)
+	at grails.plugin.cucumber.CucumberTestType.this$3$runFeatures(CucumberTestType.groovy)
+	at grails.plugin.cucumber.CucumberTestType$this$3$runFeatures$3.callCurrent(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:133)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:141)
+	at grails.plugin.cucumber.CucumberTestType.doRun(CucumberTestType.groovy:58)
+	at org.codehaus.groovy.grails.test.support.GrailsTestTypeSupport.run(GrailsTestTypeSupport.groovy:121)
+	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runTests(GrailsProjectTestRunner.groovy:415)
+	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.processTests(GrailsProjectTestRunner.groovy:395)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1152)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.callCurrent(PogoMetaClassSite.java:66)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:133)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:141)
+	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner$_runAllTests_closure7.doCall(GrailsProjectTestRunner.groovy:313)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:324)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1207)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1110)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1016)
+	at groovy.lang.Closure.call(Closure.java:423)
+	at org.codehaus.groovy.runtime.DefaultGroovyMethods.callClosureForMapEntry(DefaultGroovyMethods.java:4271)
+	at org.codehaus.groovy.runtime.DefaultGroovyMethods.each(DefaultGroovyMethods.java:1408)
+	at org.codehaus.groovy.runtime.dgm$151.invoke(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoMetaMethodSiteNoUnwrapNoCoerce.invoke(PojoMetaMethodSite.java:271)
+	at org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite.call(PojoMetaMethodSite.java:53)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:299)
+	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy:214)
+	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner.runAllTests(GrailsProjectTestRunner.groovy)
+	at org.codehaus.groovy.grails.test.runner.GrailsProjectTestRunner$runAllTests$0.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:108)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+</pre>
+</div>
+</div>
 <div class="clear"></div>
 </div>
 <div class="clearfix output footer">
@@ -1560,14 +1674,14 @@
 --Output from Adicionar politico existente--
   #CONTROLLER
   Scenario: Adicionar politico nao existente                      # Politico.feature:7
-    Given que o sistema nao tem um politico com CPF "01234567891" # PoliticoSteps.groovy:14
-    When eu tentar cadastrar um politico com CPF "01234567891"    # PoliticoSteps.groovy:20
-    Then o sistema ira cadastrar o politico de CPF "01234567891"  # PoliticoSteps.groovy:25
+    Given que o sistema nao tem um politico com CPF "01234567891" # PoliticoSteps.groovy:16
+    When eu tentar cadastrar um politico com CPF "01234567891"    # PoliticoSteps.groovy:22
+    Then o sistema ira cadastrar o politico de CPF "01234567891"  # PoliticoSteps.groovy:27
 
 --Output from Atualizar pol&iacute;tico--
   Scenario: Adicionar politico existente                             # Politico.feature:12
-    Given que o sistema tem um politico de CPF "98765432109"         # PoliticoSteps.groovy:74
-    Then o sistema nao ira cadastrar o politico de CPF "98765432109" # PoliticoSteps.groovy:81
+    Given que o sistema tem um politico de CPF "98765432109"         # PoliticoSteps.groovy:76
+    Then o sistema nao ira cadastrar o politico de CPF "98765432109" # PoliticoSteps.groovy:83
 
 --Output from Remover pol&iacute;tico existente--
   Scenario: Atualizar pol&iacute;tico                                                            # Politico.feature:16
@@ -1598,10 +1712,23 @@
     Then eu recebo a mensagem de confirma&ccedil;&atilde;o
     And Consigo ver as informa&ccedil;&otilde;es do pol&iacute;tico cadastrado
 
+--Output from Visualizar taxa de atraso de obras de um pol&iacute;tico--
   Scenario: Visualizar pol&iacute;tico                                                                                    # Politico.feature:43
-    Given que o usuario esta no menu de pol&iacute;tico e quer visualizar os detalhes do pol&iacute;tico com o cpf "98765432109" # PoliticoSteps.groovy:96
-    When o usuario seleciona o pol&iacute;tico com o cpf "98765432109"                                                    # PoliticoSteps.groovy:103
-    Then o sistema exibe os detalhes do pol&iacute;tico com o cpf "98765432109"                                           # PoliticoSteps.groovy:110
+    Given que o usuario esta no menu de pol&iacute;tico e quer visualizar os detalhes do pol&iacute;tico com o cpf "98765432109" # PoliticoSteps.groovy:98
+    When o usuario seleciona o pol&iacute;tico com o cpf "98765432109"                                                    # PoliticoSteps.groovy:105
+    Then o sistema exibe os detalhes do pol&iacute;tico com o cpf "98765432109"                                           # PoliticoSteps.groovy:112
+
+  Scenario: Visualizar taxa de atraso de obras de um pol&iacute;tico                              # Politico.feature:48
+    Given que o usuario esta no menu de pol&iacute;tico e tem um pol&iacute;tico com o cpf "98765432109" # PoliticoSteps.groovy:123
+    And existe "2" obra associada ao pol&iacute;tico com o cpf "98765432109"                      # PoliticoSteps.groovy:129
+      groovy.lang.MissingMethodException: No signature of method: PoliticoSteps.dep() is applicable for argument types: (java.util.ArrayList) values: [[[nomeObra:Ilha do Retiro, cpfResponsavel:98765432109], [nomeObra:Praca do arsenal, ...]]]
+      Possible solutions: dump(), grep(), grep(java.lang.Object), run(), run(), any()
+      	at PoliticoSteps$_run_closure16.doCall(PoliticoSteps.groovy:131)
+      	at ✽.And existe "2" obra associada ao pol&iacute;tico com o cpf "98765432109"(Politico.feature:50)
+
+    And existe "1" obra atrasada associada ao pol&iacute;tico com cpf "98765432109"
+    When o usu&aacute;rio seleciona a op&ccedil;ao de taxa de atraso                                     # PoliticoSteps.groovy:150
+    Then ele visualizar&aacute; "50" % como sendo a taxa de atraso                                # PoliticoSteps.groovy:154
 </pre>
 </div>
 <div class="syserr">
@@ -1613,7 +1740,8 @@
 --Output from Remover pol&iacute;tico existente--
 --Output from Novo pol&iacute;tico--
 --Output from Editar informa&ccedil;&otilde;es de um politico--
---Output from Visualizar pol&iacute;tico--</pre>
+--Output from Visualizar pol&iacute;tico--
+--Output from Visualizar taxa de atraso de obras de um pol&iacute;tico--</pre>
 </div>
 </div>
 <div class="clear"></div>

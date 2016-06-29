@@ -6,3 +6,4 @@
 --Output from Novo político--
 --Output from Editar informações de um politico--
 --Output from Visualizar político--
+--Output from Visualizar taxa de atraso de obras de um político--

@@ -44,3 +44,10 @@ Scenario: Visualizar político
     Given que o usuario esta no menu de político e quer visualizar os detalhes do político com o cpf "98765432109"
     When o usuario seleciona o político com o cpf "98765432109"
     Then o sistema exibe os detalhes do político com o cpf "98765432109"
+
+Scenario: Visualizar taxa de atraso de obras de um político
+    Given que o usuario esta no menu de político e tem um político com o cpf "98765432109"
+    And existe "2" obra associada ao político com o cpf "98765432109"
+    And existe "1" obra atrasada associada ao político com cpf "98765432109"
+    When o usuário seleciona a opçao de taxa de atraso
+    Then ele visualizará "50" % como sendo a taxa de atraso

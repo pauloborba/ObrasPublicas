@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="2" hostname="Marcos-PC" name="Obra" tests="16" time="14.613" timestamp="2016-06-28T02:40:55">
+<testsuite errors="0" failures="2" hostname="Marcos-PC" name="Obra" tests="16" time="10.839" timestamp="2016-06-29T01:58:08">
   <properties />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra nao existente" time="0.83" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras atrasadas" time="0.088" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras com orcamento estourado" time="0.085" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra existente" time="0.13" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar obra" time="0.111" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra nao existente" time="0.831" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras atrasadas" time="0.093" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras com orcamento estourado" time="0.086" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra existente" time="0.133" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar obra" time="0.112" />
   <testcase classname="grails.plugin.cucumber.CucumberTest" name="Remover obra existente" time="0.151" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Verificar status andamento obra" time="0.127" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra com data de termino anterior a data de início" time="0.104" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra com data de termino anterior a data corrente" time="0.102" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar nome de obra com nome já existente" time="0.105" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra de um politico inexistente" time="0.098" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Devolver a taxa de obras atrasadas de um determinado político" time="0.086" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Verificar status andamento obra" time="0.126" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra com data de termino anterior a data de início" time="0.103" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra com data de termino anterior a data corrente" time="0.105" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar nome de obra com nome já existente" time="0.108" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra de um politico inexistente" time="0.099" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Devolver a taxa de obras atrasadas de um determinado político" time="0.089" />
   <testcase classname="grails.plugin.cucumber.CucumberTest" name="Devolver a taxa de obras com orçamentos estourados de um determinado político" time="0.088" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Receber atualizacoes da obra por email" time="10.278">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Receber atualizacoes da obra por email" time="6.553">
     <failure message="assert false&#xa;" type="grails.plugin.cucumber.FakeAssertionFailedError">Assertion failed: 
 
 assert false
@@ -24,8 +24,8 @@ assert false
 	at ✽.Then eu vejo uma mensagem de confirmacao com o nome &quot;Praca do arsenal&quot; e email &quot;teste@obralimpa.com&quot;(Obra.feature:83)
 </failure>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Visualizar obra" time="1.54" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Nova pagina de obra" time="0.261">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Visualizar obra" time="1.42" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Nova pagina de obra" time="0.305">
     <failure message="assert false&#xa;" type="grails.plugin.cucumber.FakeAssertionFailedError">Assertion failed: 
 
 assert false
@@ -177,7 +177,7 @@ assert false
 --Output from Adicionar obra de um politico inexistente--
 --Output from Devolver a taxa de obras atrasadas de um determinado político--
 --Output from Devolver a taxa de obras com orçamentos estourados de um determinado político--
---Output from Receber atualizacoes da obra por email--Starting ChromeDriver 2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4) on port 21268
+--Output from Receber atualizacoes da obra por email--Starting ChromeDriver 2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4) on port 14819
 Only local connections are allowed.
 
 --Output from Visualizar obra--

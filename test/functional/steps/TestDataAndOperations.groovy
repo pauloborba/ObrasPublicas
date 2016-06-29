@@ -108,6 +108,13 @@ class TestDataAndOperations {
         }
     }
 
+    static public def findObrasPolitico(String obraNome) {
+        return obras.find { obra ->
+            obra.nome == obraNome
+        }
+    }
+
+
     static public def findPoliticoByCPF(String politicoCPF) {
         politicos.find { politico ->
             politico.cpf == politicoCPF
@@ -132,7 +139,17 @@ class TestDataAndOperations {
         }
     }
 
-    static public void createObra(String obraNome) {
+    static public def findPoliticoObraAtrasada(String cpfResponsavel){
+        politicoObra.findAll { poliObra ->
+            poliObra.cpfResponsavel == cpfResponsavel
+        }
+    }
+
+
+
+
+
+        static public void createObra(String obraNome) {
         def poliObra = TestDataAndOperations.findPoliticoObraByNome(obraNome)
 
         if(Politico.findAllByCpf(poliObra.cpfResponsavel).size() == 0)
@@ -335,6 +352,10 @@ class TestDataAndOperations {
 
         return obrasAtrasoPolitico
 
+    }
+    static public boolean checkObraAtrasada(String nomeObra){
+        Obra obra = TestDataAndOperations.findObraByNome(nomeObra)
+        return obra.atrasada
     }
     static public int qtdObrasPolitico(String cpf){
         int qtdObras =0

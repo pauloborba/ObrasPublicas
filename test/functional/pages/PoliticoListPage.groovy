@@ -29,7 +29,11 @@ class PoliticoListPage extends Page{
         def showLink = politicoRow.find('td').find([text:cpf])
         showLink.click()
     }
-
+    def selectTaxaAtrasada() {
+        def politicoRow  = getTableRows()
+        def showLink = politicoRow.find('td').find("taxasAtrasadasPolitico")
+        showLink.click()
+    }
     def getTableRows(){
         def listDiv = $('div', id: 'list-politico')
         def obraTable = (listDiv.find('table'))[0]
