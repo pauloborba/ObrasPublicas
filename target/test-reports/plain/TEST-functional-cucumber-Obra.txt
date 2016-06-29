@@ -1,5 +1,5 @@
 Testsuite: Obra
-Tests run: 16, Failures: 0, Errors: 3, Time elapsed: 4,247 sec
+Tests run: 16, Failures: 0, Errors: 3, Time elapsed: 3,742 sec
 ------------- Standard Output ---------------
 Feature: Obra
   As a usuario do sistema
@@ -96,7 +96,7 @@ Feature: Obra
   #GUI
   Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:79
     Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:138
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14671748491811314453061$_run_closure1@5655fead'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script14671788939311314453061$_run_closure1@6baf91c8'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -122,8 +122,8 @@ Feature: Obra
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14671748491811314453061$_run_closure1.doCall(script14671748491811314453061.groovy:8)
-      	at script14671748491811314453061$_run_closure1.doCall(script14671748491811314453061.groovy)
+      	at script14671788939311314453061$_run_closure1.doCall(script14671788939311314453061.groovy:8)
+      	at script14671788939311314453061$_run_closure1.doCall(script14671788939311314453061.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -196,7 +196,7 @@ Feature: Obra
 --Output from Nova pagina de obra--
   Scenario: Visualizar obra                                                                            # Obra.feature:85
     Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:108
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14671748494761314453061$_run_closure1@1b785995'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script14671788942171314453061$_run_closure1@730b0554'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -222,8 +222,8 @@ Feature: Obra
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14671748494761314453061$_run_closure1.doCall(script14671748494761314453061.groovy:8)
-      	at script14671748494761314453061$_run_closure1.doCall(script14671748494761314453061.groovy)
+      	at script14671788942171314453061$_run_closure1.doCall(script14671788942171314453061.groovy:8)
+      	at script14671788942171314453061$_run_closure1.doCall(script14671788942171314453061.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -294,7 +294,7 @@ Feature: Obra
 
   Scenario: Nova pagina de obra                                                                         # Obra.feature:90
     Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:335
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14671748496061314453061$_run_closure1@6bfc9404'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script14671788943351314453061$_run_closure1@716caf3f'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -320,8 +320,8 @@ Feature: Obra
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14671748496061314453061$_run_closure1.doCall(script14671748496061314453061.groovy:8)
-      	at script14671748496061314453061$_run_closure1.doCall(script14671748496061314453061.groovy)
+      	at script14671788943351314453061$_run_closure1.doCall(script14671788943351314453061.groovy:8)
+      	at script14671788943351314453061$_run_closure1.doCall(script14671788943351314453061.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -411,23 +411,23 @@ Feature: Obra
 --Output from Visualizar obra--
 --Output from Nova pagina de obra--------------- ---------------- ---------------
 
-Testcase: Adicionar obra nao existente took 0,987 sec
-Testcase: Buscar percentual de obras atrasadas took 0,156 sec
-Testcase: Buscar percentual de obras com orcamento estourado took 0,196 sec
-Testcase: Adicionar obra existente took 0,28 sec
-Testcase: Atualizar obra took 0,241 sec
-Testcase: Remover obra existente took 0,291 sec
-Testcase: Verificar status andamento obra took 0,275 sec
+Testcase: Adicionar obra nao existente took 0,901 sec
+Testcase: Buscar percentual de obras atrasadas took 0,11 sec
+Testcase: Buscar percentual de obras com orcamento estourado took 0,131 sec
+Testcase: Adicionar obra existente took 0,192 sec
+Testcase: Atualizar obra took 0,179 sec
+Testcase: Remover obra existente took 0,175 sec
+Testcase: Verificar status andamento obra took 0,142 sec
 Testcase: Adicionar obra com data de termino anterior a data de início took 0,19 sec
-Testcase: Adicionar obra com data de termino anterior a data corrente took 0,154 sec
-Testcase: Atualizar nome de obra com nome já existente took 0,161 sec
-Testcase: Adicionar obra de um politico inexistente took 0,149 sec
+Testcase: Adicionar obra com data de termino anterior a data corrente took 0,196 sec
+Testcase: Atualizar nome de obra com nome já existente took 0,153 sec
+Testcase: Adicionar obra de um politico inexistente took 0,144 sec
 Testcase: Devolver a taxa de obras atrasadas de um determinado político took 0,114 sec
-Testcase: Devolver a taxa de obras com orçamentos estourados de um determinado político took 0,107 sec
-Testcase: Receber atualizacoes da obra por email took 0,188 sec
+Testcase: Devolver a taxa de obras com orçamentos estourados de um determinado político took 0,105 sec
+Testcase: Receber atualizacoes da obra por email took 0,179 sec
 	Caused an ERROR
-failed to create driver from callback 'script14671748491811314453061$_run_closure1@5655fead'
-geb.driver.DriverCreationException: failed to create driver from callback 'script14671748491811314453061$_run_closure1@5655fead'
+failed to create driver from callback 'script14671788939311314453061$_run_closure1@6baf91c8'
+geb.driver.DriverCreationException: failed to create driver from callback 'script14671788939311314453061$_run_closure1@6baf91c8'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -449,7 +449,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script14671748491811314453061$_run_closure1.doCall(script14671748491811314453061.groovy:8)
+	at script14671788939311314453061$_run_closure1.doCall(script14671788939311314453061.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -483,8 +483,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 
 Testcase: Visualizar obra took 0,026 sec
 	Caused an ERROR
-failed to create driver from callback 'script14671748494761314453061$_run_closure1@1b785995'
-geb.driver.DriverCreationException: failed to create driver from callback 'script14671748494761314453061$_run_closure1@1b785995'
+failed to create driver from callback 'script14671788942171314453061$_run_closure1@730b0554'
+geb.driver.DriverCreationException: failed to create driver from callback 'script14671788942171314453061$_run_closure1@730b0554'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -506,7 +506,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script14671748494761314453061$_run_closure1.doCall(script14671748494761314453061.groovy:8)
+	at script14671788942171314453061$_run_closure1.doCall(script14671788942171314453061.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -538,10 +538,10 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at _GrailsTest$_run_closure1.doCall(_GrailsTest.groovy:102)
 	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
 
-Testcase: Nova pagina de obra took 0,01 sec
+Testcase: Nova pagina de obra took 0,009 sec
 	Caused an ERROR
-failed to create driver from callback 'script14671748496061314453061$_run_closure1@6bfc9404'
-geb.driver.DriverCreationException: failed to create driver from callback 'script14671748496061314453061$_run_closure1@6bfc9404'
+failed to create driver from callback 'script14671788943351314453061$_run_closure1@716caf3f'
+geb.driver.DriverCreationException: failed to create driver from callback 'script14671788943351314453061$_run_closure1@716caf3f'
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -563,7 +563,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-	at script14671748496061314453061$_run_closure1.doCall(script14671748496061314453061.groovy:8)
+	at script14671788943351314453061$_run_closure1.doCall(script14671788943351314453061.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
