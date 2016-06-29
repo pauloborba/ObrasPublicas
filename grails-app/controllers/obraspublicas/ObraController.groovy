@@ -8,9 +8,48 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ObraController {
 
-    static allowedMethods = [update: "PUT", delete: "DELETE"]
+    static allowedMethods = [update: "PUT"]
 
     def index(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Obra.list(params), model:[obraInstanceCount: Obra.count()]
+    }
+
+    def relatorioAtrasada() {
+        float taxaAtrasada=0
+        if(Obra.list().size()>0) {
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).isAtrasada()) {
+                    taxaAtrasada++
+                }
+            }
+
+            taxaAtrasada = taxaAtrasada / Obra.list().size()
+
+            taxaAtrasada = taxaAtrasada * 100
+        }
+        respond Obra.list(params), model:[taxaAtrasada: taxaAtrasada]
+    }
+
+    def relatorioEstourada() {
+        float taxaEstouro=0
+        if(Obra.list().size()>0) {
+
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).isEstourada()) {
+                    taxaEstouro++
+                }
+            }
+
+            taxaEstouro = taxaEstouro / Obra.list().size()
+
+            taxaEstouro = taxaEstouro * 100
+        }
+
+        respond Obra.list(params), model:[taxaEstouro: taxaEstouro]
+    }
+
+    def relatorios(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Obra.list(params), model:[obraInstanceCount: Obra.count()]
     }
@@ -23,8 +62,20 @@ class ObraController {
         respond new Obra(params)
     }
 
+    def verificarStatusAndamentoObra(){
+        def obraInstance = Obra.get(params.id)
+
+        obraInstance.verificarStatusAndamentoObra()
+
+        obraInstance.save flush:true
+
+        redirect (action: "index")
+    }
+
+
     @Transactional
-    def save(Obra obraInstance) {
+    def save() {
+        Obra obraInstance = new Obra(params)
         if (obraInstance == null) {
             notFound()
             return
@@ -74,7 +125,8 @@ class ObraController {
     }
 
     @Transactional
-    def delete(Obra obraInstance) {
+    def delete() {
+        def obraInstance = Obra.get(params.id)
 
         if (obraInstance == null) {
             notFound()

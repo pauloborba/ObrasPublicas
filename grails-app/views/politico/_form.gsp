@@ -23,17 +23,17 @@
 <div class="fieldcontain ${hasErrors(bean: politicoInstance, field: 'telefones', 'error')} ">
 	<label for="telefones">
 		<g:message code="politico.telefones.label" default="Telefones" />
-		
+
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${politicoInstance?.telefones?}" var="t">
-    <li><g:link controller="telefone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="telefone" action="create" params="['politico.id': politicoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'telefone.label', default: 'Telefone')])}</g:link>
-</li>
-</ul>
+
+	<ul class="one-to-many">
+		<g:each in="${politicoInstance?.telefones?}" var="t">
+			<li><g:link controller="telefone" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
+		</g:each>
+		<li class="add">
+			<g:link controller="telefone" action="create" params="['politico.id': politicoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'telefone.label', default: 'Telefone')])}</g:link>
+		</li>
+	</ul>
 
 
 </div>
@@ -41,17 +41,17 @@
 <div class="fieldcontain ${hasErrors(bean: politicoInstance, field: 'obras', 'error')} ">
 	<label for="obras">
 		<g:message code="politico.obras.label" default="Obras" />
-		
+
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${politicoInstance?.obras?}" var="o">
-    <li><g:link controller="obra" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="obra" action="create" params="['politico.id': politicoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'obra.label', default: 'Obra')])}</g:link>
-</li>
-</ul>
+
+	<ul class="one-to-many">
+		<g:each in="${politicoInstance?.obras?}" var="o">
+			<li><g:link controller="obra" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+		</g:each>
+		<li class="add">
+			<g:link controller="obra" action="create" params="['politico.id': politicoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'obra.label', default: 'Obra')])}</g:link>
+		</li>
+	</ul>
 
 
 </div>

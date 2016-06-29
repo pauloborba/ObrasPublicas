@@ -1,6 +1,5 @@
 package support
 
-import exemplodaauladetestes.Vaga
 import geb.Browser
 import geb.binding.BindingUpdater
 import obraspublicas.Obra
@@ -17,9 +16,6 @@ Before () {
 }
 
 After () {
-    Vaga.list().each { vaga ->
-        vaga.delete(flush:true)
-    }
     Obra.list().each { obra ->
         obra.delete(flush:true)
     }

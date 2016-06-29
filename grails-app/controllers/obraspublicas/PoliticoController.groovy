@@ -23,9 +23,45 @@ class PoliticoController {
         respond new Politico(params)
     }
 
+    def taxasAtrasadasPolitico(Politico politico) {
+        float taxaAtrasada=0
+        int qtdObras = 0;
+        if(Obra.list().size()>0) {
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).getCpfPoliticoResponsavel().equals(politico.cpf)) {
+                    qtdObras++;
+                    if(Obra.list().get(i).isAtrasada()){
+                        taxaAtrasada++;
+                    }
+                }
+            }
+
+            taxaAtrasada = (taxaAtrasada / qtdObras) * 100
+        }
+        respond Politico.list(params), model:[taxaAtrasadaPolitico: taxaAtrasada]
+    }
+
+    def taxasEstouradasPolítico(Politico politico) {
+        float taxaEstourada=0
+        int qtdObras = 0;
+        if(Obra.list().size()>0) {
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).getCpfPoliticoResponsavel().equals(politico.cpf)) {
+                    qtdObras++;
+                    if(Obra.list().get(i).isEstourada()){
+                        taxaEstourada++;
+                    }
+                }
+            }
+
+            taxaEstourada = (taxaEstourada / qtdObras) * 100
+        }
+        respond Politico.list(params), model:[taxasEstouradasPolitico: taxaEstourada]
+    }
     @Transactional
     def save() {
         Politico politicoInstance = new Politico(params)
+
         if (politicoInstance == null) {
             notFound()
             return
@@ -75,9 +111,7 @@ class PoliticoController {
     }
 
     @Transactional
-    def delete() {
-
-        Politico politicoInstance = new Politico(params)
+    def delete(Politico politicoInstance) {
 
         if (politicoInstance == null) {
             notFound()

@@ -11,6 +11,7 @@ class Pessoa {
 
     static constraints = {
         cpf blank: false
+        cpf unique: true
         nome blank: false
         telefones null: true
     }
