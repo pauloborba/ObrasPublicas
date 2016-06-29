@@ -88,7 +88,7 @@
 		<g:message code="politico.partido.label" default="Partido" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="partido" from="${util.Partido?.values()}" keys="${util.Partido.values()*.name()}" required="" value="${politicoInstance?.partido?.name()}" />
+	<g:textField name="partido" required="" value="${politicoInstance?.partido}"/>
 
 </div>
 

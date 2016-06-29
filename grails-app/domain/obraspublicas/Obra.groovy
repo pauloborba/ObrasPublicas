@@ -1,7 +1,5 @@
 package obraspublicas
 
-import util.Endereco
-
 class Obra {
     String nome
     String descricao

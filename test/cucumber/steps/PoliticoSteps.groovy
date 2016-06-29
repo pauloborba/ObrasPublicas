@@ -23,45 +23,47 @@ When (~'^eu tentar cadastrar um politico com o nome "([^"]*)" e CPF "([^"]*)"$')
 Then(~'^o sistema irá cadastrar o politico de nome "([^"]*)" e CPF "([^"]*)"$'){
     String politicoName, cpf ->
         Politico politico = Politico.findByName(politicoName)
-        assert TestDataAndOperations.compatibleTo(politico, politicoName,cpf)
+        assert TestDataAndOperations.politicoCompatibleTo(politico, cpf)
 }
 
-//Scenario: Atualizar político
-//Given que exista um politico com nome “Eduardo” e CPF "01234567890”
-//When eu tentar atualizar os dados do político  com nome “Eduardo” e CPF "01234567890”
-//Then o sistema irá atualizar o político
-Given(~'^que existe um politico no sistema chamado"([^"]*)" e CPF "([^"]*)"$'){
-    String politicoName, cpf ->
-    Politico politico = Politico.findByCpfAndName(cpf, politicoName)
+//Scenario: Atualizar id de um politico
+//Given que exista um politico com  CPF "01234567890”
+//When eu tentar atualizar o id do político  com CPF "01234567890”
+//Then o olitico de CPF "01234567890" tera seu id atualizado
+Given(~'^o politico com CPF "([^"]*)” esta armazenado no sistema$'){
+    String  cpf ->
+    TestDataAndOperations.createPolitico(cpf)
+    Politico politico = Politico.findByCpf(cpf)
     assert politico != null
 }
 
-When (~'^eu tento atualizar os dados do polico com o nome"([^"]*)" e CPF "([^"]*)"$') {
-    String politicoName, cpf ->                        //tem que verificar
-     TestDataAndOperations.atualizarPolitico(politicoName,cpf)//tem que verificar
+When (~'^eu tentar atualizar o id do politico de CPF "([^"]*)”$') {
+    String cpf ->
+    Long newId
+        TestDataAndOperations.updateIdPolitico(cpf, newId)
 }
 
-Then(~'^o sistema irá atualizar o politico de nome "([^"]*)" e CPF "([^"]*)"$') {
+Then(~'^o politico de CPF "([^"]*)" tera seu id atualizado$') {
+    String cpf->
+        Politico politico= Politico.findByCpf(cpf)
+        assert TestDataAndOperations.politicoCompatibleTo(politico, cpf)
 }
+
 //Scenario: Remover político existente
-//Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
-//When eu tentar remover o político com o nome “Eduardo” e CPF “01234567890”
-//Then o sistema ira mostrar a mensagem politico "Eduardo" de CPF “01234567890” removido com sucesso
-Given(~'^o sistema tem um político chamado "([^"]*)" e CPF "([^"]*)"$'){
-    String politicoName, cpf ->
-    Politico politico = Politico.findByCpfAndName(cpf, politicoName)
-    assert politico != null
+//Given o politico com CPF "01234567890” esta armazenado no sistema
+//When eu tentar remover o político com CPF “01234567890”
+//Then o politico de CPF “01234567890” sera removido
+
+
+When(~'^eu tentar remover o politico de CPF “([^"]*)”$') {
+    String cpf ->
+        TestDataAndOperations.deletePolitico(Cpf)
 }
 
-When (~'^eu tento remover o polico com o nome"([^"]*)" e CPF "([^"]*)"$') {
-    String politicoName, cpf ->                        //tem que verificar
-     TestDataAndOperations.deletarPolitico(politicoName,cpf)//tem que verificar
-}
-
-Then(~'^o sistema irá remover o politico de nome "([^"]*)" e CPF "([^"]*)"$'){
-    String politicoName, cpf ->
-        Politico politico = Politico.findByName(politicoName)
-        assert TestDataAndOperations.compatibleTo(politico, politicoName,cpf)
+Then(~'^o politico de CPF “([^"]*)” sera removido$'){
+    String cpf ->
+        testpolitico = Politico.findAllByCpf(cpf)
+        assert testpolitico == null
 }
 
 //Scenario: Adicionar político existente

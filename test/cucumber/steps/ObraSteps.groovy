@@ -24,7 +24,7 @@ When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
 	Obra obra = Obra.findByNome(nomeObra)
-	assert TestDataAndOperations.compatibleTo(obra, nomeObra)
+	assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
 }
 
 
@@ -123,7 +123,7 @@ When(~'^eu tento atualizar os dados da obra com o nome"([^"]*)"$'){
 Then(~'^o sistema atualiza a obra"([^"]*)"$'){
 	String nomeObra ->
 	Obra obra = Obra.findByName(nomeObra)
-	assert TestDataAndOperations.compatibleTo(obra, nomeObra)
+	assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
 }
 
 When(~'^eu seleciono a opção Compartilhar na Rede Social com o email "([^"]*)" e senha "([^"]*)"$') {

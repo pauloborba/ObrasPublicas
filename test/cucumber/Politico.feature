@@ -1,4 +1,4 @@
-@ignore
+
 Feature: Políticos
   As a usuário do sistema
   I want to adicionar, remover, modificar e visualizar políticos no sistema
@@ -6,25 +6,24 @@ Feature: Políticos
 
 #CONTROLLER
   Scenario: Adicionar político não existente
-    Given o sistema não tem um político com nome “Eduardo” e CPF "01234567890”
-    When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
-    Then o sistema irá cadastrar o político com o nome “Eduardo” e CPF “01234567890”
+    Given o sistema não tem um político com CPF "01234567890”
+    When eu tentar cadastrar um político com CPF “01234567890”
+    Then o sistema irá cadastrar o político com CPF “01234567890”
 
   Scenario: Adicionar político existente
-    Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
-    When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
+    Given o sistema tem um político com  CPF "01234567890”
+    When eu tentar cadastrar um político com CPF “01234567890”
     Then o sistema não irá cadastrar o político
 
-  Scenario: Atualizar político
-    Given que exista um politico com nome “Eduardo” e CPF "01234567890”
-    When eu tentar atualizar os dados do político  com nome “Eduardo” e CPF "01234567890”
-    Then o sistema irá atualizar o político
-
+  Scenario: Atualizar o id de um politico
+    Given o politico com CPF "01234567891” esta armazenado no sistema
+    When eu tentar atualizar o id do politico de CPF "01234567891”
+    Then o politico de CPF "01234567891" tera seu id atualizado
 
   Scenario: Remover político existente 
-    Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
-    When eu tentar remover o político com o nome “Eduardo” e CPF “01234567890”
-    Then o sistema ira mostrar a mensagem politico "Eduardo" de CPF “01234567890” removido com sucesso
+    Given o politico com CPF "01234567891” esta armazenado no sistema
+    When eu tentar remover o politico de CPF “01234567891”
+    Then o politico de CPF “01234567891” sera removido
 
 
 #GUI

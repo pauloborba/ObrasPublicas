@@ -45,7 +45,7 @@
 				<li class="fieldcontain">
 					<span id="telefone-label" class="property-label"><g:message code="telefone.telefone.label" default="Telefone" /></span>
 					
-						<span class="property-value" aria-labelledby="telefone-label">${formatedFone}</span>
+						<span class="property-value" aria-labelledby="telefone-label"><g:fieldValue bean="${telefoneInstance}" field="telefone"/></span>
 					
 				</li>
 				</g:if>

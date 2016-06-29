@@ -1,9 +1,8 @@
 package obraspublicas
 
-import util.Partido
 
 class Politico extends Pessoa {
-    Partido partido
+    String partido
     String foto
     String descricao
     double qualidade
