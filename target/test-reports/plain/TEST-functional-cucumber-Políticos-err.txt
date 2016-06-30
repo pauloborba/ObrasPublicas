@@ -1,0 +1,6 @@
+
+--Output from Adicionar politico nao existente--
+--Output from Adicionar politico existente--
+--Output from Atualizar o id de um politico--
+--Output from Remover político existente--
+--Output from Visualizar político--

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="Marcos-PC" name="Obra" tests="14" time="9.59" timestamp="2016-06-30T02:49:41">
+  <properties />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra nao existente" time="0.831" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras atrasadas" time="0.091" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras com orcamento estourado" time="0.085" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra existente" time="0.161" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar obra" time="0.17" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Remover obra existente" time="0.229" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Verificar status andamento obra" time="0.125" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra com data de termino anterior a data de início" time="0.103" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra com data de termino anterior a data corrente" time="0.105" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar nome de obra com nome já existente" time="0.104" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra de um politico inexistente" time="0.099" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Devolver a taxa de obras atrasadas de um determinado político" time="0.086" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Devolver a taxa de obras com orçamentos estourados de um determinado político" time="0.09" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Visualizar obra" time="6.842" />
+  <system-out><![CDATA[Feature: Obra
+  As a usuario do sistema
+  I want to adicionar, remover, modificar e visualizar obras no sistema
+  So That eu posso gerar paginas web para exibir informacoes sobre a obra
+
+--Output from Adicionar obra nao existente--
+--Output from Buscar percentual de obras atrasadas--
+  #CONTROLLER
+  Scenario: Adicionar obra nao existente                            # Obra.feature:7
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal" # ObraSteps.groovy:18
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal" # ObraSteps.groovy:25
+    Then o sistema ira cadastrar a obra de nome "Praca do arsenal"  # ObraSteps.groovy:30
+
+--Output from Buscar percentual de obras com orcamento estourado--
+  Scenario: Buscar percentual de obras atrasadas        # Obra.feature:12
+    Given que o sistema tem uma lista de "4" Obras      # ObraSteps.groovy:64
+    And o sistema tem "3" obra atrasada                 # ObraSteps.groovy:70
+    Then o percentual de atrasos sera de "75" por cento # ObraSteps.groovy:76
+
+--Output from Adicionar obra existente--
+  Scenario: Buscar percentual de obras com orcamento estourado         # Obra.feature:17
+    Given que o sistema tem uma lista de "4" Obras com seus orcamentos # ObraSteps.groovy:87
+    And o sistema tem "3" obra com orcamento estourado                 # ObraSteps.groovy:93
+    Then o percentual de orcamento estourado sera de "75" por cento    # ObraSteps.groovy:99
+
+--Output from Atualizar obra--
+  Scenario: Adicionar obra existente                                   # Obra.feature:22
+    Given que o sistema tem uma obra chamada "Praca do arsenal"        # ObraSteps.groovy:44
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:25
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal" # ObraSteps.groovy:51
+
+--Output from Remover obra existente--
+  Scenario: Atualizar obra                                                  # Obra.feature:27
+    Given que o sistema tem uma obra chamada "Praca do arsenal"             # ObraSteps.groovy:44
+    When eu tentar atualizar os dados da obra com o nome "Praca do arsenal" # ObraSteps.groovy:139
+    Then o sistema atualiza a obra com o nome "Praca do arsenal"            # ObraSteps.groovy:143
+
+--Output from Verificar status andamento obra--
+  Scenario: Remover obra existente                                # Obra.feature:32
+    Given que o sistema tem uma obra chamada "Praca do arsenal"   # ObraSteps.groovy:44
+    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:268
+    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:273
+
+--Output from Adicionar obra com data de termino anterior a data de início--
+  Scenario: Verificar status andamento obra                                                                   # Obra.feature:37
+    Given que o sistema tem uma obra chamada "Praca do arsenal" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:285
+    When eu tentar verificar o status da obra com o nome "Praca do arsenal"                                   # ObraSteps.groovy:292
+    Then o sistema ira atualizar obra com nome "Praca do arsenal" para "atrasada"                             # ObraSteps.groovy:297
+
+--Output from Adicionar obra com data de termino anterior a data corrente--
+  Scenario: Adicionar obra com data de termino anterior a data de início         # Obra.feature:42
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"              # ObraSteps.groovy:18
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"              # ObraSteps.groovy:25
+    And insiro a data inicial "12 October 2017" e a data final "12 October 2013" # ObraSteps.groovy:157
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"           # ObraSteps.groovy:51
+
+--Output from Atualizar nome de obra com nome já existente--
+  Scenario: Adicionar obra com data de termino anterior a data corrente # Obra.feature:48
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"     # ObraSteps.groovy:18
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"     # ObraSteps.groovy:25
+    And insiro a data final "12 October 2013"                           # ObraSteps.groovy:169
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"  # ObraSteps.groovy:51
+
+--Output from Adicionar obra de um politico inexistente--
+  Scenario: Atualizar nome de obra com nome já existente                                   # Obra.feature:54
+    Given que o sistema tem uma obra chamada "Praca do arsenal"                            # ObraSteps.groovy:44
+    And tem uma obra com o nome "Ilha do Retiro"                                           # ObraSteps.groovy:182
+    When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do Retiro" # ObraSteps.groovy:187
+    Then o sistema não atualiza a obra com o novo nome "Ilha do Retiro"                    # ObraSteps.groovy:192
+
+--Output from Devolver a taxa de obras atrasadas de um determinado político--
+  Scenario: Adicionar obra de um politico inexistente                  # Obra.feature:60
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"    # ObraSteps.groovy:18
+    And não existe um politico com o cpf "11122233344"                 # ObraSteps.groovy:205
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:25
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal" # ObraSteps.groovy:51
+
+--Output from Devolver a taxa de obras com orçamentos estourados de um determinado político--
+  Scenario: Devolver a taxa de obras atrasadas de um determinado político                            # Obra.feature:66
+    Given que o sistema tem um politico com o cpf "98765432109"                                      # ObraSteps.groovy:219
+    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                        # ObraSteps.groovy:225
+    And o sistema tem "1" obra atrasada associada ao politico com o cpf "98765432109"                # ObraSteps.groovy:230
+    Then o percentual de obras atrasadas para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:235
+
+--Output from Visualizar obra--
+  Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado político                          # Obra.feature:72
+    Given que o sistema tem um politico com o cpf "98765432109"                                                    # ObraSteps.groovy:219
+    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                                      # ObraSteps.groovy:225
+    And o sistema tem "1" obra com orçamento estourado associada ao politico com o cpf "98765432109"               # ObraSteps.groovy:248
+    Then o percentual de obras com orcamento estourado para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:253
+
+  #GUI
+  Scenario: Visualizar obra                                                                            # Obra.feature:80
+    Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:112
+    When o usuario seleciona a obra "Praca do arsenal"                                                 # ObraSteps.groovy:119
+    Then o sistema exibe os detalhes da obra "Praca do arsenal"                                        # ObraSteps.groovy:126
+]]></system-out>
+  <system-err><![CDATA[
+--Output from Adicionar obra nao existente--
+--Output from Buscar percentual de obras atrasadas--
+--Output from Buscar percentual de obras com orcamento estourado--
+--Output from Adicionar obra existente--
+--Output from Atualizar obra--
+--Output from Remover obra existente--
+--Output from Verificar status andamento obra--
+--Output from Adicionar obra com data de termino anterior a data de início--
+--Output from Adicionar obra com data de termino anterior a data corrente--
+--Output from Atualizar nome de obra com nome já existente--
+--Output from Adicionar obra de um politico inexistente--
+--Output from Devolver a taxa de obras atrasadas de um determinado político--
+--Output from Devolver a taxa de obras com orçamentos estourados de um determinado político--
+--Output from Visualizar obra--Starting ChromeDriver 2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4) on port 32863
+Only local connections are allowed.
+]]></system-err>
+</testsuite>

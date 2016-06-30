@@ -1,0 +1,52 @@
+Testsuite: Políticos
+Tests run: 5, Failures: 0, Errors: 0, Time elapsed: 3,357 sec
+------------- Standard Output ---------------
+Feature: Políticos
+  As a usuário do sistema
+  I want to adicionar, remover, modificar e visualizar políticos no sistema
+  So That eu posso gerar páginas web para exibir informações sobre o político
+
+--Output from Adicionar politico nao existente--
+--Output from Adicionar politico existente--
+  #CONTROLLER
+  Scenario: Adicionar politico nao existente                      # Politico.feature:7
+    Given que o sistema nao tem um politico com CPF "01234567891" # PoliticoSteps.groovy:16
+    When eu tentar cadastrar um politico com CPF "01234567891"    # PoliticoSteps.groovy:22
+    Then o sistema ira cadastrar o politico de CPF "01234567891"  # PoliticoSteps.groovy:27
+
+--Output from Atualizar o id de um politico--
+  Scenario: Adicionar politico existente                             # Politico.feature:12
+    Given que o sistema tem um politico de CPF "98765432109"         # PoliticoSteps.groovy:78
+    Then o sistema nao ira cadastrar o politico de CPF "98765432109" # PoliticoSteps.groovy:85
+
+--Output from Remover político existente--
+  Scenario: Atualizar o id de um politico                             # Politico.feature:16
+    Given o politico com CPF "01234567891” esta armazenado no sistema # PoliticoSteps.groovy:37
+    When eu tentar atualizar o id do politico de CPF "01234567891”    # PoliticoSteps.groovy:44
+    Then o politico de CPF "01234567891" tera seu id atualizado       # PoliticoSteps.groovy:50
+
+--Output from Visualizar político--
+  Scenario: Remover político existente                                # Politico.feature:21
+    Given o politico com CPF "01234567891” esta armazenado no sistema # PoliticoSteps.groovy:37
+    When eu tentar remover o politico de CPF “01234567891”            # PoliticoSteps.groovy:61
+    Then o politico de CPF “01234567891” sera removido                # PoliticoSteps.groovy:68
+
+  #GUI
+  Scenario: Visualizar político                                                                                    # Politico.feature:28
+    Given que o usuario esta no menu de político e quer visualizar os detalhes do político com o cpf "98765432109" # PoliticoSteps.groovy:100
+    When o usuario seleciona o político com o cpf "98765432109"                                                    # PoliticoSteps.groovy:107
+    Then o sistema exibe os detalhes do político com o cpf "98765432109"                                           # PoliticoSteps.groovy:114
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+
+--Output from Adicionar politico nao existente--
+--Output from Adicionar politico existente--
+--Output from Atualizar o id de um politico--
+--Output from Remover político existente--
+--Output from Visualizar político--------------- ---------------- ---------------
+
+Testcase: Adicionar politico nao existente took 0,105 sec
+Testcase: Adicionar politico existente took 0,092 sec
+Testcase: Atualizar o id de um politico took 0,096 sec
+Testcase: Remover político existente took 0,119 sec
+Testcase: Visualizar político took 2,855 sec
