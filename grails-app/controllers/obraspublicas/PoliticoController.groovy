@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class PoliticoController {
 
-    static allowedMethods = []
+    static allowedMethods = [update: "PUT"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)

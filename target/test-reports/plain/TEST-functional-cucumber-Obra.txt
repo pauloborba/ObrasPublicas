@@ -1,5 +1,5 @@
 Testsuite: Obra
-Tests run: 16, Failures: 2, Errors: 0, Time elapsed: 10,839 sec
+Tests run: 14, Failures: 0, Errors: 0, Time elapsed: 9,59 sec
 ------------- Standard Output ---------------
 Feature: Obra
   As a usuario do sistema
@@ -16,15 +16,15 @@ Feature: Obra
 
 --Output from Buscar percentual de obras com orcamento estourado--
   Scenario: Buscar percentual de obras atrasadas        # Obra.feature:12
-    Given que o sistema tem uma lista de "4" Obras      # ObraSteps.groovy:62
-    And o sistema tem "3" obra atrasada                 # ObraSteps.groovy:68
-    Then o percentual de atrasos sera de "75" por cento # ObraSteps.groovy:74
+    Given que o sistema tem uma lista de "4" Obras      # ObraSteps.groovy:64
+    And o sistema tem "3" obra atrasada                 # ObraSteps.groovy:70
+    Then o percentual de atrasos sera de "75" por cento # ObraSteps.groovy:76
 
 --Output from Adicionar obra existente--
   Scenario: Buscar percentual de obras com orcamento estourado         # Obra.feature:17
-    Given que o sistema tem uma lista de "4" Obras com seus orcamentos # ObraSteps.groovy:83
-    And o sistema tem "3" obra com orcamento estourado                 # ObraSteps.groovy:89
-    Then o percentual de orcamento estourado sera de "75" por cento    # ObraSteps.groovy:95
+    Given que o sistema tem uma lista de "4" Obras com seus orcamentos # ObraSteps.groovy:87
+    And o sistema tem "3" obra com orcamento estourado                 # ObraSteps.groovy:93
+    Then o percentual de orcamento estourado sera de "75" por cento    # ObraSteps.groovy:99
 
 --Output from Atualizar obra--
   Scenario: Adicionar obra existente                                   # Obra.feature:22
@@ -35,99 +35,68 @@ Feature: Obra
 --Output from Remover obra existente--
   Scenario: Atualizar obra                                                  # Obra.feature:27
     Given que o sistema tem uma obra chamada "Praca do arsenal"             # ObraSteps.groovy:44
-    When eu tentar atualizar os dados da obra com o nome "Praca do arsenal" # ObraSteps.groovy:174
-    Then o sistema atualiza a obra com o nome "Praca do arsenal"            # ObraSteps.groovy:178
+    When eu tentar atualizar os dados da obra com o nome "Praca do arsenal" # ObraSteps.groovy:139
+    Then o sistema atualiza a obra com o nome "Praca do arsenal"            # ObraSteps.groovy:143
 
 --Output from Verificar status andamento obra--
   Scenario: Remover obra existente                                # Obra.feature:32
     Given que o sistema tem uma obra chamada "Praca do arsenal"   # ObraSteps.groovy:44
-    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:288
-    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:293
+    When eu tentar remover a obra com o nome "Praca do arsenal"   # ObraSteps.groovy:268
+    Then o sistema ira remover a obra com nome "Praca do arsenal" # ObraSteps.groovy:273
 
 --Output from Adicionar obra com data de termino anterior a data de início--
   Scenario: Verificar status andamento obra                                                                   # Obra.feature:37
-    Given que o sistema tem uma obra chamada "Praca do arsenal" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:305
-    When eu tentar verificar o status da obra com o nome "Praca do arsenal"                                   # ObraSteps.groovy:312
-    Then o sistema ira atualizar obra com nome "Praca do arsenal" para "atrasada"                             # ObraSteps.groovy:317
+    Given que o sistema tem uma obra chamada "Praca do arsenal" que esta atrasada mas esta com status "emDia" # ObraSteps.groovy:285
+    When eu tentar verificar o status da obra com o nome "Praca do arsenal"                                   # ObraSteps.groovy:292
+    Then o sistema ira atualizar obra com nome "Praca do arsenal" para "atrasada"                             # ObraSteps.groovy:297
 
 --Output from Adicionar obra com data de termino anterior a data corrente--
   Scenario: Adicionar obra com data de termino anterior a data de início         # Obra.feature:42
     Given que o sistema nao tem uma obra chamada "Praca do arsenal"              # ObraSteps.groovy:18
     When eu tentar cadastrar uma obra com o nome "Praca do arsenal"              # ObraSteps.groovy:25
-    And insiro a data inicial "12 October 2017" e a data final "12 October 2013" # ObraSteps.groovy:189
+    And insiro a data inicial "12 October 2017" e a data final "12 October 2013" # ObraSteps.groovy:157
     Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"           # ObraSteps.groovy:51
 
 --Output from Atualizar nome de obra com nome já existente--
   Scenario: Adicionar obra com data de termino anterior a data corrente # Obra.feature:48
     Given que o sistema nao tem uma obra chamada "Praca do arsenal"     # ObraSteps.groovy:18
     When eu tentar cadastrar uma obra com o nome "Praca do arsenal"     # ObraSteps.groovy:25
-    And insiro a data final "12 October 2013"                           # ObraSteps.groovy:199
+    And insiro a data final "12 October 2013"                           # ObraSteps.groovy:169
     Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"  # ObraSteps.groovy:51
 
 --Output from Adicionar obra de um politico inexistente--
   Scenario: Atualizar nome de obra com nome já existente                                   # Obra.feature:54
     Given que o sistema tem uma obra chamada "Praca do arsenal"                            # ObraSteps.groovy:44
-    And tem uma obra com o nome "Ilha do Retiro"                                           # ObraSteps.groovy:209
-    When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do Retiro" # ObraSteps.groovy:214
-    Then o sistema não atualiza a obra com o novo nome "Ilha do Retiro"                    # ObraSteps.groovy:219
+    And tem uma obra com o nome "Ilha do Retiro"                                           # ObraSteps.groovy:182
+    When eu tentar atualizar o nome da obra "Praca do arsenal" com o nome "Ilha do Retiro" # ObraSteps.groovy:187
+    Then o sistema não atualiza a obra com o novo nome "Ilha do Retiro"                    # ObraSteps.groovy:192
 
 --Output from Devolver a taxa de obras atrasadas de um determinado político--
   Scenario: Adicionar obra de um politico inexistente                  # Obra.feature:60
     Given que o sistema nao tem uma obra chamada "Praca do arsenal"    # ObraSteps.groovy:18
-    And não existe um politico com o cpf "11122233344"                 # ObraSteps.groovy:230
+    And não existe um politico com o cpf "11122233344"                 # ObraSteps.groovy:205
     When eu tentar cadastrar uma obra com o nome "Praca do arsenal"    # ObraSteps.groovy:25
     Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal" # ObraSteps.groovy:51
 
 --Output from Devolver a taxa de obras com orçamentos estourados de um determinado político--
   Scenario: Devolver a taxa de obras atrasadas de um determinado político                            # Obra.feature:66
-    Given que o sistema tem um politico com o cpf "98765432109"                                      # ObraSteps.groovy:241
-    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                        # ObraSteps.groovy:247
-    And o sistema tem "1" obra atrasada associada ao politico com o cpf "98765432109"                # ObraSteps.groovy:252
-    Then o percentual de obras atrasadas para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:257
-
---Output from Receber atualizacoes da obra por email--
-  Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado político                          # Obra.feature:72
-    Given que o sistema tem um politico com o cpf "98765432109"                                                    # ObraSteps.groovy:241
-    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                                      # ObraSteps.groovy:247
-    And o sistema tem "1" obra com orçamento estourado associada ao politico com o cpf "98765432109"               # ObraSteps.groovy:268
-    Then o percentual de obras com orcamento estourado para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:273
+    Given que o sistema tem um politico com o cpf "98765432109"                                      # ObraSteps.groovy:219
+    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                        # ObraSteps.groovy:225
+    And o sistema tem "1" obra atrasada associada ao politico com o cpf "98765432109"                # ObraSteps.groovy:230
+    Then o percentual de obras atrasadas para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:235
 
 --Output from Visualizar obra--
+  Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado político                          # Obra.feature:72
+    Given que o sistema tem um politico com o cpf "98765432109"                                                    # ObraSteps.groovy:219
+    And o sistema tem "2" obras associada ao politico com o cpf "98765432109"                                      # ObraSteps.groovy:225
+    And o sistema tem "1" obra com orçamento estourado associada ao politico com o cpf "98765432109"               # ObraSteps.groovy:248
+    Then o percentual de obras com orcamento estourado para o politico com o cpf "98765432109" é de "50" por cento # ObraSteps.groovy:253
+
   #GUI
-  Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:79
-    Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:138
-    When eu seleciono a opcao "Receber atualizacao por email"                                            # ObraSteps.groovy:148
-    And preencho o campo de email com o email "teste@obralimpa.com"                                      # ObraSteps.groovy:156
-    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com" # ObraSteps.groovy:160
-      Assertion failed: 
-      
-      assert false
-      
-      
-      	at ObraSteps$_run_closure18.doCall(ObraSteps.groovy:164)
-      	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com"(Obra.feature:83)
-
-
---Output from Nova pagina de obra--
-  Scenario: Visualizar obra                                                                            # Obra.feature:85
-    Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:108
-    When o usuario seleciona a obra "Praca do arsenal"                                                 # ObraSteps.groovy:115
-    Then o sistema exibe os detalhes da obra "Praca do arsenal"                                        # ObraSteps.groovy:122
-
-  Scenario: Nova pagina de obra                                                                         # Obra.feature:90
-    Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:335
-    When eu seleciono a opcao "Cadastrar"                                                               # ObraSteps.groovy:148
-    And eu tento cadastrar a obra com o nome "Praca do Arsenal"                                         # ObraSteps.groovy:341
-    And seleciono a opcao "Salvar"                                                                      # ObraSteps.groovy:344
-    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"                              # ObraSteps.groovy:347
-      Assertion failed: 
-      
-      assert false
-      
-      
-      	at ObraSteps$_run_closure41.doCall(ObraSteps.groovy:349)
-      	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"(Obra.feature:95)
-
+  Scenario: Visualizar obra                                                                            # Obra.feature:80
+    Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:112
+    When o usuario seleciona a obra "Praca do arsenal"                                                 # ObraSteps.groovy:119
+    Then o sistema exibe os detalhes da obra "Praca do arsenal"                                        # ObraSteps.groovy:126
 ------------- ---------------- ---------------
 ------------- Standard Error -----------------
 
@@ -144,47 +113,21 @@ Feature: Obra
 --Output from Adicionar obra de um politico inexistente--
 --Output from Devolver a taxa de obras atrasadas de um determinado político--
 --Output from Devolver a taxa de obras com orçamentos estourados de um determinado político--
---Output from Receber atualizacoes da obra por email--Starting ChromeDriver 2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4) on port 14819
+--Output from Visualizar obra--Starting ChromeDriver 2.21.371459 (36d3d07f660ff2bc1bf28a75d1cdabed0983e7c4) on port 32863
 Only local connections are allowed.
-
---Output from Visualizar obra--
---Output from Nova pagina de obra--------------- ---------------- ---------------
+------------- ---------------- ---------------
 
 Testcase: Adicionar obra nao existente took 0,831 sec
-Testcase: Buscar percentual de obras atrasadas took 0,093 sec
-Testcase: Buscar percentual de obras com orcamento estourado took 0,086 sec
-Testcase: Adicionar obra existente took 0,133 sec
-Testcase: Atualizar obra took 0,112 sec
-Testcase: Remover obra existente took 0,151 sec
-Testcase: Verificar status andamento obra took 0,126 sec
+Testcase: Buscar percentual de obras atrasadas took 0,091 sec
+Testcase: Buscar percentual de obras com orcamento estourado took 0,085 sec
+Testcase: Adicionar obra existente took 0,161 sec
+Testcase: Atualizar obra took 0,17 sec
+Testcase: Remover obra existente took 0,229 sec
+Testcase: Verificar status andamento obra took 0,125 sec
 Testcase: Adicionar obra com data de termino anterior a data de início took 0,103 sec
 Testcase: Adicionar obra com data de termino anterior a data corrente took 0,105 sec
-Testcase: Atualizar nome de obra com nome já existente took 0,108 sec
+Testcase: Atualizar nome de obra com nome já existente took 0,104 sec
 Testcase: Adicionar obra de um politico inexistente took 0,099 sec
-Testcase: Devolver a taxa de obras atrasadas de um determinado político took 0,089 sec
-Testcase: Devolver a taxa de obras com orçamentos estourados de um determinado político took 0,088 sec
-Testcase: Receber atualizacoes da obra por email took 6,468 sec
-	FAILED
-assert false
-
-Assertion failed: 
-
-assert false
-
-
-	at ObraSteps$_run_closure18.doCall(ObraSteps.groovy:164)
-	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com"(Obra.feature:83)
-
-Testcase: Visualizar obra took 1,42 sec
-Testcase: Nova pagina de obra took 0,302 sec
-	FAILED
-assert false
-
-Assertion failed: 
-
-assert false
-
-
-	at ObraSteps$_run_closure41.doCall(ObraSteps.groovy:349)
-	at ✽.Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"(Obra.feature:95)
-
+Testcase: Devolver a taxa de obras atrasadas de um determinado político took 0,086 sec
+Testcase: Devolver a taxa de obras com orçamentos estourados de um determinado político took 0,09 sec
+Testcase: Visualizar obra took 6,842 sec

@@ -11,54 +11,25 @@ Feature: Políticos
     When eu tentar cadastrar um politico com CPF "01234567891"    # PoliticoSteps.groovy:22
     Then o sistema ira cadastrar o politico de CPF "01234567891"  # PoliticoSteps.groovy:27
 
---Output from Atualizar político--
+--Output from Atualizar o id de um politico--
   Scenario: Adicionar politico existente                             # Politico.feature:12
-    Given que o sistema tem um politico de CPF "98765432109"         # PoliticoSteps.groovy:76
-    Then o sistema nao ira cadastrar o politico de CPF "98765432109" # PoliticoSteps.groovy:83
+    Given que o sistema tem um politico de CPF "98765432109"         # PoliticoSteps.groovy:78
+    Then o sistema nao ira cadastrar o politico de CPF "98765432109" # PoliticoSteps.groovy:85
 
 --Output from Remover político existente--
-  Scenario: Atualizar político                                                            # Politico.feature:16
-    Given que exista um politico com nome “Eduardo” e CPF "01234567890”
-    When eu tentar atualizar os dados do político  com nome “Eduardo” e CPF "01234567890”
-    Then o sistema irá atualizar o político
-
---Output from Novo político--
-  Scenario: Remover político existente                                                                 # Politico.feature:22
-    Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
-    When eu tentar remover o político com o nome “Eduardo” e CPF “01234567890”
-    Then o sistema ira mostrar a mensagem politico "Eduardo" de CPF “01234567890” removido com sucesso
-
---Output from Editar informações de um politico--
-  #GUI
-  Scenario: Novo político                                                                      # Politico.feature:29
-    Given que eu estou no menu “Políticos”
-    And não existe nenhum político com o nome “Anderson” com o CPF “102.102.152-15”
-    When eu seleciono a opção “Cadastrar”
-    And eu tento cadastrar o político “Anderson” com CPF “102.102.152-15” e seleciono “Salvar”
-    Then eu recebo a mensagem de confirmação
-    And Consigo ver as informações do político cadastrado
+  Scenario: Atualizar o id de um politico                             # Politico.feature:16
+    Given o politico com CPF "01234567891” esta armazenado no sistema # PoliticoSteps.groovy:37
+    When eu tentar atualizar o id do politico de CPF "01234567891”    # PoliticoSteps.groovy:44
+    Then o politico de CPF "01234567891" tera seu id atualizado       # PoliticoSteps.groovy:50
 
 --Output from Visualizar político--
-  Scenario: Editar informações de um politico                                                                       # Politico.feature:37
-    Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
-    When ao  tentar atualizar os dados do político “Eduardo” com cpf “01234567890”
-    Then eu recebo a mensagem de confirmação
-    And Consigo ver as informações do político cadastrado
+  Scenario: Remover político existente                                # Politico.feature:21
+    Given o politico com CPF "01234567891” esta armazenado no sistema # PoliticoSteps.groovy:37
+    When eu tentar remover o politico de CPF “01234567891”            # PoliticoSteps.groovy:61
+    Then o politico de CPF “01234567891” sera removido                # PoliticoSteps.groovy:68
 
---Output from Visualizar taxa de atraso de obras de um político--
-  Scenario: Visualizar político                                                                                    # Politico.feature:43
-    Given que o usuario esta no menu de político e quer visualizar os detalhes do político com o cpf "98765432109" # PoliticoSteps.groovy:98
-    When o usuario seleciona o político com o cpf "98765432109"                                                    # PoliticoSteps.groovy:105
-    Then o sistema exibe os detalhes do político com o cpf "98765432109"                                           # PoliticoSteps.groovy:112
-
-  Scenario: Visualizar taxa de atraso de obras de um político                              # Politico.feature:48
-    Given que o usuario esta no menu de político e tem um político com o cpf "98765432109" # PoliticoSteps.groovy:123
-    And existe "2" obra associada ao político com o cpf "98765432109"                      # PoliticoSteps.groovy:129
-      groovy.lang.MissingMethodException: No signature of method: PoliticoSteps.dep() is applicable for argument types: (java.util.ArrayList) values: [[[nomeObra:Ilha do Retiro, cpfResponsavel:98765432109], [nomeObra:Praca do arsenal, ...]]]
-      Possible solutions: dump(), grep(), grep(java.lang.Object), run(), run(), any()
-      	at PoliticoSteps$_run_closure16.doCall(PoliticoSteps.groovy:131)
-      	at ✽.And existe "2" obra associada ao político com o cpf "98765432109"(Politico.feature:50)
-
-    And existe "1" obra atrasada associada ao político com cpf "98765432109"
-    When o usuário seleciona a opçao de taxa de atraso                                     # PoliticoSteps.groovy:150
-    Then ele visualizará "50" % como sendo a taxa de atraso                                # PoliticoSteps.groovy:154
+  #GUI
+  Scenario: Visualizar político                                                                                    # Politico.feature:28
+    Given que o usuario esta no menu de político e quer visualizar os detalhes do político com o cpf "98765432109" # PoliticoSteps.groovy:100
+    When o usuario seleciona o político com o cpf "98765432109"                                                    # PoliticoSteps.groovy:107
+    Then o sistema exibe os detalhes do político com o cpf "98765432109"                                           # PoliticoSteps.groovy:114

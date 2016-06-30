@@ -186,6 +186,12 @@ class TestDataAndOperations {
 
         cont.response.reset()
     }
+    static public deletePolitico(String cpf){
+        def cont = politicoId(cpf)
+        cont.delete()
+
+        cont.response.reset()
+    }
 
     //TODO
     static public void atualizaObra(String nomeObra) {
@@ -218,6 +224,13 @@ class TestDataAndOperations {
         def testObra = Obra.findByNome(nomeObra)
         def cont = new ObraController()
         cont.params << [id: testObra.id]
+        return cont
+    }
+    // anderson
+    static public politicoId(String cpf){
+        def testPolitico= Politico.findByCpf(cpf)
+        def cont = new PoliticoController()
+        cont.params << [id:testPolitico.id]
         return cont
     }
     //TODO
@@ -382,6 +395,16 @@ class TestDataAndOperations {
         def testObra = Obra.findByNome(nome1)
         def testObra1 = Obra.findByNome(nome2)
         return (testObra != null) && (testObra1 != null)
+    }
+    static public Politico updateIdPolitico(String cpf,newId){
+        def testPolitico= Politico.findByCpf(cpf)
+        testPolitico.setId(newId)
+        def cont = new PoliticoController()
+        cont.params << testPolitico.properties
+        cont.update()
+        def updateTestPolitico = Politico.findById(newId)
+        return updateTestPolitico
+
     }
 
     static public float taxaObrasEstouradasPolitico(String cpf){
