@@ -7,9 +7,9 @@ Feature: Engenheiros
    Scenario: Adicionar engenheiro nao existente
     Given que o sistema nao tem um engenheiro com CPF "01234567891" 
       When eu tentar cadastrar um engenheiro com CPF "01234567891"
-    Then o sistema ira cadastrar o politico de CPF "01234567891" 
+    Then o sistema ira cadastrar o engenheiro de CPF "01234567891"
 
-  Scenario: Adicionar politico existente
+  Scenario: Adicionar um engenheiro existente
     Given que o sistema tem um engenheiro de CPF "98765432109" 
     When eu tentar cadastrar um engenheiro de cpf "98765432109"
     Then o sistema nao ira cadastrar o engenheiro de CPF "98765432109"
