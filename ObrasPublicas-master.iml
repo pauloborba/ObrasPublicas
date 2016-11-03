@@ -20,6 +20,7 @@
           <unit-entry name="target:work:plugins:hibernate4-4.3.5.5:src:java:hibernate.cfg.xml" />
         </datasource-map>
         <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/out/production/ObrasPublicas-grailsPlugins/hibernate.cfg.xml" />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/target/work/plugins/hibernate4-4.3.5.5/src/java/hibernate.cfg.xml" />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/target/work/resources/hibernate.cfg.xml" />
       </configuration>
@@ -221,50 +222,50 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/src/grails-datastore-simple-3.1.2.RELEASE-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/src/grails-datastore-gorm-3.1.2.RELEASE-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/src/grails-datastore-core-3.1.2.RELEASE-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-mimetypes-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-converters-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-domain-class-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-async-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-async-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-validation-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-url-mappings-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-servlets-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-services-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-log4j-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-logging-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-encoder-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-codecs-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-gsp-taglib-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-gsp-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-filters-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-i18n-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-spring-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-bootstrap-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-core-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-databinding-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-validation-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-controllers-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-gsp-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-url-mappings-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-jsp-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-fileupload-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-common-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-mvc-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-databinding-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-databinding-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-sitemesh-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-web-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-datasource-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-rest-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-resources-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-project-api-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-test-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-plugin-testing-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-docs-2.4.3-sources.jar!/" />
-          <root url="jar://$USER_HOME$/Documents/grails-2.4.3/grails-2.4.3/dist/grails-scripts-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/src/grails-datastore-simple-3.1.2.RELEASE-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/src/grails-datastore-gorm-3.1.2.RELEASE-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/src/grails-datastore-core-3.1.2.RELEASE-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-mimetypes-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-converters-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-domain-class-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-async-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-async-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-validation-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-url-mappings-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-servlets-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-services-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-log4j-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-logging-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-encoder-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-codecs-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-gsp-taglib-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-gsp-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-filters-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-i18n-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-spring-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-bootstrap-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-core-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-databinding-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-validation-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-controllers-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-gsp-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-url-mappings-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-jsp-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-fileupload-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-common-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-mvc-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-databinding-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-databinding-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-sitemesh-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-web-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-datasource-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-rest-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-resources-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-project-api-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-test-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-plugin-testing-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-docs-2.4.3-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../grails-2.4.3/grails-2.4.3/dist/grails-scripts-2.4.3-sources.jar!/" />
           <root url="jar://C:/grails-2.4.3/dist/grails-plugin-mimetypes-2.4.3-sources.jar!/" />
           <root url="jar://C:/grails-2.4.3/dist/grails-plugin-converters-2.4.3-sources.jar!/" />
           <root url="jar://C:/grails-2.4.3/dist/grails-plugin-domain-class-2.4.3-sources.jar!/" />
