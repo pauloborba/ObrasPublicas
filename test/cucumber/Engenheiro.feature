@@ -1,30 +1,37 @@
-Feature: Engenheiros
+#
+# Created by Emanuel on 06/11/16.
+
+Feature: Engenheiro
   As a usuário do sistema
-  I want to adicionar, remover, modificar e visualizar engenheiros no sistema
-  So That eu posso gerar páginas web para exibir informações sobre do engenheiro
+  I want to adicionar, remover, modificar, visualizar engenheiros no sistema e ver o relatorio das obras do engenheiro
+  So That eu posso gerar páginas web para exibir informações sobre o engenheiro
 
-  #CONTROLLER
-   Scenario: Adicionar engenheiro nao existente
-    Given que o sistema nao tem um engenheiro com CPF "01234567891" 
-      When eu tentar cadastrar um engenheiro com CPF "01234567891"
-    Then o sistema ira cadastrar o engenheiro de CPF "01234567891"
+##GUI
+  Scenario: Visualizar taxa de atraso de obras de um engenheiro
+    Given que o usuario esta no menu de engenheiro e tem um engenheiro com o cpf "12345678901"
+    And existe "2" obra associada ao engenheiro com o cpf "12345678901"
+    And existe "1" obra atrasada associada ao engenheiro com cpf "12345678901"
+    When o usuário seleciona a opçao de taxa de atraso
+    Then ele visualizará "50"% como sendo a taxa de atraso
 
-  Scenario: Adicionar um engenheiro existente
-    Given que o sistema tem um engenheiro de CPF "98765432109" 
-    When eu tentar cadastrar um engenheiro de cpf "98765432109"
-    Then o sistema nao ira cadastrar o engenheiro de CPF "98765432109"
+  Scenario: Visualizar taxa de obras com orçamentos estourados de um engenheiro
+    Given que o usuario esta no menu de engenheiro e tem um engenheiro com o cpf "12345678901"
+    And existe "2" obra associada ao engenheiro com o cpf "12345678901"
+    And existe "1" obra com orçamento estourado associada ao engenheiro com cpf "12345678901"
+    When o usuário seleciona a opçao de taxa de orçamentos estourados
+    Then ele visualizará "50"% como sendo a taxa de atraso
 
-  #Gui
-  Scenario: Novo engenheiro
-    Given que eu estou no menu “Engenheiro”
-    And não existe nenhum engenheiro com o nome “Anderson” com o CPF “102.102.152-15”
-    When eu seleciono a opção “Cadastrar”
-    And eu tento cadastrar o Engenheiro “Anderson” com CPF “102.102.152-15” e seleciono “Salvar”
-    Then eu recebo a mensagem de confirmação
-    And Consigo ver as informações do engenheiro cadastrado
 
-  Scenario: Editar informações de um engenheiro
-    Given que o usuário esta na tela de atualizar engenheiro visualizando o engeheiro “Eduardo” com cpf “01234567890”
-    When ao  tentar atualizar os dados do engenheiro “Eduardo” com cpf “01234567890”
-    Then eu recebo a mensagem de confirmação
-    And Consigo ver as novas informações do engenheiro cadastrado
+##CONTROLLER Scenario
+  Scenario: Devolver a taxa de atraso de obras de um determinado engenheiro
+    Given que o sistema tem o engenheiro "José da Silva" com cpf "12345678901"
+    And o sistema tem "2" obras associada ao engenheiro de cpf "12345678901"
+    And o sistema tem "1" obra atrasada associada ao engenheiro de cpf "12345678901"
+    Then o percentual de obras atrasadas para o engenheiro com cpf "123456789-01" é de "50"%
+
+
+  Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado engenheiro
+    Given que o sistema tem o engenheiro "José da Silva" com cpf "12345678901"
+    And o sistema tem "2" obras associada ao engenheiro de cpf "12345678901"
+    And o sistema tem "1" obra com orçamento estourado associada ao engenheiro de cpf "12345678901"
+    Then o percentual de obras com orcamento estourado para o engenheiro com cpf "123456789-01" é de "50"%
