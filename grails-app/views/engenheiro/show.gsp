@@ -90,6 +90,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${engenheiroInstance?.titulacao}">
+				<li class="fieldcontain">
+					<span id="titulacao-label" class="property-label"><g:message code="engenheiro.titulacao.label" default="Titulacao" /></span>
+					
+						<span class="property-value" aria-labelledby="titulacao-label"><g:fieldValue bean="${engenheiroInstance}" field="titulacao"/></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:engenheiroInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

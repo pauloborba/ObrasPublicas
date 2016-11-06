@@ -92,12 +92,21 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: obraInstance, field: 'engenheiroResponsavel', 'error')} required">
+	<label for="engenheiroResponsavel">
+		<g:message code="obra.engenheiroResponsavel.label" default="Engenheiro Responsavel" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="engenheiroResponsavel" name="engenheiroResponsavel.id" from="${obraspublicas.Engenheiro.list()}" optionKey="id" required="" value="${obraInstance?.engenheiroResponsavel?.id}" class="many-to-one"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: obraInstance, field: 'precoFinal', 'error')} required">
 	<label for="precoFinal">
 		<g:message code="obra.precoFinal.label" default="Preco Final" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="precoFinal" value="${fieldValue(bean: obraInstance, field: 'precoFinal')}" required=""/>
+	<g:field name="precoFinal" value="${fieldValue(bean: obraInstance, field: 'precoFinal')}" required="" type=""/>
 
 </div>
 

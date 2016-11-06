@@ -23,8 +23,44 @@ class EngenheiroController {
         respond new Engenheiro(params)
     }
 
+    def taxasAtrasadasEngenheiro(Engenheiro engenheiro){
+        float taxaAtrasada = 0
+        int qtdObras = 0;
+        if (Obra.list().size()>0){
+            for (int i = 0; i < Obra.list().size(); i++){
+                if (Obra.list().get(i).getCpfEngenheiroResponsavel().equals(engenheiro.cpf)){
+                    qtdObras++;
+                    if(Obra.list().get(i).isAtrasada()){
+                        taxaAtrasada++;
+                    }
+                }
+            }
+            taxaAtrasada = (taxaAtrasada / qtdObras) * 100
+        }
+        respond Engenheiro.list(params), model: [taxaAtrasadaEngenheiro: taxaAtrasada]
+    }
+
+    def taxasEstouradasEngenheiro(Engenheiro engenheiro){
+        float taxaEstourada = 0
+        int qtdObras = 0;
+        if(Obra.list().size()>0){
+            for (int i = 0; i < Obra.list().size(); i++){
+                if (Obra.list().get(i).getCpfEngenheiroResponsavel().equals(engenheiro.cpf)){
+                    qtdObras++;
+                    if (Obra.list().get(i).isEstourada()){
+                        taxaEstourada++;
+                    }
+                }
+            }
+            taxaEstourada = (taxaEstourada / qtdObras) * 100
+        }
+        respond Engenheiro.list(params), model: [taxasEstouradasEngenheiro: taxaEstourada]
+    }
+
     @Transactional
-    def save(Engenheiro engenheiroInstance) {
+    def save() {
+        Engenheiro engenheiroInstance = new Engenheiro(params)
+
         if (engenheiroInstance == null) {
             notFound()
             return

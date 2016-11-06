@@ -34,6 +34,8 @@
 					
 						<g:sortableColumn property="email" title="${message(code: 'engenheiro.email.label', default: 'Email')}" />
 					
+						<g:sortableColumn property="titulacao" title="${message(code: 'engenheiro.titulacao.label', default: 'Titulacao')}" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -49,6 +51,21 @@
 						<td>${fieldValue(bean: engenheiroInstance, field: "descricao")}</td>
 					
 						<td>${fieldValue(bean: engenheiroInstance, field: "email")}</td>
+					
+						<td>${fieldValue(bean: engenheiroInstance, field: "titulacao")}</td>
+
+						<td><g:link class="edit" action="edit" resource="${engenheiroInstance}"><img src="${assetPath(src: 'editIco.png')}" width="50px"/></g:link></td>
+
+						<td>
+							<g:form url="[resource:engenheiroInstance, action:'delete']" method="DELETE">
+								<g:actionSubmitImage value="${message(code: 'default.button.delete.label', default: 'Delete')}" action="delete"
+													 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"
+													 src="${assetPath(src: 'deleteIco.png')}" width="50px"/>
+							</g:form>
+						</td>
+
+						<td><g:link action="taxasAtrasadasEngenheiro" id="${engenheiroInstance.id}"> Taxas de atraso </g:link></td>
+						<td><g:link action="taxasEstouradasEngenheiro" id="${engenheiroInstance.id}"> Taxas de estouro </g:link></td>
 					
 					</tr>
 				</g:each>

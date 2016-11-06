@@ -112,6 +112,8 @@
 					
 				</li>
 				</g:if>
+
+
 			
 				<g:if test="${obraInstance?.precoFinal}">
 				<li class="fieldcontain">

@@ -89,4 +89,8 @@ class Obra {
         else
             return ObraStrings.estourouOrcamento
     }
+
+    public String getCpfEngenheiroResponsavel() {
+        return this.engenheiroResponsavel.cpf;
+    }
 }

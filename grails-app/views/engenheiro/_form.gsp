@@ -43,7 +43,16 @@
 		<g:message code="engenheiro.obras.label" default="Obras" />
 		
 	</label>
-	<g:select name="obras" from="${obraspublicas.Obra.list()}" multiple="multiple" optionKey="id" size="5" value="${engenheiroInstance?.obras*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${engenheiroInstance?.obras?}" var="o">
+    <li><g:link controller="obra" action="show" id="${o.id}">${o?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="obra" action="create" params="['engenheiro.id': engenheiroInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'obra.label', default: 'Obra')])}</g:link>
+</li>
+</ul>
+
 
 </div>
 
@@ -71,6 +80,15 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="email" required="" value="${engenheiroInstance?.email}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: engenheiroInstance, field: 'titulacao', 'error')} required">
+	<label for="titulacao">
+		<g:message code="engenheiro.titulacao.label" default="Titulacao" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="titulacao" required="" value="${engenheiroInstance?.titulacao}"/>
 
 </div>
 
