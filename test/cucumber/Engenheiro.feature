@@ -24,14 +24,14 @@ Feature: Engenheiro
 
 ##CONTROLLER Scenario
   Scenario: Devolver a taxa de atraso de obras de um determinado engenheiro
-    Given que o sistema tem o engenheiro "José da Silva" com cpf "12345678901"
-    And o sistema tem "2" obras associada ao engenheiro de cpf "12345678901"
-    And o sistema tem "1" obra atrasada associada ao engenheiro de cpf "12345678901"
-    Then o percentual de obras atrasadas para o engenheiro com cpf "123456789-01" é de "50"%
+    Given que o sistema tem um engenheiro com o cpf "12345678901"
+    And o sistema tem "2" obras associada ao engenheiro com o cpf "12345678901"
+    And o sistema tem "1" obra atrasada associada ao engenheiro com o cpf "12345678901"
+    Then o percentual de obras atrasadas para o engenheiro com cpf "12345678901" é de "50"%
 
 
   Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado engenheiro
-    Given que o sistema tem o engenheiro "José da Silva" com cpf "12345678901"
-    And o sistema tem "2" obras associada ao engenheiro de cpf "12345678901"
-    And o sistema tem "1" obra com orçamento estourado associada ao engenheiro de cpf "12345678901"
-    Then o percentual de obras com orcamento estourado para o engenheiro com cpf "123456789-01" é de "50"%
+    Given que o sistema tem o engenheiro com o cpf "12345678901"
+    And o sistema tem "2" obras associadas ao engenheiro com o cpf "12345678901"
+    And o sistema tem "1" obra com orçamento estourado associada ao engenheiro com o cpf "12345678901"
+    Then o percentual de obras com orcamento estourado para o engenheiro com cpf "12345678901" é de "50"%
