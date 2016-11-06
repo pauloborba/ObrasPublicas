@@ -31,7 +31,7 @@ Feature: Engenheiro
 
 
   Scenario: Devolver a taxa de obras com orçamentos estourados de um determinado engenheiro
-    Given que o sistema tem o engenheiro com o cpf "12345678901"
+    Given que o sistema tem um engenheiro com o cpf "12345678901"
     And o sistema tem "2" obras associadas ao engenheiro com o cpf "12345678901"
     And o sistema tem "1" obra com orçamento estourado associada ao engenheiro com o cpf "12345678901"
     Then o percentual de obras com orcamento estourado para o engenheiro com cpf "12345678901" é de "50"%
