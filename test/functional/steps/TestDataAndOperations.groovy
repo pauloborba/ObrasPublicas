@@ -78,12 +78,43 @@ class TestDataAndOperations {
              email    : "robsobra@obra.com"]
     ]
 
+    /**
+     * @author = evfgs
+     */
+    static engenheiros = [
+            [nome: "José da Silva",
+             foto: "foto.jpg",
+             cpf: "12345678901",
+             email: "joseobra@obra.com",
+             descricao: "engenheiro esforçado",
+             titulacao: "civil"],
+
+            [nome: "Emanuel Silva",
+             foto: "foto.jpg",
+             cpf: "05423024463",
+             email: "emanuelobra@obra.com",
+             descricao: "engenheiro preguiçoso",
+             titulacao: "eletrico"]
+
+    ]
+
     static politicoObra = [
             [nomeObra: "Ilha do Retiro",
              cpfResponsavel: "98765432109"],
 
             [nomeObra: "Praca do arsenal",
              cpfResponsavel: "98765432109"]
+    ]
+
+    /**
+     * @author = evfgs
+     */
+    static engenheiroObra = [
+            [nomeObra: "Ilha do Retiro",
+             cpfResponsavel: "12345678901"],
+
+            [nomeObra: "Praca do arsenal",
+             cpfResponsavel: "12345678901"]
     ]
 
     static enderecos = [
@@ -121,6 +152,15 @@ class TestDataAndOperations {
         }
     }
 
+    /**
+     * @author = evfgs
+     */
+    static public def findEngenheiroByCPF(String engenheiroCPF){
+        engenheiros.find { engenheiro ->
+            engenheiro.cpf == engenheiroCPF
+        }
+    }
+
     static public def findEnderecoByCEPAndNumero(String CEP, int numero){
         enderecos.find { endereco ->
             endereco.CEP == CEP && endereco.numero == numero
@@ -145,11 +185,7 @@ class TestDataAndOperations {
         }
     }
 
-
-
-
-
-        static public void createObra(String obraNome) {
+    static public void createObra(String obraNome) {
         def poliObra = TestDataAndOperations.findPoliticoObraByNome(obraNome)
 
         if(Politico.findAllByCpf(poliObra.cpfResponsavel).size() == 0)
@@ -350,6 +386,25 @@ class TestDataAndOperations {
 
     }
 
+    /**
+     * @author = evfgs
+     */
+    static public float taxaObrasAtrasadasEngenheiro(String cpf){
+        float taxaAtrasoEngenheiro = 0
+        int div = 0;
+        for(int i = 0; i < engenheiroObra.size(); i++){
+            if(engenheiroObra.get(i).cpfResponsavel == cpf){
+                def obra = findObraByNome(engenheiroObra.get(i).nomeObra);
+                div++;
+                if(obra.dataTermino > obra.dataPlanejada){
+                    taxaAtrasoEngenheiro++;
+                }
+            }
+        }
+        taxaAtrasoEngenheiro = (taxaAtrasoEngenheiro/div)*100
+        return taxaAtrasoEngenheiro
+    }
+
     static public int qtdObrasAtrasadasPolitico(String cpf){
         int obrasAtrasoPolitico = 0
 
@@ -366,6 +421,22 @@ class TestDataAndOperations {
         return obrasAtrasoPolitico
 
     }
+
+    /**
+     * @author = evfgs
+     */
+    static public int qtdObrasAtrasadasEngenheiro(String cpf){
+        int obrasAtrasadasEngenheiro = 0
+        for(int i = 0; i < engenheiroObra.size(); i++){
+            if(engenheiroObra.get(i).cpfResponsavel == cpf){
+                def obra = findObraByNome(engenheiroObra.get(i).nomeObra);
+                if(obra.dataTermino > obra.dataPlanejada){
+                    obrasAtrasadasEngenheiro++;
+                }
+            }
+        }
+        return obrasAtrasadasEngenheiro
+    }
     static public boolean checkObraAtrasada(String nomeObra){
         Obra obra = TestDataAndOperations.findObraByNome(nomeObra)
         return obra.atrasada
@@ -374,6 +445,19 @@ class TestDataAndOperations {
         int qtdObras =0
         for(int i = 0; i < politicoObra.size(); i++) {
             if (politicoObra.get(i).cpfResponsavel == cpf) {
+                qtdObras++;
+            }
+        }
+        return qtdObras
+    }
+
+    /**
+     * @author = evfgs
+     */
+    static public int qtdObrasEngenheiro(String cpf){
+        int qtdObras = 0
+        for(int i = 0; i < engenheiroObra.size(); i++){
+            if (engenheiroObra.get(i).cpfResponsavel == cpf){
                 qtdObras++;
             }
         }
@@ -424,6 +508,25 @@ class TestDataAndOperations {
 
     }
 
+    /**
+     * @author = evfgs
+     */
+    static public float taxaObrasEstouradasEngenheiro(String cpf){
+        float taxaEstouradaEngenheiro = 0
+        int div = 0;
+        for(int i = 0; i < engenheiroObra.size(); i++){
+            if(engenheiroObra.get(i).cpfResponsavel == cpf){
+                def obra = findObraByNome(engenheiroObra.get(i).nomeObra);
+                div++;
+                if(obra.precoFinal > obra.precoPlanejado){
+                    taxaEstouradaEngenheiro++;
+                }
+            }
+        }
+        taxaEstouradaEngenheiro = (taxaEstouradaEngenheiro/div)*100
+        return taxaEstouradaEngenheiro
+    }
+
 
     static public int qtdObrasEstouradasPolitico(String cpf){
         int obrasAtrasoPolitico = 0
@@ -440,5 +543,22 @@ class TestDataAndOperations {
 
         return obrasAtrasoPolitico
 
+    }
+
+    /**
+     * @author = evfgs
+     */
+
+    static public int qtdObrasEstouradasEngenheiro(String cpf){
+        int obrasEstouradasEngenheiro = 0
+        for(int i = 0; i < engenheiroObra.size(); i++){
+            if(engenheiroObra.get(i).cpfResponsavel == cpf){
+                def obra = findObraByNome(engenheiroObra.get(i).nomeObra);
+                if(obra.precoFinal > obra.precoPlanejado){
+                    obrasEstouradasEngenheiro++;
+                }
+            }
+        }
+        return obrasEstouradasEngenheiro;
     }
 }
