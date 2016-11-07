@@ -8,6 +8,7 @@ import steps.TestDataAndOperations
 /**
  * Created by Emanuel on 06/11/2016.
  */
+//if ($ObrasAtrasadasEngenheiro&&ObrasEstouradasEngenheiro)
 
 //CONTROLLER Scenario
 //Scenario: Devolver a taxa de atraso de obras de um determinado engenheiro
@@ -59,3 +60,4 @@ Then(~'^o percentual de obras com orcamento estourado para o engenheiro com cpf 
         float qtd = TestDataAndOperations.taxaObrasEstouradasEngenheiro(cpf)
         assert porcetagem == qtd
 }
+//end
