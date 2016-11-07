@@ -63,10 +63,10 @@
 													 src="${assetPath(src: 'deleteIco.png')}" width="50px"/>
 							</g:form>
 						</td>
-
+						%{--if ($ObrasAtrasadasEngenheiro&&ObrasEstouradasEngenheiro)--}%
 						<td><g:link action="taxasAtrasadasEngenheiro" id="${engenheiroInstance.id}"> Taxas de atraso </g:link></td>
 						<td><g:link action="taxasEstouradasEngenheiro" id="${engenheiroInstance.id}"> Taxas de estouro </g:link></td>
-					
+						%{--end--}%
 					</tr>
 				</g:each>
 				</tbody>

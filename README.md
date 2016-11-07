@@ -23,6 +23,11 @@ Cucumber:ObrasPublicas
 
 -noreloading test-app -Dgeb.env=chrome functional:cucumber
 
+Emanuel Victor - feature - Mostrar quando um engenheiro possui uma ou mais obras atrasadas e/ou com orçamento estourado
+Ao inicializar o ObrasPublicas, Primeiro é necessário Criar um Politico e um Engenheiro, para associalos quando for criar
+uma Obra. Após criar a Obra e inserir suas datas planejadas e de termino, e seu preço estimado e preço final. Quando acessar
+a Lista de Engenheiros, é possivel acessar as taxas de atraso e de estouro de cada engenheiro.
+
 -------------------------------------------------------------------------------------------------------------------
 
 Integração com o Travis-ci <br />

@@ -22,40 +22,55 @@ class EngenheiroController {
     def create() {
         respond new Engenheiro(params)
     }
-
-    def taxasAtrasadasEngenheiro(Engenheiro engenheiro){
-        float taxaAtrasada = 0
+//if ($ObrasAtrasadasEngenheiro&&ObrasEstouradasEngenheiro)
+    //Refatoração em taxasAtrasadasEngenheiro e taxasEstouradasEngenheiro
+    def qtdObrasEngenheiroResponsavel(Engenheiro engenheiro) {
         int qtdObras = 0;
-        if (Obra.list().size()>0){
-            for (int i = 0; i < Obra.list().size(); i++){
-                if (Obra.list().get(i).getCpfEngenheiroResponsavel().equals(engenheiro.cpf)){
+        if (Obra.list().size() > 0) {
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).getCpfEngenheiroResponsavel().equals(engenheiro.cpf)) {
                     qtdObras++;
-                    if(Obra.list().get(i).isAtrasada()){
-                        taxaAtrasada++;
-                    }
                 }
             }
-            taxaAtrasada = (taxaAtrasada / qtdObras) * 100
         }
+        return qtdObras
+    }
+    //Refatoração
+    def obraAtrasadaOrEstourada(){
+        float taxaAtrasada = 0;
+        float taxaEstourada = 0;
+        if (Obra.list().size() > 0){
+            for(int i = 0; i < Obra.list().size(); i++){
+                if(Obra.list().get(i).isAtrasada()){
+                    taxaAtrasada++;
+                }
+                if(Obra.list().get(i).isEstourada()){
+                    taxaEstourada++;
+                }
+            }
+        }
+        Map<String, Float> taxas = new HashMap<String, Float>();
+        taxas.put("taxaAtrasada", taxaAtrasada);
+        taxas.put("taxaEstourada", taxaEstourada)
+        return taxas
+//        List taxas = new ArrayList()
+//        taxas.add(taxaAtrasada)
+//        taxas.add(taxaEstourada)
+//        return taxas
+    }
+
+    def taxasAtrasadasEngenheiro(Engenheiro engenheiro) {
+        float taxaAtrasada = obraAtrasadaOrEstourada().get("taxaAtrasada")
+        taxaAtrasada = (taxaAtrasada / qtdObrasEngenheiroResponsavel(engenheiro)) * 100
         respond Engenheiro.list(params), model: [taxaAtrasadaEngenheiro: taxaAtrasada]
     }
 
-    def taxasEstouradasEngenheiro(Engenheiro engenheiro){
-        float taxaEstourada = 0
-        int qtdObras = 0;
-        if(Obra.list().size()>0){
-            for (int i = 0; i < Obra.list().size(); i++){
-                if (Obra.list().get(i).getCpfEngenheiroResponsavel().equals(engenheiro.cpf)){
-                    qtdObras++;
-                    if (Obra.list().get(i).isEstourada()){
-                        taxaEstourada++;
-                    }
-                }
-            }
-            taxaEstourada = (taxaEstourada / qtdObras) * 100
-        }
+    def taxasEstouradasEngenheiro(Engenheiro engenheiro) {
+        float taxaEstourada = obraAtrasadaOrEstourada().get("taxaEstourada")
+        taxaEstourada = (taxaEstourada / qtdObrasEngenheiroResponsavel(engenheiro)) * 100
         respond Engenheiro.list(params), model: [taxasEstouradasEngenheiro: taxaEstourada]
     }
+//end
 
     @Transactional
     def save() {

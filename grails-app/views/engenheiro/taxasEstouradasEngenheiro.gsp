@@ -4,7 +4,7 @@
   Date: 04/11/2016
   Time: 23:04
 --%>
-
+%{--if ($ObrasAtrasadasEngenheiro&&ObrasEstouradasEngenheiro)--}%
 <%@ page import="obraspublicas.Engenheiro" %>
 <!DOCTYPE html>
 <html>
@@ -28,3 +28,4 @@
 </div>
 </body>
 </html>
+%{--end--}%

@@ -82,7 +82,7 @@
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
+%{--if ($ObrasAtrasadasEngenheiro&&ObrasEstouradasEngenheiro)--}%
 		<div id="page-body" role="main">
 			<h1>Bem vindo ao ObrasPublicas</h1>
 			<div id="controller-list" role="navigation">
@@ -98,5 +98,6 @@
 				</ul>
 			</div>
 		</div>
+	%{--end--}%
 	</body>
 </html>
