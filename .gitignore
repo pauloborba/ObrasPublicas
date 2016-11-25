@@ -66,5 +66,7 @@ web-app/js/
 .project
 ObrasPublicas-grailsPlugins.iml
 ObrasPublicas.iml
+ObrasPublicas-master.iml
+ObrasPublicas-master-grailsPlugins.iml
 grailsw
 grailsw.bat
